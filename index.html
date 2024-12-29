@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="scroll-smooth bg-[#eeeff1]" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="icon" type="image/png" href="../image/icons8-portfolio-64.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        body::-webkit-scrollbar {
+            display: none !important;
+        }
+    </style>
+
+</head>
+
+<body class="m-0 p-0 box-border max-w-[1400px] my-0 mx-auto bg ">
+    <div class="main px-[20px] md:px-[50px]">
+
+        <header>
+            <div class="navabar flex  justify-between items-center h-[80px] ">
+
+                <div class="logo  text-[22px] font-bold lg:text-[30px] ">A-K-Y</div>
+
+                <div class="item space-x-5 md:text-[20px] text-[23px]">
+
+
+
+                    <span class="cursor-pointer lg:text-[30px]"> <a href="https://github.com/timepass11211"
+                            target="_blank"><i class="fa-brands fa-github "></i> <span
+                                class="hidden md:inline-block pl-[2px] ">Github</span></a> </span>
+
+                    <span class="cursor-pointer lg:text-[30px]"> <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308
+                        " target="_blank"><i class="fa-brands fa-linkedin"></i><span
+                                class="hidden md:inline-block pl-[5px]">
+                                Linkedin</span></a> </span>
+
+                    <span
+                        class="md:m-5 md:px-[15px] md:py-[5px] md:rounded-md md:bg-black md:text-white md:text-[16px] cursor-pointer lg:text-[20px]">
+                        <a href="#contactt"> <i class="fa-solid fa-envelope"></i> <span
+                                class="hidden md:inline-block pl-[2px] ">
+                                Email</span> </a></span>
+                </div>
+
+            </div>
+        </header>
+
+
+        <section class="hero flex items-center  flex-col-reverse md:flex-row gap-[40px] my-[50px] mb-[100px]">
+
+            <div class="conatiner ">
+                <h2 class="text-[42px] font-bold">Hi, I'm Abhishek 👋</h2>
+                <p class=" font-medium lg:text-[20px]">I am a Full Stack Developer with a passion for creating
+                    responsive and user-friendly web applications. With expertise in HTML, CSS, JavaScript, and
+                    frameworks like Tailwind and Bootstrap, I strive to build efficient and visually appealing websites.
+                    I enjoy solving complex problems and turning ideas into functional digital experiences. Constantly
+                    learning and adapting to new technologies, I am dedicated to delivering high-quality results that
+                    make a difference.</p>
+
+                <div class="skill flex  items-centerw-32 gap-[16px] mt-[25px] text-blue-500 flex-wrap">
+
+                    <div
+                        class="first px-[10px] py-[5px] border-[1.6px] hover:text-black border-blue-600 rounded-[6px] ">
+                        <a href="#skills"><i class="fa-solid fa-code mr-2"></i><span>Skills</span></a>
+                    </div>
+
+                    <div
+                        class="second px-[10px] py-[5px] hover:text-black border-[1.6px] border-blue-600 rounded-[6px] ">
+                        <a href="#projects"><i class="fa-solid fa-folder mr-2"></i><span>Project</span></a>
+                    </div>
+
+                    <div
+                        class="second px-[10px] py-[5px] hover:text-black border-[1.6px] border-blue-600 rounded-[6px] ">
+                        <a href="#test"> <i class="fa-solid fa-pen mr-2"></i><span>About</span></a>
+                    </div>
+
+                    <div class="third px-[10px] py-[5px] hover:text-black border-[1.6px] border-blue-600 rounded-[6px]">
+                        <a href="#contactt">
+                            <i class="fa-solid fa-envelope mr-2"></i><span>Email</span></a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 
+            <img class=" w-[300px] md:w-[350px] rounded-[50%]  " src="../image/devloper.avif"
+                alt="john doe headshot"> -->
+
+            <img class="w-[300px] md:w-[350px] h-[300px] md:h-[350px] object-cover rounded-full border-[3px] border-yellow-500 lg:border-[5px]"
+                src="../image/devloper.avif" alt="john doe headshot">
+
+
+        </section>
+
+        <section class="skill mb-[100px]" id="skills">
+            <div class="container text-center mb-[23px]">
+                <h1 class="text-[35px] font-bold">Skills</h1>
+                <p class=" font-medium lg:text-[20px]">I am proficient in HTML for creating structured, SEO-friendly web
+                    pages, and CSS3 for building responsive layouts with Flexbox and Grid. I have strong expertise in
+                    JavaScript for dynamic interactivity, Tailwind CSS for rapid, utility-based styling, and Bootstrap
+                    for responsive design. Additionally, I use Git for version control and efficient collaboration in
+                    development projects.
+
+
+                </p>
+            </div>
+
+            <div class="item flex flex-wrap justify-center items-center text-center ">
+
+                <div
+                    class="item-1 flex w-[200px] border-2 border-red-600 items-center hover:bg-[#E44D25] hover:text-white justify-center m-[10px] rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px]   ">
+                        <img class="h-[30px] w-[30px] mr-[15px] " src="../image/html-logo.webp" alt="Error">
+                        <span class="text-[19px] font-bold">HTML</span>
+                    </div>
+                </div>
+
+                <div
+                    class="item-2 flex w-[200px] border-2 border-blue-600 items-center justify-center hover:bg-[#2B51DE] hover:text-white m-[10px] rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px] ">
+                        <img class="h-[30px] w-[30px] mr-[15px]" src="../image/css-logo (2).webp" alt="Error">
+                        <span class="text-[19px] font-bold ">CSS</span>
+                    </div>
+                </div>
+
+                <div
+                    class="item-3 flex w-[200px] border-2 border-[#F0DC4E] items-center justify-center m-[10px] hover:bg-[#F0DC4E] hover:text-white rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px] ">
+                        <img class="h-[30px] w-[30px] mr-[15px]" src="../image/javascript-logo (1).webp" alt="Error">
+                        <span class="text-[19px] font-bold">JavaScript</span>
+                    </div>
+                </div>
+
+                <div
+                    class="item-4 flex w-[200px] border-2 border-[#65defcb2] items-center justify-center m-[10px] hover:bg-[#65defcb2] hover:text-white rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px] ">
+                        <img class="h-[30px] w-[30px] mr-[15px]" src="../image/tailwind.webp" alt="Error">
+                        <span class="text-[19px] font-bold">Tailwind</span>
+                    </div>
+                </div>
+
+                <div
+                    class="item-5 flex w-[200px] border-2 border-[#41863C] items-center justify-center m-[10px] hover:bg-[#41863C] hover:text-white rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px] ">
+                        <img class="h-[30px] w-[30px] mr-[15px] " src="../image/node-logo.webp" alt="Error">
+                        <span class="text-[19px] font-bold">Node.JS</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Projects Section -->
+        <section id="projects" class=" mb-[100px]">
+            <h2 class="text-[35px] text-center text-gray-800 mb-12 font-bold">Projects</h2>
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                    <!-- Project 1 -->
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ">
+                        <img src="../image/weather.png" alt="Project 2" class="w-full h-48  object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 font-mono">Wheather-API</h3>
+                            <p class="mt-2 text-gray-600"> "A Weather API provides real-time weather data"</p>
+                            <div class="mt-4 flex space-x-4">
+                                <a href="https://timepass11211.github.io/Weather-API/" target="_blank"
+                                    class="text-blue-500 hover:text-blue-700"><i
+                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
+                                <a href="https://github.com/timepass11211" target="_blank"
+                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
+                                    GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <img src="../image/website-1.png" alt="Project 2" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 font-mono">WEB-SITE</h3>
+                            <p class="mt-2 text-gray-600"> "This simple website design includes a clean, user-friendly
+                                interface and responsive layout."</p>
+                            <div class="mt-4 flex space-x-4">
+                                <a href="https://timepass11211.github.io/WEB-SITE/" target="_blank"
+                                    class="text-blue-500 hover:text-blue-700"><i
+                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
+                                <a href="https://github.com/timepass11211" target="_blank"
+                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
+                                    GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <img src="../image/Spotify-5.webp" alt="Project 3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 font-mono">Spotify-Clone</h3>
+                            <p class="mt-2 text-gray-600">"Here are the basic design and functions of the Spotify
+                                Clone."</p>
+                            <div class="mt-4 flex space-x-4">
+                                <a href="https://timepass11211.github.io/Spotify-Clone-Advance/"
+                                    class="text-blue-500 hover:text-blue-700"><i
+                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
+                                <a href="https://github.com/timepass11211" target="_blank"
+                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
+                                    GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Toast notification 4 -->
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <img src="../image/notifaction.png" alt="Project 3" class="w-full h-48 object-contain">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 font-mono">Toast Notification</h3>
+                            <p class="mt-2 text-gray-600">"The toast notification UI design includes the following
+                                elements:"</p>
+                            <div class="mt-4 flex space-x-4">
+                                <a href="https://timepass11211.github.io/Notification-Button/" target="_blank"
+                                    class="text-blue-500 hover:text-blue-700"><i
+                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
+                                <a href="https://github.com/timepass11211" target="_blank"
+                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
+                                    GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio 5 -->
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <img src="../image/portfolio.jpg " alt="Project 3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 font-mono">Portfolio</h3>
+                            <p class="mt-2 text-gray-600 ">
+                                "A portfolio is a personal collection showcasing your skills, projects, and
+                                achievements." </p>
+                            <div class="mt-4 flex space-x-4">
+                                <a href="https://timepass11211.github.io/Spotify-Clone-Advance/" target="_blank"
+                                    class="text-blue-500 hover:text-blue-700"><i
+                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
+                                <a href="https://github.com/timepass11211" target="_blank"
+                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
+                                    GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more project cards here if needed -->
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+        <section class="project flex flex-col gap-[50px] md:flex-row md:justify-center md:items-center mb-[100px]"
+            id="test">
+
+            <div class="container flex flex-col justify-center items-center">
+                <h1 class="text-[35px] mb-[30px] font-bold">About</h1>
+                <img class=" w-[210px] rounded-[50%]   h-[210px] max-w-none mb-[10px] border-[4px] border-yellow-500 "
+                    src="../image/dev.webp" alt="">
+                <p class="font-bold text-[25px]">Abhishek yadav</p>
+                <p class="font-medium text-[20px] md:text-[18.5px]">SYCS (Computer science)</p>
+            </div>
+
+            <div class="text font-medium lg:text-[20px]">
+                "Hi, I'm Abhishek Yadav, a passionate Full Stack Developer with expertise in HTML, CSS3, JavaScript,
+                Tailwind, and Bootstrap. Currently, I'm pursuing a degree in Computer Science and enjoy creating
+                innovative, functional, and visually appealing web solutions. I'm always eager to learn new technologies
+                and bring fresh ideas to life. Let’s collaborate and create something extraordinary!.😇 "
+            </div>
+
+        </section>
+
+
+        <section class="contact flex gap-[40px] justify-center md:flex-row-reverse flex-wrap md:flex-nowrap mb-[100px]"
+            id="contactt">
+            <div class="detail flex-1 basis-1/2">
+                <h1 class="text-[35px] mb-[20px] flex md:justify-end justify-center font-bold">Contact</h1>
+                <p class="flex md:items-right md:text-right font-medium lg:text-[20px]">
+                    " I'm always excited to connect with others, whether it's for new projects, collaborations, or just
+                    to
+                    share ideas about the world of web development. As a Full Stack Developer with a focus on creating
+                    intuitive and responsive web applications, I'm passionate about bringing ideas to life through
+                    code."</p>
+
+            </div>
+
+
+            <div class="con flex-1 basis-1/2  ">
+
+                <form action="https://formspree.io/f/xzzzelyl" method="POST"
+                    class="w-full p-4 border-2 rounded-lg shadow-md ">
+
+                    
+                    <input class="border-2 w-full mb-4 p-2 rounded outline-none border-3 border-blue-500 " type="text"
+                        name="name" placeholder="Name"><br>
+
+
+                    <input class="border-2 w-full mb-4 p-2 rounded outline-none border-3 border-blue-500" type="email"
+                        name="email" placeholder="Email"><br>
+
+
+                    <textarea class="border-2 w-full mb-4 p-2 rounded resize-none outline-none border-3 border-blue-500"
+                        name="message" rows="5" placeholder="Message"></textarea><br>
+
+                    <button class="border-2 bg-blue-500 text-white py-2 px-4 rounded w-full hover:bg-blue-600"
+                        type="submit">
+                        Submit
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="bg-gradient-to-r from-indigo-600 to-blue-500 text-white py-5 text-center">
+            <p>&copy; 2024 Abhishek Yadav. All Rights Reserved.</p>
+        </footer>
+
+
+    </div>
+
+</body>
+
+</html>
