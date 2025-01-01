@@ -10,17 +10,14 @@ I specialize in building **modern web applications** and enjoy solving real-worl
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-### **Backend**  
-![Node.js](https://img.shields.io/badge/Node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-....
-....
+## 🔴 [Live Demo](https://abhishek-code-01.github.io/Portfolio/)
 
 ### **Version Control & Tools**  
 ![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![VSCode](https://img.shields.io/badge/VS%20Code-%23007ACC.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-## 🌱 Currently Learning
+## 👨‍💻 Currently Learning
 - Advanced concepts in **JavaScript (ES6+)**  
 - Mastering responsive design using **Tailwind CSS** and **Bootstrap**  
 - Building dynamic user interfaces with **JavaScript**  
