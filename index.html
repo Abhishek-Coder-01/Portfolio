@@ -26,7 +26,48 @@
         body::-webkit-scrollbar {
             display: none !important;
         }
-    </style>
+
+        /*Animation of skill loading */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skill-item {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .skill-item:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .skill-item:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .skill-item:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .skill-item:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        .skill-item:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+        .skill-item:nth-child(6) {
+            animation-delay: 2.5s;
+        }    </style>
 
 </head>
 
@@ -117,7 +158,7 @@
 
         <section class="skill mb-[100px]" id="skills">
             <div class="container text-center mb-[23px]">
-                <h1 class="text-[35px] font-bold ">Skills</h1>
+                <h1 class="text-[35px] font-bold">Skills</h1>
                 <p>I am proficient in HTML for creating structured, SEO-friendly web
                     pages, and CSS3 for building responsive layouts with Flexbox and Grid. I have strong expertise in
                     JavaScript for dynamic interactivity, Tailwind CSS for rapid, utility-based styling, and Bootstrap
@@ -125,52 +166,51 @@
                     development projects.
                 </p>
             </div>
-
-            <div class="item flex flex-wrap justify-center items-center text-center ">
-
-                <div
-                    class="item-1 flex w-[200px] border-2 border-red-600 items-center hover:bg-[#E44D25] hover:text-white justify-center m-[10px] rounded-[6px]">
-                    <div class="flex px-[20px] py-[10px]   ">
-                        <img class="h-[30px] w-[30px] mr-[15px] " src="./image/html-logo.webp" alt="Error">
+    
+            <div class="flex flex-wrap justify-center items-center text-center">
+                <div class="skill-item flex w-[200px] border-2 border-red-600 items-center hover:bg-[#E44D25] hover:text-white justify-center m-[10px] rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px]">
+                        <img class="h-[30px] w-[30px] mr-[15px]" src="./image/html-logo.webp" alt="Error">
                         <span class="text-[19px] font-bold">HTML</span>
                     </div>
                 </div>
-
-                <div
-                    class="item-2 flex w-[200px] border-2 border-blue-600 items-center justify-center hover:bg-[#2B51DE] hover:text-white m-[10px] rounded-[6px]">
-                    <div class="flex px-[20px] py-[10px] ">
+    
+                <div class="skill-item flex w-[200px] border-2 border-blue-600 items-center justify-center hover:bg-[#2B51DE] hover:text-white m-[10px] rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/css-logo (2).webp" alt="Error">
-                        <span class="text-[19px] font-bold ">CSS</span>
+                        <span class="text-[19px] font-bold">CSS</span>
                     </div>
                 </div>
-
-                <div
-                    class="item-3 flex w-[200px] border-2 border-[#F0DC4E] items-center justify-center m-[10px] hover:bg-[#F0DC4E] hover:text-white rounded-[6px]">
-                    <div class="flex px-[20px] py-[10px] ">
+    
+                <div class="skill-item flex w-[200px] border-2 border-[#F0DC4E] items-center justify-center m-[10px] hover:bg-[#F0DC4E] hover:text-white rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/javascript-logo (1).webp" alt="Error">
                         <span class="text-[19px] font-bold">JavaScript</span>
                     </div>
                 </div>
-
-                <div
-                    class="item-4 flex w-[200px] border-2 border-[#65defcb2] items-center justify-center m-[10px] hover:bg-[#65defcb2] hover:text-white rounded-[6px]">
-                    <div class="flex px-[20px] py-[10px] ">
+    
+                <div class="skill-item flex w-[200px] border-2 border-[#65defcb2] items-center justify-center m-[10px] hover:bg-[#65defcb2] hover:text-white rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/tailwind.webp" alt="Error">
                         <span class="text-[19px] font-bold">Tailwind</span>
                     </div>
                 </div>
-
-                <div
-                    class="item-5 flex w-[200px] border-2 border-[#41863C] items-center justify-center m-[10px] hover:bg-[#41863C] hover:text-white rounded-[6px]">
-                    <div class="flex px-[20px] py-[10px] ">
-                        <img class="h-[30px] w-[30px] mr-[15px] " src="./image/node-logo.webp" alt="Error">
+    
+                <div class="skill-item flex w-[200px] border-2 border-[#8411F6] items-center justify-center m-[10px] hover:bg-[#8411F6] hover:text-white rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px]">
+                        <img class="h-[30px] w-[30px] mr-[15px]" src="./image/bootstrap.png" alt="Error">
+                        <span class="text-[19px] font-bold">Bootstrap</span>
+                    </div>
+                </div>
+    
+                <div class="skill-item flex w-[200px] border-2 border-[#41863C] items-center justify-center m-[10px] hover:bg-[#41863C] hover:text-white rounded-[6px]">
+                    <div class="flex px-[20px] py-[10px]">
+                        <img class="h-[30px] w-[30px] mr-[15px]" src="./image/node-logo.webp" alt="Error">
                         <span class="text-[19px] font-bold">Node.JS</span>
                     </div>
                 </div>
-
             </div>
         </section>
-
 
 
         <!-- Projects Section -->
