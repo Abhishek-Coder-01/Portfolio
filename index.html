@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <script>
         tailwind.config = {
             theme: {
@@ -26,48 +29,7 @@
         body::-webkit-scrollbar {
             display: none !important;
         }
-
-        /*Animation of skill loading */
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .skill-item {
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        .skill-item:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .skill-item:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-
-        .skill-item:nth-child(3) {
-            animation-delay: 1s;
-        }
-
-        .skill-item:nth-child(4) {
-            animation-delay: 1.5s;
-        }
-
-        .skill-item:nth-child(5) {
-            animation-delay: 2s;
-        }
-
-        .skill-item:nth-child(6) {
-            animation-delay: 2.5s;
-        }    </style>
+    </style>
 
 </head>
 
@@ -105,7 +67,7 @@
 
         <section class="hero flex items-center  flex-col-reverse md:flex-row gap-[40px] my-[50px] mb-[100px]">
 
-            <div class="conatiner ">
+            <div class="conatiner" data-aos="fade-right"  data-aos-duration="1500">
                 <h2 class="text-[42px] font-bold">Hi, I'm Abhishek 👋</h2>
                 <p class=" text-[16px] ">I am a Full Stack Developer with a passion for creating
                     responsive and user-friendly web applications. With expertise in HTML, CSS, JavaScript, and
@@ -114,8 +76,8 @@
 
                 <div class=" skill flex  items-centerw-32 gap-[16px] mt-[25px] text-blue-500 flex-wrap">
 
-                    <div
-                        class=" first px-[10px] py-[5px] border-[1.6px] hover:text-black border-blue-600 rounded-[6px] ">
+                    <div class=" first px-[10px] py-[5px] border-[1.6px] hover:text-black border-blue-600 rounded-[6px] "
+                        id="btn">
                         <a href="#skills"><i class=" fa-solid fa-code mr-2"></i><span class="">Skills</span></a>
                     </div>
 
@@ -143,7 +105,7 @@
                 alt="john doe headshot"> -->
 
             <img class="w-[300px] md:w-[350px] h-[300px] md:h-[350px] object-cover rounded-full border-[3px] border-yellow-500 lg:border-[5px]"
-                src="./image/devloper.avif" alt="john doe headshot">
+                src="./image/devloper.avif" alt="john doe headshot" data-aos="fade-left"   data-aos-duration="1000">
 
 
         </section>
@@ -157,7 +119,7 @@
         <hr class="border-red-600">
 
         <section class="skill mb-[100px]" id="skills">
-            <div class="container text-center mb-[23px]">
+            <div class="container text-center mb-[23px]" data-aos="fade-up">
                 <h1 class="text-[35px] font-bold">Skills</h1>
                 <p>I am proficient in HTML for creating structured, SEO-friendly web
                     pages, and CSS3 for building responsive layouts with Flexbox and Grid. I have strong expertise in
@@ -166,44 +128,50 @@
                     development projects.
                 </p>
             </div>
-    
+
             <div class="flex flex-wrap justify-center items-center text-center">
-                <div class="skill-item flex w-[200px] border-2 border-red-600 items-center hover:bg-[#E44D25] hover:text-white justify-center m-[10px] rounded-[6px]">
-                    <div class="flex px-[20px] py-[10px]">
+                <div
+                    class="skill-item flex w-[200px] border-2 border-red-600 items-center hover:bg-[#E44D25] hover:text-white justify-center m-[10px] rounded-[6px] " data-aos="fade-up"  data-aos-duration="1000">
+                    <div class="flex px-[20px] py-[10px]" >
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/html-logo.webp" alt="Error">
                         <span class="text-[19px] font-bold">HTML</span>
                     </div>
                 </div>
-    
-                <div class="skill-item flex w-[200px] border-2 border-blue-600 items-center justify-center hover:bg-[#2B51DE] hover:text-white m-[10px] rounded-[6px]">
+
+                <div
+                    class="skill-item flex w-[200px] border-2 border-blue-600 items-center justify-center hover:bg-[#2B51DE] hover:text-white m-[10px] rounded-[6px]" data-aos="fade-up"  data-aos-duration="1000">
                     <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/css-logo (2).webp" alt="Error">
                         <span class="text-[19px] font-bold">CSS</span>
                     </div>
                 </div>
-    
-                <div class="skill-item flex w-[200px] border-2 border-[#F0DC4E] items-center justify-center m-[10px] hover:bg-[#F0DC4E] hover:text-white rounded-[6px]">
+
+                <div
+                    class="skill-item flex w-[200px] border-2 border-[#F0DC4E] items-center justify-center m-[10px] hover:bg-[#F0DC4E] hover:text-white rounded-[6px]" data-aos="fade-up"  data-aos-duration="1000">
                     <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/javascript-logo (1).webp" alt="Error">
                         <span class="text-[19px] font-bold">JavaScript</span>
                     </div>
                 </div>
-    
-                <div class="skill-item flex w-[200px] border-2 border-[#65defcb2] items-center justify-center m-[10px] hover:bg-[#65defcb2] hover:text-white rounded-[6px]">
+
+                <div
+                    class="skill-item flex w-[200px] border-2 border-[#65defcb2] items-center justify-center m-[10px] hover:bg-[#65defcb2] hover:text-white rounded-[6px]" data-aos="fade-up"  data-aos-duration="1000">
                     <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/tailwind.webp" alt="Error">
                         <span class="text-[19px] font-bold">Tailwind</span>
                     </div>
                 </div>
-    
-                <div class="skill-item flex w-[200px] border-2 border-[#8411F6] items-center justify-center m-[10px] hover:bg-[#8411F6] hover:text-white rounded-[6px]">
+
+                <div
+                    class="skill-item flex w-[200px] border-2 border-[#8411F6] items-center justify-center m-[10px] hover:bg-[#8411F6] hover:text-white rounded-[6px]" data-aos="fade-up"  data-aos-duration="8000">
                     <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/bootstrap.png" alt="Error">
                         <span class="text-[19px] font-bold">Bootstrap</span>
                     </div>
                 </div>
-    
-                <div class="skill-item flex w-[200px] border-2 border-[#41863C] items-center justify-center m-[10px] hover:bg-[#41863C] hover:text-white rounded-[6px]">
+
+                <div
+                    class="skill-item flex w-[200px] border-2 border-[#41863C] items-center justify-center m-[10px] hover:bg-[#41863C] hover:text-white rounded-[6px]" data-aos="fade-up"  data-aos-duration="5000">
                     <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/node-logo.webp" alt="Error">
                         <span class="text-[19px] font-bold">Node.JS</span>
@@ -221,7 +189,7 @@
 
                     <!--Wheather-API 1 -->
                     <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ">
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl " data-aos="zoom-in-up">
                         <img src="./image/weather.png" alt="Project 2" class="w-full h-48  object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">Wheather-API</h3>
@@ -241,7 +209,7 @@
 
                     <!-- TO-Do-List 2 -->
                     <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ">
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl " data-aos="zoom-in-up">
                         <img src="./image/to do list.jpg" alt="Project 2" class="w-full h-48  object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">To-Do List</h3>
@@ -260,14 +228,15 @@
 
                     <!-- Canvas drawing Applicatio 3  -->
                     <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ">
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl " data-aos="zoom-in-up">
                         <img src="./image/canvas.png" alt="Project 2" class="w-full h-48  object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">Canvas Drawing Application</h3>
-                            <p class="mt-2 text-gray-600"> "It allows users draw with custom colors, adjustable line widths, and supports undo, redo, and sharing."</p>
+                            <p class="mt-2 text-gray-600"> "It allows users draw with custom colors, adjustable line
+                                widths, and supports undo, redo, and sharing."</p>
                             <div class="mt-4 flex space-x-4">
-                                <a href="https://abhishek-coder-01.github.io/Canvas-Drawing-Application/" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"><i
+                                <a href="https://abhishek-coder-01.github.io/Canvas-Drawing-Application/"
+                                    target="_blank" class="text-blue-500 hover:text-blue-700"><i
                                         class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
                                 <a href="https://github.com/abhishek-coder-01" target="_blank"
                                     class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
@@ -282,7 +251,7 @@
                     <!-- webisite 4  -->
 
                     <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in-up">
                         <img src="./image/website-1.png" alt="Project 2" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">WEB-SITE</h3>
@@ -301,7 +270,7 @@
 
                     <!-- spotify 5 -->
                     <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in-up">
                         <img src="./image/Spotify-5.webp" alt="Project 3" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">Spotify-Clone</h3>
@@ -321,7 +290,7 @@
 
                     <!-- Toast notification 6 -->
                     <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in-up">
                         <img src="./image/notifaction.png" alt="Project 3" class="w-full h-48 object-contain">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">Toast Notification</h3>
@@ -340,7 +309,7 @@
 
                     <!-- Portfolio 7 -->
                     <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in-up">
                         <img src="./image/bmi.webp" alt="Project 3" class="w-full h-48 object-contain">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">BMI-Calculator</h3>
@@ -348,7 +317,7 @@
                                 "BMI is a number calculated from weight and height to assess body fat.." </p>
                             <div class="mt-4 flex space-x-4">
 
-                                <a href="https://abhishek-coder-01.github.io/BMI-Calculator/" target="_blank" <a
+                                <a href="https://abhishek-coder-01.github.io/BMI-Calculator/" target="_blank"
                                     href="https://abhishek-coder-01.github.io/Spotify-Clone-Advance/" target="_blank"
                                     class="text-blue-500 hover:text-blue-700"><i
                                         class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
@@ -375,12 +344,12 @@
             <div class="container flex flex-col justify-center items-center">
                 <h1 class="text-[35px] mb-[30px] font-bold">About</h1>
                 <img class=" w-[210px] rounded-[50%]   h-[210px] max-w-none mb-[10px] border-[4px] border-yellow-500 "
-                    src="./image/dev.webp" alt="">
+                    src="./image/dev.webp" alt=""  data-aos="fade-right">
                 <p class="font-bold text-[25px]">Abhishek yadav</p>
                 <p class="font-medium text-[20px] md:text-[18.5px] text-center"> Second Year Computer Science (SYCS)</p>
             </div>
 
-            <div class="text">
+            <div class="text"  data-aos="fade-left"  data-aos-duration="1500">
                 "Hi, I'm Abhishek Yadav, a passionate Full Stack Developer with expertise in HTML, CSS3, JavaScript,
                 Tailwind, and Bootstrap. rently, I'm pursuing a degree in Computer Science and enjoy creating
                 innovative, functional, and visually appealing web solutions. I'm always eager to learn new technologies
@@ -393,7 +362,7 @@
 
         <section class="contact flex gap-[40px] justify-center md:flex-row-reverse flex-wrap md:flex-nowrap mb-[100px]"
             id="contactt">
-            <div class="detail flex-1 basis-1/2">
+            <div class="detail flex-1 basis-1/2"  data-aos="zoom-in"  data-aos-duration="1500">
                 <h1 class="text-[35px] mb-[20px] flex md:justify-end justify-center font-bold">Contact</h1>
                 <p class="flex md:items-right md:text-right  ">
                     " I'm always excited to connect with others, whether it's for new projects, collaborations, or just
@@ -405,7 +374,7 @@
             </div>
 
 
-            <div class="con flex-1 basis-1/2  ">
+            <div class="con flex-1 basis-1/2  " data-aos="zoom-in"  data-aos-duration="1500">
 
                 <form action="https://formspree.io/f/xzzzelyl" method="POST"
                     class="w-full p-4 border-2 rounded-lg shadow-md ">
@@ -441,6 +410,14 @@
 
 
     </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 900,
+            offset: 150,
+        });
+    </script>
 
 </body>
 
