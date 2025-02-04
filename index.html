@@ -29,11 +29,23 @@
         body::-webkit-scrollbar {
             display: none !important;
         }
+
+        /* CSS for Dark Mode */
+        .dark-mode {
+            background-color: #1a202c;
+            color: #ffffff;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Add other dark mode styles as needed */
     </style>
 
 </head>
 
-<body class="m-0 p-0 box-border max-w-[1400px] my-0 mx-auto bg font-poppins ">
+<body class="m-0 p-0 box-border max-w-[1400px] my-0 mx-auto font-poppins ">
     <div class="main px-[20px] md:px-[50px]">
 
         <header>
@@ -42,7 +54,6 @@
                 <div class="logo  text-[22px] font-bold lg:text-[30px] ">A-K-Y</div>
 
                 <div class="item space-x-5 md:text-[20px] text-[23px]">
-
 
 
                     <span class=" sor-pointer lg:text-[21px]"> <a href="https://github.com/abhishek-coder-01"
@@ -59,15 +70,36 @@
                         <a href="#contactt"> <i class=" fa-solid fa-envelope"></i> <span
                                 class=" hidden md:inline-block pl-[2px] ">
                                 Email</span> </a></span>
+
+                    <div class="float-right">
+                        <!-- Moon Icon (Night Mode Toggle) -->
+                        <span class="theme-toggle cursor-pointer inline-block" data-mode="dark">
+                            <img src="./image/sun-mode.gif" alt="Day Mode"
+                                class="h-[36px] hover:scale-110 transition-transform">
+                        </span>
+
+                        <!-- Sun Icon (Day Mode Toggle) -->
+                        <span class="theme-toggle cursor-pointer inline-block hidden" data-mode="light">
+                            <!-- Simple SVG Moon -->
+                            <svg class="h-7 text-white hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
+                        </span>
+                    </div>
+
                 </div>
 
             </div>
         </header>
 
 
+
+
+
         <section class="hero flex items-center  flex-col-reverse md:flex-row gap-[40px] my-[50px] mb-[100px]">
 
-            <div class="conatiner" data-aos="fade-right"  data-aos-duration="1500">
+            <div class="conatiner" data-aos="fade-right" data-aos-duration="1500">
                 <h2 class="text-[42px] font-bold">Hi, I'm Abhishek 👋</h2>
                 <p class=" text-[16px] ">I am a Full Stack Developer with a passion for creating
                     responsive and user-friendly web applications. With expertise in HTML, CSS, JavaScript, and
@@ -105,7 +137,7 @@
                 alt="john doe headshot"> -->
 
             <img class="w-[300px] md:w-[350px] h-[300px] md:h-[350px] object-cover rounded-full border-[3px] border-yellow-500 lg:border-[5px]"
-                src="./image/devloper.avif" alt="john doe headshot" data-aos="fade-left"   data-aos-duration="1000">
+                src="./image/devloper.avif" alt="john doe headshot" data-aos="fade-left" data-aos-duration="1000">
 
 
         </section>
@@ -130,48 +162,48 @@
             </div>
 
             <div class="flex flex-wrap justify-center items-center text-center">
-                <div
-                    class="skill-item flex w-[200px] border-2 border-red-600 items-center hover:bg-[#E44D25] hover:text-white justify-center m-[10px] rounded-[6px] " data-aos="fade-up"  data-aos-duration="1000">
-                    <div class="flex px-[20px] py-[10px]" >
+                <div class="skill-item flex w-[200px] border-2 border-red-600 items-center hover:bg-[#E44D25] hover:text-white justify-center m-[10px] rounded-[6px] "
+                    data-aos="fade-up" data-aos-duration="1000">
+                    <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/html-logo.webp" alt="Error">
                         <span class="text-[19px] font-bold">HTML</span>
                     </div>
                 </div>
 
-                <div
-                    class="skill-item flex w-[200px] border-2 border-blue-600 items-center justify-center hover:bg-[#2B51DE] hover:text-white m-[10px] rounded-[6px]" data-aos="fade-up"  data-aos-duration="1000">
+                <div class="skill-item flex w-[200px] border-2 border-blue-600 items-center justify-center hover:bg-[#2B51DE] hover:text-white m-[10px] rounded-[6px]"
+                    data-aos="fade-up" data-aos-duration="1000">
                     <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/css-logo (2).webp" alt="Error">
                         <span class="text-[19px] font-bold">CSS</span>
                     </div>
                 </div>
 
-                <div
-                    class="skill-item flex w-[200px] border-2 border-[#F0DC4E] items-center justify-center m-[10px] hover:bg-[#F0DC4E] hover:text-white rounded-[6px]" data-aos="fade-up"  data-aos-duration="1000">
+                <div class="skill-item flex w-[200px] border-2 border-[#F0DC4E] items-center justify-center m-[10px] hover:bg-[#F0DC4E] hover:text-white rounded-[6px]"
+                    data-aos="fade-up" data-aos-duration="1000">
                     <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/javascript-logo (1).webp" alt="Error">
                         <span class="text-[19px] font-bold">JavaScript</span>
                     </div>
                 </div>
 
-                <div
-                    class="skill-item flex w-[200px] border-2 border-[#65defcb2] items-center justify-center m-[10px] hover:bg-[#65defcb2] hover:text-white rounded-[6px]" data-aos="fade-up"  data-aos-duration="1000">
+                <div class="skill-item flex w-[200px] border-2 border-[#65defcb2] items-center justify-center m-[10px] hover:bg-[#65defcb2] hover:text-white rounded-[6px]"
+                    data-aos="fade-up" data-aos-duration="1000">
                     <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/tailwind.webp" alt="Error">
                         <span class="text-[19px] font-bold">Tailwind</span>
                     </div>
                 </div>
 
-                <div
-                    class="skill-item flex w-[200px] border-2 border-[#8411F6] items-center justify-center m-[10px] hover:bg-[#8411F6] hover:text-white rounded-[6px]" data-aos="fade-up"  data-aos-duration="8000">
+                <div class="skill-item flex w-[200px] border-2 border-[#8411F6] items-center justify-center m-[10px] hover:bg-[#8411F6] hover:text-white rounded-[6px]"
+                    data-aos="fade-up" data-aos-duration="8000">
                     <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/bootstrap.png" alt="Error">
                         <span class="text-[19px] font-bold">Bootstrap</span>
                     </div>
                 </div>
 
-                <div
-                    class="skill-item flex w-[200px] border-2 border-[#41863C] items-center justify-center m-[10px] hover:bg-[#41863C] hover:text-white rounded-[6px]" data-aos="fade-up"  data-aos-duration="5000">
+                <div class="skill-item flex w-[200px] border-2 border-[#41863C] items-center justify-center m-[10px] hover:bg-[#41863C] hover:text-white rounded-[6px]"
+                    data-aos="fade-up" data-aos-duration="5000">
                     <div class="flex px-[20px] py-[10px]">
                         <img class="h-[30px] w-[30px] mr-[15px]" src="./image/node-logo.webp" alt="Error">
                         <span class="text-[19px] font-bold">Node.JS</span>
@@ -183,13 +215,13 @@
 
         <!-- Projects Section -->
         <section id="projects" class=" mb-[100px]">
-            <h2 class="text-[35px] text-center text-gray-800 mb-12 font-bold">Projects</h2>
+            <h2 class="text-[35px] text-center  mb-12 font-bold">Projects</h2>
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
                     <!--Wheather-API 1 -->
-                    <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl " data-aos="zoom-in-up">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl "
+                        data-aos="zoom-in-up">
                         <img src="./image/weather.png" alt="Project 2" class="w-full h-48  object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">Wheather-API</h3>
@@ -208,8 +240,8 @@
 
 
                     <!-- TO-Do-List 2 -->
-                    <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl " data-aos="zoom-in-up">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl "
+                        data-aos="zoom-in-up">
                         <img src="./image/to do list.jpg" alt="Project 2" class="w-full h-48  object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">To-Do List</h3>
@@ -227,8 +259,8 @@
                     </div>
 
                     <!-- Canvas drawing Applicatio 3  -->
-                    <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl " data-aos="zoom-in-up">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl "
+                        data-aos="zoom-in-up">
                         <img src="./image/canvas.png" alt="Project 2" class="w-full h-48  object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">Canvas Drawing Application</h3>
@@ -250,8 +282,8 @@
 
                     <!-- webisite 4  -->
 
-                    <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in-up">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                        data-aos="zoom-in-up">
                         <img src="./image/website-1.png" alt="Project 2" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">WEB-SITE</h3>
@@ -269,8 +301,8 @@
                     </div>
 
                     <!-- spotify 5 -->
-                    <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in-up">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                        data-aos="zoom-in-up">
                         <img src="./image/Spotify-5.webp" alt="Project 3" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">Spotify-Clone</h3>
@@ -289,8 +321,8 @@
 
 
                     <!-- Toast notification 6 -->
-                    <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in-up">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                        data-aos="zoom-in-up">
                         <img src="./image/notifaction.png" alt="Project 3" class="w-full h-48 object-contain">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">Toast Notification</h3>
@@ -308,8 +340,8 @@
                     </div>
 
                     <!-- Portfolio 7 -->
-                    <div
-                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in-up">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                        data-aos="zoom-in-up">
                         <img src="./image/bmi.webp" alt="Project 3" class="w-full h-48 object-contain">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800 font-mono">BMI-Calculator</h3>
@@ -344,12 +376,12 @@
             <div class="container flex flex-col justify-center items-center">
                 <h1 class="text-[35px] mb-[30px] font-bold">About</h1>
                 <img class=" w-[210px] rounded-[50%]   h-[210px] max-w-none mb-[10px] border-[4px] border-yellow-500 "
-                    src="./image/dev.webp" alt=""  data-aos="fade-right">
+                    src="./image/dev.webp" alt="" data-aos="fade-right">
                 <p class="font-bold text-[25px]">Abhishek yadav</p>
                 <p class="font-medium text-[20px] md:text-[18.5px] text-center"> Second Year Computer Science (SYCS)</p>
             </div>
 
-            <div class="text"  data-aos="fade-left"  data-aos-duration="1500">
+            <div class="text" data-aos="fade-left" data-aos-duration="1500">
                 "Hi, I'm Abhishek Yadav, a passionate Full Stack Developer with expertise in HTML, CSS3, JavaScript,
                 Tailwind, and Bootstrap. rently, I'm pursuing a degree in Computer Science and enjoy creating
                 innovative, functional, and visually appealing web solutions. I'm always eager to learn new technologies
@@ -362,7 +394,7 @@
 
         <section class="contact flex gap-[40px] justify-center md:flex-row-reverse flex-wrap md:flex-nowrap mb-[100px]"
             id="contactt">
-            <div class="detail flex-1 basis-1/2"  data-aos="zoom-in"  data-aos-duration="1500">
+            <div class="detail flex-1 basis-1/2" data-aos="zoom-in" data-aos-duration="1500">
                 <h1 class="text-[35px] mb-[20px] flex md:justify-end justify-center font-bold">Contact</h1>
                 <p class="flex md:items-right md:text-right  ">
                     " I'm always excited to connect with others, whether it's for new projects, collaborations, or just
@@ -374,7 +406,7 @@
             </div>
 
 
-            <div class="con flex-1 basis-1/2  " data-aos="zoom-in"  data-aos-duration="1500">
+            <div class="con flex-1 basis-1/2  " data-aos="zoom-in" data-aos-duration="1500">
 
                 <form action="https://formspree.io/f/xzzzelyl" method="POST"
                     class="w-full p-4 border-2 rounded-lg shadow-md ">
@@ -418,6 +450,35 @@
             offset: 150,
         });
     </script>
+
+
+
+    <script>
+        // JavaScript for Theme Toggling
+        document.querySelectorAll('.theme-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function () {
+                // Toggle dark mode class on body
+                document.body.classList.toggle('dark-mode');
+
+                // Toggle visibility of theme icons
+                document.querySelectorAll('.theme-toggle').forEach(t => t.classList.toggle('hidden'));
+
+                // Save preference to localStorage
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            });
+        });
+
+        // Check for saved theme on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelectorAll('.theme-toggle').forEach(t => t.classList.toggle('hidden'));
+            }
+        });
+    </script>
+
 
 </body>
 
