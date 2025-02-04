@@ -81,7 +81,8 @@
                         <!-- Sun Icon (Day Mode Toggle) -->
                         <span class="theme-toggle cursor-pointer inline-block hidden" data-mode="light">
                             <!-- Simple SVG Moon -->
-                            <svg class="md:h-7 h-6 text-white hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="md:h-7 h-6 text-white hover:scale-110 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                             </svg>
@@ -97,7 +98,7 @@
 
 
 
-        <section class="hero flex items-center  flex-col-reverse md:flex-row gap-[40px] my-[50px] mb-[100px]">
+        <section class="hero flex items-center  flex-col-reverse md:flex-row gap-[40px] my-[50px] mb-[60px]">
 
             <div class="conatiner" data-aos="fade-right" data-aos-duration="1500">
                 <h2 class="text-[42px] font-bold">Hi, I'm Abhishek 👋</h2>
@@ -130,17 +131,63 @@
                     </div>
 
                 </div>
-            </div>
 
-            <!-- 
-            <img class=" w-[300px] md:w-[350px] rounded-[50%]  " src="./image/devloper.avif"
-                alt="john doe headshot"> -->
+            </div>
 
             <img class="w-[300px] md:w-[350px] h-[300px] md:h-[350px] object-cover rounded-full border-[3px] border-yellow-500 lg:border-[5px]"
                 src="./image/devloper.avif" alt="john doe headshot" data-aos="fade-left" data-aos-duration="1000">
 
 
+
         </section>
+
+        <div class="flex justify-center md:gap-[1.5rem] gap-[1.1rem] ">
+            <!-- Contact Button -->
+            <a href="#contactt" class="no-underline" id="contactt">
+                <div class="h-[55px] w-[180px] border border-black rounded-[95px] flex justify-center items-center cursor-pointer bg-black transition-colors hover:bg-opacity-90">
+                    <span class="text font-medium text-white">Contact</span>
+                    <span class="img h-7 ml-[9px]">
+                        <img src="./image/contact.svg" alt="Contact" 
+                             class="h-full w-full object-contain">
+                    </span>
+                </div>
+            </a>
+        
+            <!-- Resume Button -->
+            <a href="#resume" class="no-underline" id="resume">
+                <div class="h-[55px] w-[180px] border border-black rounded-[95px] flex justify-center items-center cursor-pointer">
+                    <span class="text font-medium">Resume</span>
+                    <span class="img h-7 ml-[9px]">
+                        <img src="./image/resume-d.svg" alt="Resume" 
+                             class="h-full w-full object-contain">
+                    </span>
+                </div>
+            </a>
+        </div>
+        <div class="flex justify-center mb-[100px] gap-[0.5rem] md:gap-[0.8rem] mt-[40px]">
+
+            <div class="inkedin cursor-pointer">
+                <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308
+                        " target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="42" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-linkedin">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect width="4" height="12" x="2" y="9"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg></a>
+            </div>
+
+            <div class="githup-gif cursor-pointer">
+                <a href="https://github.com/abhishek-coder-01" target="_blank">
+                    <img src="./image/output-onlinegiftools (2).gif" alt="github">
+                </a>
+            </div>
+
+
+        </div>
+
+
 
         <hr class="border-red-600">
 
@@ -454,6 +501,8 @@
 
 
     <script>
+        let resume = document.getElementById('resume');
+        let contactt = document.getElementById('contactt');
         // JavaScript for Theme Toggling
         document.querySelectorAll('.theme-toggle').forEach(toggle => {
             toggle.addEventListener('click', function () {
@@ -462,10 +511,11 @@
 
                 // Toggle visibility of theme icons
                 document.querySelectorAll('.theme-toggle').forEach(t => t.classList.toggle('hidden'));
-
+              
                 // Save preference to localStorage
                 const isDarkMode = document.body.classList.contains('dark-mode');
-                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light' );
+                
             });
         });
 
