@@ -29,18 +29,6 @@
         body::-webkit-scrollbar {
             display: none !important;
         }
-
-        /* CSS for Dark Mode */
-        .dark-mode {
-            background-color: #1a202c;
-            color: #ffffff;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Add other dark mode styles as needed */
     </style>
 
 </head>
@@ -73,13 +61,13 @@
 
                     <div class="float-right">
                         <!-- Moon Icon (Night Mode Toggle) -->
-                        <span class="theme-toggle cursor-pointer inline-block" data-mode="dark">
+                        <span class="theme-toggle cursor-pointer inline-block" data-mode="dark" id="sunn">
                             <img src="./image/sun-mode.gif" alt="Day Mode"
                                 class="md:h-[36px] h-[33px] hover:scale-110 transition-transform">
                         </span>
 
                         <!-- Sun Icon (Day Mode Toggle) -->
-                        <span class="theme-toggle cursor-pointer inline-block hidden" data-mode="light">
+                        <span class="theme-toggle cursor-pointer inline-block hidden" data-mode="light" id="moon">
                             <!-- Simple SVG Moon -->
                             <svg class="md:h-7 h-6 text-white hover:scale-110 transition-transform" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -143,7 +131,7 @@
 
         <div class="flex justify-center md:gap-[1.5rem] gap-[1.1rem] ">
             <!-- Contact Button -->
-            <a href="#contactt" class="no-underline" id="contactt">
+            <a href="#contactt" class="no-underline" id="con">
                 <div class="h-[55px] w-[180px] border border-black rounded-[95px] flex justify-center items-center cursor-pointer bg-black transition-colors hover:bg-opacity-90">
                     <span class="text font-medium text-white">Contact</span>
                     <span class="img h-7 ml-[9px]">
@@ -154,7 +142,7 @@
             </a>
         
             <!-- Resume Button -->
-            <a href="#resume" class="no-underline" id="resume">
+            <a href="./image/resume-demo-page.png"  download class="no-underline" id="res">
                 <div class="h-[55px] w-[180px] border border-black rounded-[95px] flex justify-center items-center cursor-pointer">
                     <span class="text font-medium">Resume</span>
                     <span class="img h-7 ml-[9px]">
@@ -499,33 +487,28 @@
     </script>
 
 
-
     <script>
-        let resume = document.getElementById('resume');
-        let contactt = document.getElementById('contactt');
-        // JavaScript for Theme Toggling
-        document.querySelectorAll('.theme-toggle').forEach(toggle => {
-            toggle.addEventListener('click', function () {
-                // Toggle dark mode class on body
-                document.body.classList.toggle('dark-mode');
+        const body = document.body;
+        let sun = document.getElementById("sunn");
+        let moon = document.getElementById("moon");
+        let con = document.getElementById("con");
+        let res = document.getElementById("res");
 
-                // Toggle visibility of theme icons
-                document.querySelectorAll('.theme-toggle').forEach(t => t.classList.toggle('hidden'));
-              
-                // Save preference to localStorage
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light' );
-                
-            });
+        sun.addEventListener("click", () => {
+            body.classList.add("bg-[#1a202c]", "text-[#ffffff]");
+            sun.classList.add("hidden");
+            moon.classList.remove("hidden");
+            res.style.background = "white";
+            res.style.color = "black";
+            res.style.borderRadius = "95px";
+           
         });
 
-        // Check for saved theme on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                document.querySelectorAll('.theme-toggle').forEach(t => t.classList.toggle('hidden'));
-            }
+        moon.addEventListener("click", () => {
+            body.classList.remove("bg-[#1a202c]", "text-[#ffffff]");
+            moon.classList.add("hidden");
+            sun.classList.remove("hidden");
+           
         });
     </script>
 
