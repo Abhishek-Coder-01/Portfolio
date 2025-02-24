@@ -29,6 +29,21 @@
         body::-webkit-scrollbar {
             display: none !important;
         }
+          /* Smooth bounce animation */
+          @keyframes smoothBounce {
+            0%, 100% {
+                transform: translateY(0);
+                animation-timing-function: ease-in-out;
+            }
+            50% {
+                transform: translateY(-8px);
+                animation-timing-function: ease-in-out;
+            }
+        }
+
+        .helo {
+            animation: smoothBounce 1.5s infinite;
+        }
     </style>
 
 </head>
@@ -152,7 +167,7 @@
                 </div>
             </a>
         </div>
-        <div class="flex justify-center mb-[100px] gap-[0.5rem] md:gap-[0.8rem] mt-[40px]">
+        <div class="flex justify-center items-center mb-[100px] gap-[0.5rem] md:gap-[0.8rem] mt-[40px]">
 
             <div class="inkedin cursor-pointer">
                 <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308
@@ -166,9 +181,9 @@
                     </svg></a>
             </div>
 
-            <div class="githup-gif cursor-pointer">
+            <div class="githup-gif cursor-pointer ">
                 <a href="https://github.com/abhishek-coder-01" target="_blank">
-                    <img src="./image/output-onlinegiftools (2).gif" alt="github">
+                    <img class="h-[45px] rounded-[50%]" src="./image/clear_bg_gif.gif" alt="github">
                 </a>
             </div>
 
@@ -432,12 +447,12 @@
             <div class="container flex flex-col justify-center items-center">
                 <h1 class="text-[35px] mb-[30px] font-bold">About</h1>
                 <img class=" w-[210px] rounded-[50%]   h-[210px] max-w-none mb-[10px] border-[4px] border-yellow-500 "
-                    src="./image/dev.webp" alt="" data-aos="fade-right">
+                    src="./image/dev.webp" alt="" data-aos="zoom-in">
                 <p class="font-bold text-[25px]">Abhishek yadav</p>
                 <p class="font-medium text-[20px] md:text-[18.5px] text-center"> Second Year Computer Science (SYCS)</p>
             </div>
 
-            <div class="text" data-aos="fade-left" data-aos-duration="1500">
+            <div class="text" data-aos="zoom-in" data-aos-duration="1500">
                 "Hi, I'm Abhishek Yadav, a passionate Full Stack Developer with expertise in HTML, CSS3, JavaScript,
                 Tailwind, and Bootstrap. rently, I'm pursuing a degree in Computer Science and enjoy creating
                 innovative, functional, and visually appealing web solutions. I'm always eager to learn new technologies
@@ -497,6 +512,13 @@
         </footer>
 
 
+         <!-- Scroll to Top Button -->
+ <button  id="scrollButton" onclick="scrollToTop()" 
+ class="fixed bottom-4 right-5 bg-purple-600 text-white px-4 py-3 rounded-full shadow-lg hidden">
+ 
+ <!-- Smooth bouncing icon -->
+ <span class="fa-solid fa-arrow-up helo" data-icon="mdi:arrow-up" data-inline="false" style="font-size: 24px;"></span>
+</button>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -532,6 +554,28 @@
            
         });
     </script>
+
+    
+<script>
+    // Scroll button show/hide logic
+    const scrollButton = document.getElementById("scrollButton");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 200) {
+            scrollButton.classList.remove("hidden");
+        } else {
+            scrollButton.classList.add("hidden");
+        }
+    });
+
+    // Scroll to top function
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+</script>
 
 
 </body>
