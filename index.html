@@ -26,6 +26,16 @@
     </script>
 
     <style>
+
+          /* Hover Effect */
+    .card {
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);          /* Zoom effect */
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);  /* Darker shadow */
+    }
         body::-webkit-scrollbar {
             display: none !important;
         }
@@ -45,6 +55,37 @@
         .helo {
             animation: smoothBounce 1.5s infinite;
         }
+
+        @media screen and (max-width: 1296px) {
+#media{
+    max-width: 493px; 
+} 
+
+}
+        @media screen and (max-width: 1122px) {
+#media{
+    max-width: 457px; 
+} 
+
+}
+        @media screen and (max-width: 1050px) {
+#media{
+    max-width: 447px; 
+} 
+
+}
+        @media screen and (max-width: 1030px) {
+#media{
+    max-width: 417px; 
+} 
+
+}
+        @media screen and (max-width: 970px) {
+#media{
+    max-width: 550px; 
+} 
+
+}
     </style>
 
 </head>
@@ -203,66 +244,116 @@
         <hr class="border-red-600">
 
         <section class="skill mb-[100px]" id="skills">
-            <div class="container text-center mb-[23px]" data-aos="fade-up">
+            <div class="container text-center mb-12" data-aos="fade-up">
                 <h1 class="text-[35px] font-bold">Skills</h1>
-                <p>I am proficient in HTML for creating structured, SEO-friendly web
-                    pages, and CSS3 for building responsive layouts with Flexbox and Grid. I have strong expertise in
-                    JavaScript for dynamic interactivity, Tailwind CSS for rapid, utility-based styling, and Bootstrap
-                    for responsive design. Additionally, I use Git for version control and efficient collaboration in
-                    development projects.
+                <p class="max-w-[900px] mx-auto text-gray-700">
+                    I am proficient in HTML for creating structured, SEO-friendly web pages, and CSS3 for building responsive layouts with Flexbox and Grid. 
+                    I have strong expertise in JavaScript for dynamic interactivity, Tailwind CSS for rapid, utility-based styling, and Bootstrap for responsive design. 
+                    Additionally, I use Git for version control and efficient collaboration in development projects.
                 </p>
             </div>
-
-            <div class="flex flex-wrap justify-center items-center text-center">
-                <div class="skill-item flex w-[200px] border-2 border-red-600 items-center hover:bg-[#E44D25] hover:text-white justify-center m-[10px] rounded-[6px] "
-                    data-aos="fade-up" data-aos-duration="1000">
-                    <div class="flex px-[20px] py-[10px]">
-                        <img class="h-[30px] w-[30px] mr-[15px]" src="./image/html-logo.webp" alt="Error">
-                        <span class="text-[19px] font-bold">HTML</span>
+        
+            <div class="flex  flex-wrap  gap-9 items-center  justify-center ">
+        
+                <!-- HTML -->
+                <div class="card relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px]  overflow-hidden" id="media">
+                    <div class="bg-pink-500 text-white font-bold text-center px-6 py-6">
+                        <p class="text-sm uppercase">PHASE</p>
+                        <p class="text-4xl">01</p>
+                    </div>
+                    <div class="flex-1 px-4 py-4">
+                        <h2 class="text-lg font-bold text-pink-600 flex items-center gap-2">
+                            <i class="fab fa-html5 text-orange-500 text-2xl"></i> HTML
+                        </h2>
+                        <p class="text-sm text-gray-700 font-bold  mr-[80px]">Training - HTML Basics to Advanced</p>
+                    </div>
+                    <div class="absolute right-0 h-full w-24 bg-pink-500 flex items-center justify-center rounded-l-full">
+                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fab fa-html5 text-orange-500 text-2xl"></i>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-item flex w-[200px] border-2 border-blue-600 items-center justify-center hover:bg-[#2B51DE] hover:text-white m-[10px] rounded-[6px]"
-                    data-aos="fade-up" data-aos-duration="1000">
-                    <div class="flex px-[20px] py-[10px]">
-                        <img class="h-[30px] w-[30px] mr-[15px]" src="./image/css-logo (2).webp" alt="Error">
-                        <span class="text-[19px] font-bold">CSS</span>
+        
+                <!-- CSS -->
+                <div class="card relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px] overflow-hidden" id="media">
+                    <div class="bg-blue-500 text-white font-bold text-center px-6 py-6">
+                        <p class="text-sm uppercase">PHASE</p>
+                        <p class="text-4xl">02</p>
+                    </div>
+                    <div class="flex-1 px-4 py-4">
+                        <h2 class="text-lg font-bold text-blue-600 flex items-center gap-2">
+                            <i class="fab fa-css3-alt text-blue-500 text-2xl"></i> CSS
+                        </h2>
+                        <p class="text-sm text-gray-700 font-bold   mr-[80px]">Training - Styling with CSS3</p>
+                    </div>
+                    <div class="absolute right-0 h-full w-24 bg-blue-500 flex items-center justify-center rounded-l-full">
+                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fab fa-css3-alt text-blue-500 text-2xl"></i>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-item flex w-[200px] border-2 border-[#F0DC4E] items-center justify-center m-[10px] hover:bg-[#F0DC4E] hover:text-white rounded-[6px]"
-                    data-aos="fade-up" data-aos-duration="1000">
-                    <div class="flex px-[20px] py-[10px]">
-                        <img class="h-[30px] w-[30px] mr-[15px]" src="./image/javascript-logo (1).webp" alt="Error">
-                        <span class="text-[19px] font-bold">JavaScript</span>
+        
+                <!-- Tailwind -->
+                <div class="card media relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px] overflow-hidden" id="media">
+                    <div class="bg-teal-500 text-white font-bold text-center px-6 py-6">
+                        <p class="text-sm uppercase">PHASE</p>
+                        <p class="text-4xl">03</p>
+                    </div>
+                    <div class="flex-1 px-4 py-4">
+                        <h2 class="text-lg font-bold text-teal-600 flex items-center gap-2">
+                            <i class="fas fa-wind text-teal-500 text-2xl"></i> Tailwind CSS
+                        </h2>
+                        <p class="text-sm text-gray-700 font-bold  mr-[83px]">Training - Modern Styling with Tailwind</p>
+                    </div>
+                    <div class="absolute right-0 h-full w-24 bg-teal-500 flex items-center justify-center rounded-l-full">
+                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-wind text-teal-500 text-2xl"></i>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-item flex w-[200px] border-2 border-[#65defcb2] items-center justify-center m-[10px] hover:bg-[#65defcb2] hover:text-white rounded-[6px]"
-                    data-aos="fade-up" data-aos-duration="1000">
-                    <div class="flex px-[20px] py-[10px]">
-                        <img class="h-[30px] w-[30px] mr-[15px]" src="./image/tailwind.webp" alt="Error">
-                        <span class="text-[19px] font-bold">Tailwind</span>
+        
+                <!-- Bootstrap -->
+                <div class="card media relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px] overflow-hidden" id="media">
+                    <div class="bg-purple-500 text-white font-bold text-center px-6 py-6">
+                        <p class="text-sm uppercase">PHASE</p>
+                        <p class="text-4xl">04</p>
+                    </div>
+                    <div class="flex-1 px-4 py-4">
+                        <h2 class="text-lg font-bold text-purple-600 flex items-center gap-2">
+                            <i class="fab fa-bootstrap text-purple-500 text-2xl"></i> Bootstrap
+                        </h2>
+                        <p class="text-sm text-gray-700 font-bold mr-[78px] ">Training - Bootstrap UI Framework</p>
+                    </div>
+                    <div class="absolute right-0 h-full w-24 bg-purple-500 flex items-center justify-center rounded-l-full ">
+                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fab fa-bootstrap text-purple-500 text-2xl"></i>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-item flex w-[200px] border-2 border-[#8411F6] items-center justify-center m-[10px] hover:bg-[#8411F6] hover:text-white rounded-[6px]"
-                    data-aos="fade-up" data-aos-duration="8000">
-                    <div class="flex px-[20px] py-[10px]">
-                        <img class="h-[30px] w-[30px] mr-[15px]" src="./image/bootstrap.png" alt="Error">
-                        <span class="text-[19px] font-bold">Bootstrap</span>
+        
+                <!-- JavaScript -->
+                <div class="card media relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px] overflow-hidden" id="media">
+                    <div class="bg-yellow-500 text-white font-bold text-center px-6 py-6">
+                        <p class="text-sm uppercase">PHASE</p>
+                        <p class="text-4xl">05</p>
+                    </div>
+                    <div class="flex-1 px-4 py-4">
+                        <h2 class="text-lg font-bold text-yellow-600 flex items-center gap-2">
+                            <i class="fab fa-js-square text-yellow-500 text-2xl"></i> JavaScript
+                        </h2>
+                        <p class="text-sm text-gray-700 font-bold  mr-[80px]">Training - JavaScript Basics to Advanced</p>
+                    </div>
+                    <div class="absolute right-0 h-full w-24 bg-yellow-500 flex items-center justify-center rounded-l-full">
+                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fab fa-js-square text-yellow-500 text-2xl"></i>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-item flex w-[200px] border-2 border-[#41863C] items-center justify-center m-[10px] hover:bg-[#41863C] hover:text-white rounded-[6px]"
-                    data-aos="fade-up" data-aos-duration="5000">
-                    <div class="flex px-[20px] py-[10px]">
-                        <img class="h-[30px] w-[30px] mr-[15px]" src="./image/node-logo.webp" alt="Error">
-                        <span class="text-[19px] font-bold">Node.JS</span>
-                    </div>
-                </div>
+        
             </div>
+        </div>
         </section>
+        
 
 
         <!-- Projects Section -->
