@@ -1,24 +1,127 @@
 <!DOCTYPE html>
-<html class="scroll-smooth bg-[#eeeff1]" lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Abhishek Yadav - Full Stack Developer</title>
     <link rel="icon" type="image/png" href="./image/icons8-portfolio-64.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- AOS Animation -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Add this inside <head> or just before </body> -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        poppins: ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'primary': {
+                            50: '#f0f9ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        'dark': {
+                            800: '#1f2937',
+                            900: '#111827',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'typing': 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                        'scale-in': 'scaleIn 0.5s ease-out forwards',
+                        'bounce-slow': 'bounce-slow 2s infinite',
+                        'pulse-slow': 'pulse-slow 3s infinite',
+                        'sparkle': 'sparkle 4s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'wave': 'wave 1.5s ease-in-out infinite',
+                        'dark-mode-transition': 'darkModeTransition 0.5s ease-in-out',
+                        'progress': 'progress 2s ease-in-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 20px #3b82f6' },
+                            'to': { boxShadow: '0 0 30px #3b82f6, 0 0 40px #3b82f6' },
+                        },
+                        typing: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' },
+                        },
+                        'blink-caret': {
+                            'from, to': { borderColor: 'transparent' },
+                            '50%': { borderColor: '#3b82f6' },
+                        },
+                        fadeInUp: {
+                            'from': { opacity: '0', transform: 'translateY(30px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            'from': { opacity: '0', transform: 'scale(0.9)' },
+                            'to': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        'bounce-slow': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        },
+                        'pulse-slow': {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.5' },
+                        },
+                        sparkle: {
+                            '0%': { transform: 'scale(0) rotate(0deg)', opacity: '0' },
+                            '50%': { transform: 'scale(1) rotate(180deg)', opacity: '1' },
+                            '100%': { transform: 'scale(0) rotate(360deg)', opacity: '0' },
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' },
+                        },
+                        wave: {
+                            '0%, 100%': { transform: 'rotate(0deg)' },
+                            '25%': { transform: 'rotate(5deg)' },
+                            '75%': { transform: 'rotate(-5deg)' },
+                        },
+                        darkModeTransition: {
+                            '0%': { transform: 'scale(1) rotate(0deg)' },
+                            '25%': { transform: 'scale(1.1) rotate(90deg)' },
+                            '50%': { transform: 'scale(1.2) rotate(180deg)' },
+                            '75%': { transform: 'scale(1.1) rotate(270deg)' },
+                            '100%': { transform: 'scale(1) rotate(360deg)' },
+                        },
+                        progress: {
+                            '0%': { width: '0%' },
+                            '100%': { width: 'var(--progress-width)' },
+                        },
                     },
                 },
             },
@@ -26,718 +129,1747 @@
     </script>
 
     <style>
-
-          /* Hover Effect */
-    .card {
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      transform: scale(1.05);          /* Zoom effect */
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);  /* Darker shadow */
-    }
-        body::-webkit-scrollbar {
-            display: none !important;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
 
-           /* Smooth bounce animation */
-           @keyframes smoothBounce {
-            0%, 100% {
-                transform: translateY(0);
-                animation-timing-function: ease-in-out;
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #2563eb, #7c3aed);
+        }
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dark Mode Glassmorphism */
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Enhanced Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .gradient-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            border-radius: 8px;
+        }
+
+        .gradient-text:hover::after {
+            opacity: 0.1;
+        }
+
+        /* Typing Animation */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #3b82f6;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        /* Enhanced Button Hover Effects */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced Project Card Hover Effect */
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(59, 130, 246, 0.3), transparent);
+            transition: all 0.6s;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+            animation: spin 2s linear infinite;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .dark .project-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Enhanced Skill Card Animation */
+        .skill-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        /* Progress Bar Animation */
+        .progress-bar {
+            position: relative;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 2s ease-in-out;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        /* Enhanced Dark Mode Effects */
+        .dark-mode-sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #60a5fa, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        /* Enhanced Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #3b82f6;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s infinite linear;
+        }
+
+        .dark .particle {
+            background: #60a5fa;
+            opacity: 0.2;
+            box-shadow: 0 0 10px #60a5fa;
+        }
+
+        /* Enhanced Floating Particles for Dark Mode */
+        .dark .particle::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.5), transparent);
+            border-radius: 50%;
+            animation: pulse-slow 3s infinite;
+        }
+
+        /* Enhanced Navigation */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Dark Mode Page Transition Effect */
+        .dark-mode-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05), transparent);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+        }
+
+        .dark .dark-mode-overlay {
+            opacity: 1;
+        }
+
+        /* Enhanced Mobile Menu Animation */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, .3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
             }
+        }
+
+        /* Enhanced Dark Mode Styles with Smooth Transitions */
+        .dark {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+
+        .dark .project-card {
+            background-color: #2d3748;
+            border-color: #4a5568;
+        }
+
+        .dark .skill-card {
+            background-color: #2d3748;
+            border-color: #4a5568;
+        }
+
+        /* Enhanced Responsive adjustments */
+        @media (max-width: 768px) {
+            .typewriter {
+                font-size: 1.5rem;
+            }
+
+            .gradient-text {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .typewriter {
+                font-size: 1.25rem;
+            }
+
+            .gradient-text {
+                font-size: 2rem;
+            }
+        }
+
+        /* Enhanced Theme Toggle Animation */
+        .theme-toggle {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .theme-toggle.switching {
+            animation: darkModeTransition 0.5s ease-in-out;
+        }
+
+        /* Enhanced card hover effects for dark mode */
+        .dark .card:hover {
+            background-color: #374151;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Enhanced button styles */
+        .btn-contact,
+        .btn-resume {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-contact::before,
+        .btn-resume::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-contact:hover::before,
+        .btn-resume:hover::before {
+            left: 100%;
+        }
+
+        .btn-contact:hover,
+        .btn-resume:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark .btn-contact:hover,
+        .dark .btn-resume:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Dark Mode Transition Effects */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Enhanced Dark Mode Sparkle Effect */
+        .dark-sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .dark-sparkles.active {
+            opacity: 1;
+        }
+
+        /* Twinkling + slight moving stars */
+        .sparkle-dot {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: radial-gradient(circle, #ffffff, transparent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkleMove linear infinite;
+        }
+
+        @keyframes twinkleMove {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: translate(0, 0) scale(1);
+            }
+
             50% {
-                transform: translateY(-8px);
-                animation-timing-function: ease-in-out;
+                opacity: 1;
+                transform: translate(var(--moveX), var(--moveY)) scale(1.5);
             }
         }
 
-        .helo {
-            animation: smoothBounce 1.5s infinite;
+        /* Education Timeline */
+        .timeline {
+            position: relative;
         }
 
-        @media screen and (max-width: 1296px) {
-#media{
-    max-width: 493px; 
-} 
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+            transform: translateX(-50%);
+        }
 
-}
-        @media screen and (max-width: 1122px) {
-#media{
-    max-width: 457px; 
-} 
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+        }
 
-}
-        @media screen and (max-width: 1050px) {
-#media{
-    max-width: 447px; 
-} 
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
 
-}
-        @media screen and (max-width: 1030px) {
-#media{
-    max-width: 417px; 
-} 
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 1.5rem;
+            width: 16px;
+            height: 16px;
+            background: #3b82f6;
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
 
-}
-        @media screen and (max-width: 970px) {
-#media{
-    max-width: 550px; 
-} 
+        .dark .timeline-dot {
+            border-color: #1f2937;
+        }
 
-}
-@media screen and (max-width: 401px) {
-    #card_all {
-    padding-top: 28px;    /* py-7: padding-top = 28px */
-    padding-bottom: 28px; /* py-7: padding-bottom = 28px */
-    padding-left: 16px;   /* px-4: padding-left = 16px */
-    padding-right: 16px;  /* px-4: padding-right = 16px */
-  }
-}
+        @media (max-width: 768px) {
+            .timeline-dot {
+                left: 20px;
+            }
+        }
 
+        @media (max-width: 575px) {
+            #popupText {
+                font-size: smaller;
+            }
 
+            #popup {
+                width: 248px !important;
+            }
+        }
+
+        @media (max-width: 410px) {
+
+            #footerText,
+            #footerSubText {
+                font-size: 12px;
+                margin-top: 1px;
+            }
+        }
     </style>
-
 </head>
 
-<body class="m-0 p-0 box-border max-w-[1400px] my-0 mx-auto font-poppins ">
-    <div class="main px-[20px] md:px-[50px]">
+<body
+    class="m-0 p-0 box-border max-w-[1400px] my-0 mx-auto font-inter bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-300">
 
-        <header>
-            <div class="navabar flex  justify-between items-center h-[80px] ">
+    <!-- Dark Mode Overlay -->
+    <div class="dark-mode-overlay"></div>
 
-                <div class="logo  text-[20px] font-bold lg:text-[30px] ">A-K-Y</div>
+    <!-- Dark Mode Sparkles -->
+    <div class="dark-sparkles" id="darkSparkles"></div>
 
-                <div class="item space-x-5 md:text-[20px] text-[23px]">
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <div class="main px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
+
+        <header
+            class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-700">
+            <div class="navbar flex justify-between items-center h-16 sm:h-20 px-4">
+                <!-- Logo -->
+                <div class="logo text-xl sm:text-2xl lg:text-3xl font-bold gradient-text"
+                    style='font-family: "Orbitron", sans-serif;'>A-k-y</div>
 
 
-                    <span class=" sor-pointer lg:text-[21px]"> <a href="https://github.com/abhishek-coder-01"
-                            target="_blank"><i class=" fa-brands fa-github "></i> <span
-                                class=" hidden md:inline-block pl-[2px] ">Github</span></a> </span>
+                <!-- Navbar Items -->
+                <div class="flex items-center space-x-5 md:text-[20px] text-[23px]">
+                    <span class="cursor-pointer lg:text-[21px]">
+                        <a href="https://github.com/abhishek-coder-01" target="_blank"
+                            class="flex items-center gap-1 nav-link">
+                            <i class="fa-brands fa-github"></i>
+                            <span class="hidden md:inline-block">Github</span>
+                        </a>
+                    </span>
 
-                    <span class=" sor-pointer lg:text-[21px]"> <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308
-                        " target="_blank"><i class=" fa-brands fa-linkedin"></i><span
-                                class=" hidden md:inline-block pl-[5px]">
-                                Linkedin</span></a> </span>
+                    <span class="cursor-pointer lg:text-[21px]">
+                        <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank"
+                            class="flex items-center gap-1 nav-link">
+                            <i class="fa-brands fa-linkedin"></i>
+                            <span class="hidden md:inline-block">Linkedin</span>
+                        </a>
+                    </span>
 
                     <span
-                        class=" md:m-5 md:px-[11px] md:py-[4px] md:rounded-md md:bg-black md:text-white md:text-[15px] sor-pointer lg:text-[17px]">
-                        <a href="#contactt"> <i class=" fa-solid fa-envelope"></i> <span
-                                class=" hidden md:inline-block pl-[2px] ">
-                                Email</span> </a></span>
+                        class="md:m-5 md:px-[11px] md:py-[4px] md:rounded-md md:bg-black md:text-white md:text-[15px] cursor-pointer lg:text-[17px]">
+                        <a href="#contactt" class="flex items-center gap-1 nav-link">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="hidden md:inline-block">Email</span>
+                        </a>
+                    </span>
 
-                    <div class="float-right">
-                        <!-- Moon Icon (Night Mode Toggle) -->
-                        <span class="theme-toggle cursor-pointer inline-block" data-mode="dark" id="sunn">
-                            <img src="./image/sun-mode.gif" alt="Day Mode"
-                                class="md:h-[36px] h-[33px] hover:scale-110 transition-transform">
-                        </span>
+                    <!-- Enhanced Theme Toggle -->
+                    <button id="themeToggle" aria-label="Toggle theme"
+                        class="theme-toggle flex items-center justify-center cursor-pointer p-1 align-middle relative">
+                        <img src="./image/sun-mode.gif" alt="Light Mode"
+                            class="w-7 h-7 sm:w-8 sm:h-8 transition-transform duration-300" id="sunIcon">
 
-                        <!-- Sun Icon (Day Mode Toggle) -->
-                        <span class="theme-toggle cursor-pointer inline-block hidden" data-mode="light" id="moon">
-                            <!-- Simple SVG Moon -->
-                            <svg class="md:h-7 h-6 text-white hover:scale-110 transition-transform" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                            </svg>
-                        </span>
-                    </div>
-
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white hidden transition-transform duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" id="moonIcon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
                 </div>
-
             </div>
-             
         </header>
 
 
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center px-4 pt-16 sm:pt-20">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+                    <!-- Profile Image (mobile: top) -->
+                    <div class="flex justify-center order-1 lg:order-2" data-aos-delay="200" data-aos="fade-left">
+                        <div class="relative">
+                            <div
+                                class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary-500 animate-float">
+                                <img src="./image/devloper.avif" alt="Abhishek Yadav"
+                                    class="w-full h-full object-cover">
+                            </div>
+
+                            <!-- Enhanced Decorative Elements -->
+                            <div
+                                class="absolute -top-4 -right-4 w-16 h-16 sm:w-20 sm:h-20 bg-primary-500 rounded-full opacity-20 animate-ping">
+                            </div>
+                            <div
+                                class="absolute -bottom-4 -left-4 w-12 h-12 sm:w-16 sm:h-16 bg-purple-500 rounded-full opacity-20 animate-pulse">
+                            </div>
+                            <div
+                                class="absolute top-1/2 -left-8 w-8 h-8 bg-yellow-400 rounded-full opacity-30 animate-bounce-slow">
+                            </div>
+                            <div
+                                class="absolute top-1/4 -right-8 w-6 h-6 bg-pink-400 rounded-full opacity-40 animate-pulse-slow">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Content (mobile: below image, centered) -->
+                    <div class="order-2 lg:order-1  lg:text-left flex flex-col  lg:items-start space-y-6 lg:space-y-8"
+                        data-aos="fade-right" data-aos-delay="100">
+
+                        <div class="space-y-4">
+                            <h1
+                                class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
+                                Hi, I'm <br><span class="gradient-text">Abhishek</span>
+                                <span class="animate-wave inline-block">👋</span>
+                            </h1>
+                            <div class="text-2xl lg:text-3xl text-gray-600 dark:text-gray-300">
+                                <span class="typewriter"></span>
+                            </div>
+                            <p
+                                class="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed lg:text-left">
+                                Passionate about building responsive and user-friendly web applications using modern
+                                technologies. Currently working with Python, Flask, and exploring new frontiers of web
+                                development.
+                            </p>
+                        </div>
+
+                        <!-- Enhanced CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#contact"
+                                class="btn-glow inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105">
+                                <span>Get In Touch</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="./image/resume-demo-page.png" download
+                                class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold rounded-full transition-all duration-300">
+                                <i class="fas fa-download mr-2"></i>
+                                <span>Download CV</span>
+                            </a>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="flex justify-center lg:justify-start space-x-6">
+                            <a href="https://github.com/abhishek-coder-01" target="_blank"
+                                class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors text-2xl">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank"
+                                class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors text-2xl">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="mailto:contact@abhishek.dev"
+                                class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors text-2xl">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-red-600 my-8">
+
+        <!-- About Me Section -->
+        <section id="about" class="py-12 sm:py-16 lg:py-20 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 lg:mb-16" data-aos="fade-down" data-aos-delay="400">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">About Me
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <div class="space-y-6" data-aos="fade-right" data-aos-delay="300">
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Hi, I'm Abhishek Yadav
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                            A passionate Full Stack Developer with expertise in modern web technologies. I'm currently
+                            pursuing a degree in Computer Science and have a strong foundation in both frontend and
+                            backend
+                            development.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                            I enjoy creating innovative, functional, and visually appealing web solutions. My journey in
+                            programming started with curiosity and has evolved into a passion for building things that
+                            make a difference.
+                        </p>
+
+                        <!-- Quick Stats -->
+                        <div class="grid grid-cols-2 gap-6 pt-6">
+                            <div class="text-center">
+                                <div class="text-2xl sm:text-3xl font-bold gradient-text">15+</div>
+                                <div class="text-gray-600 dark:text-gray-400 text-sm sm:text-base">Projects Completed
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl sm:text-3xl font-bold gradient-text">1+</div>
+                                <div class="text-gray-600 dark:text-gray-400 text-sm sm:text-base">Years Learning</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center" data-aos="fade-left" data-aos-delay="300">
+                        <div class="relative">
+                            <img src="./image/dev.webp" alt="About Abhishek"
+                                class="w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-2xl shadow-2xl">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-purple-500/20 rounded-2xl">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
 
-        <section class="hero flex items-center  flex-col-reverse md:flex-row gap-[40px] my-[50px] mb-[60px]">
+        <!-- Education Section -->
+        <section id="education" class="py-12 sm:py-16 lg:py-20 px-4  ">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 lg:mb-16" data-aos="fade-down">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">Education
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mb-6"></div>
+                    <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
+                        My educational journey and academic achievements in computer science and technology
+                    </p>
+                </div>
 
-            <div class="conatiner" data-aos="fade-right" data-aos-duration="1500">
-                <h2 class="text-[48px] font-bold md:pd-[10px]">Hi, I'm <span class=" font-bold bg-gradient-to-r from-black via-purple-700 to-purple-400 bg-clip-text text-transparent">Abhishek</span> <span>👋</span></h2>
-                <p style="color: oklch(0.556 0 0)" class=" text-[16px] ">Full Stack Developer passionate about building responsive and user-friendly web applications using HTML, CSS, JavaScript, Tailwind, and Bootstrap. I enjoy solving problems and turning ideas into functional, visually appealing experiences. Currently, I am also working with Python and Flask to build dynamic and scalable backend systems.</p>
+                <div class="timeline max-w-5xl mx-auto">
+                    <!-- Bachelor's Degree -->
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                        <div class="timeline-dot"></div>
+                        <div class="skill-card md:w-1/2 md:pr-8 md:ml-auto bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg relative border border-blue-200 dark:border-blue-800
+">
+                            <div
+                                class="absolute -left-4 top-6 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-white dark:border-r-gray-900 md:block hidden">
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-graduation-cap text-blue-600 dark:text-blue-400 text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                                        <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Bachelor
+                                            of Science in Computer Science</h3>
+                                        <span class="text-sm text-primary-600 dark:text-primary-400 font-medium">2025 -
+                                            Present</span>
+                                    </div>
+                                    <p class="text-primary-600 dark:text-primary-400 font-semibold mb-2">Mumbai
+                                        University
+                                    </p>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                                        Currently pursuing BSc CS with focus on software development,Web
+                                        development,Python, and modern web technologies.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full">Data
+                                            Structures</span>
+                                        <span
+                                            class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">Python</span>
+                                        <span
+                                            class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs rounded-full">Web
+                                            Development</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class=" skill flex  items-centerw-32 gap-[16px] mt-[14px] text-blue-500 flex-wrap">
+                    <!-- Higher Secondary -->
+                    <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
+                        <div class="timeline-dot"></div>
+                        <div
+                            class="skill-card md:w-1/2 md:pl-8 bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg relative border border-purple-200 dark:border-purple-800">
+                            <div
+                                class="absolute -right-4 top-6 w-0 h-0 border-t-8 border-b-8 border-l-8 border-transparent border-l-white dark:border-l-gray-900 md:block hidden">
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-school text-green-600 dark:text-green-400 text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                                        <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Higher
+                                            Secondary (12th)</h3>
+                                        <span class="text-sm text-primary-600 dark:text-primary-400 font-medium">2022 -
+                                            2023</span>
+                                    </div>
+                                    <p class="text-primary-600 dark:text-primary-400 font-semibold mb-2">Higher
+                                        Secondary Certificate</p>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                                        Completed higher secondary education with Physics, Chemistry, and Mathematics,
+                                        building strong analytical and problem-solving skills.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs rounded-full">Mathematics</span>
+                                        <span
+                                            class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs rounded-full">Physics</span>
+                                        <span
+                                            class="px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs rounded-full">Chemistry</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class=" first px-[10px] py-[5px] border-[1.6px] hover:text-black border-blue-600 rounded-[6px] "
-                        id="btn">
-                        <a href="#skills"><i class=" fa-solid fa-code mr-2"></i><span class="">Skills</span></a>
+                    <!-- Secondary -->
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                        <div class="timeline-dot"></div>
+                        <div class="skill-card md:w-1/2 md:pr-8 md:ml-auto bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg relative border border-green-200 dark:border-green-800
+">
+                            <div
+                                class="absolute -left-4 top-6 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-white dark:border-r-gray-900 md:block hidden">
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-book text-yellow-600 dark:text-yellow-400 text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                                        <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Secondary
+                                            Education (10th)</h3>
+                                        <span class="text-sm text-primary-600 dark:text-primary-400 font-medium">2020 -
+                                            2021</span>
+                                    </div>
+                                    <p class="text-primary-600 dark:text-primary-400 font-semibold mb-2">Maharashtra
+                                        Board</p>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                                        Completed secondary education with strong foundation in core subjects,
+                                        developing critical thinking and academic discipline.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs rounded-full">Science</span>
+                                        <span
+                                            class="px-3 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 text-xs rounded-full">Mathematics</span>
+                                        <span
+                                            class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 text-xs rounded-full">English</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Certifications or Courses -->
+                <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">Certifications &
+                        Courses</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg">
+                            <div
+                                class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fab fa-python text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Python Programming</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Self-taught Python development</p>
+                        </div>
+                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg">
+                            <div
+                                class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fab fa-js-square text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">JavaScript ES6+</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Modern JavaScript development</p>
+                        </div>
+                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg">
+                            <div
+                                class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fab fa-react text-purple-600 dark:text-purple-400"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">React Development</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Frontend framework mastery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Enhanced Skills Section -->
+        <section class="skill py-12 sm:py-16 lg:py-20" id="skills">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12 lg:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">Technical
+                        Skills</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mb-6"></div>
+                    <p class="text-gray-600 dark:text-gray-400 max-w-4xl mx-auto text-sm sm:text-base leading-relaxed">
+                        I specialize in full-stack development with expertise across frontend and backend technologies,
+                        creating responsive, user-friendly applications with modern frameworks and tools.
+                    </p>
+                </div>
+
+                <!-- Skills Categories -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
+                    <!-- Frontend Skills -->
+                    <div class="space-y-6" data-aos="fade-right" data-aos-delay="100">
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white flex items-center">
+                            <i class="fas fa-palette text-primary-600 mr-3"></i>
+                            Frontend Development
+                        </h3>
+
+                        <div class="space-y-4">
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium flex items-center">
+                                        <i class="fab fa-html5 text-orange-500 mr-2"></i>
+                                        HTML5
+                                    </span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">95%</span>
+                                </div>
+                                <div class="progress-bar h-2">
+                                    <div class="progress-fill h-full" style="--progress-width: 95%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium flex items-center">
+                                        <i class="fab fa-css3-alt text-blue-500 mr-2"></i>
+                                        CSS3 & Sass
+                                    </span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">90%</span>
+                                </div>
+                                <div class="progress-bar h-2">
+                                    <div class="progress-fill h-full" style="--progress-width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium flex items-center">
+                                        <i class="fab fa-js-square text-yellow-500 mr-2"></i>
+                                        JavaScript ES6+
+                                    </span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">85%</span>
+                                </div>
+                                <div class="progress-bar h-2">
+                                    <div class="progress-fill h-full" style="--progress-width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium flex items-center">
+                                        <i class="fab fa-react text-cyan-500 mr-2"></i>
+                                        React.js
+                                    </span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">80%</span>
+                                </div>
+                                <div class="progress-bar h-2">
+                                    <div class="progress-fill h-full" style="--progress-width: 80%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium flex items-center">
+                                        <i class="fas fa-wind text-teal-500 mr-2"></i>
+                                        Tailwind CSS
+                                    </span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">92%</span>
+                                </div>
+                                <div class="progress-bar h-2">
+                                    <div class="progress-fill h-full" style="--progress-width: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Skills -->
+                    <div class="space-y-6" data-aos="fade-left" data-aos-delay="200">
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white flex items-center">
+                            <i class="fas fa-server text-primary-600 mr-3"></i>
+                            Backend Development
+                        </h3>
+
+                        <div class="space-y-4">
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium flex items-center">
+                                        <i class="fab fa-python text-green-500 mr-2"></i>
+                                        Python
+                                    </span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">88%</span>
+                                </div>
+                                <div class="progress-bar h-2">
+                                    <div class="progress-fill h-full" style="--progress-width: 88%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium flex items-center">
+                                        <i class="fas fa-flask text-gray-500 mr-2"></i>
+                                        Flask
+                                    </span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">82%</span>
+                                </div>
+                                <div class="progress-bar h-2">
+                                    <div class="progress-fill h-full" style="--progress-width: 82%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium flex items-center">
+                                        <i class="fab fa-node-js text-green-600 mr-2"></i>
+                                        Node.js
+                                    </span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">75%</span>
+                                </div>
+                                <div class="progress-bar h-2">
+                                    <div class="progress-fill h-full" style="--progress-width: 75%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium flex items-center">
+                                        <i class="fas fa-database text-blue-600 mr-2"></i>
+                                        SQL & NoSQL
+                                    </span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">78%</span>
+                                </div>
+                                <div class="progress-bar h-2">
+                                    <div class="progress-fill h-full" style="--progress-width: 78%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium flex items-center">
+                                        <i class="fas fa-cloud text-purple-600 mr-2"></i>
+                                        REST APIs
+                                    </span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">85%</span>
+                                </div>
+                                <div class="progress-bar h-2">
+                                    <div class="progress-fill h-full" style="--progress-width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Technologies -->
+                <div class="mb-12" data-aos="fade-up" data-aos-delay="300">
+                    <h3
+                        class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-8 flex items-center justify-center">
+                        <i class="fas fa-tools text-primary-600 mr-3"></i>
+                        Tools & Technologies
+                    </h3>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fab fa-git-alt text-orange-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Git</p>
+                        </div>
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fab fa-github text-gray-700 dark:text-gray-300 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">GitHub</p>
+                        </div>
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fab fa-bootstrap text-purple-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Bootstrap</p>
+                        </div>
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fas fa-code text-blue-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">VS Code</p>
+                        </div>
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fab fa-figma text-purple-600 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Figma</p>
+                        </div>
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fas fa-terminal text-green-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Terminal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Highlight Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="400">
+                    <div
+                        class="skill-card bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-2xl border border-blue-200 dark:border-blue-800">
+                        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-mobile-alt text-white text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Responsive Design</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                            Creating mobile-first, responsive websites that work seamlessly across all devices and
+                            screen sizes.
+                        </p>
                     </div>
 
                     <div
-                        class=" second px-[10px] py-[5px] hover:text-black border-[1.6px] border-blue-600 rounded-[6px] ">
-                        <a href="#projects"><i class=" fa-solid fa-folder mr-2"></i><span class="">Project</span></a>
+                        class="skill-card bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-2xl border border-green-200 dark:border-green-800">
+                        <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-rocket text-white text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Performance Optimization</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                            Optimizing applications for speed, accessibility, and user experience with modern best
+                            practices.
+                        </p>
                     </div>
 
                     <div
-                        class=" second px-[10px] py-[5px] hover:text-black border-[1.6px] border-blue-600 rounded-[6px] ">
-                        <a href="#test"> <i class=" fa-solid fa-pen mr-2"></i><span class="">About</span></a>
+                        class="skill-card bg-gradient-to-br from-purple-50 to-violet-100 dark:from-purple-900/20 dark:to-violet-900/20 p-6 rounded-2xl border border-purple-200 dark:border-purple-800">
+                        <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-puzzle-piece text-white text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Problem Solving</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                            Strong analytical skills for debugging, troubleshooting, and implementing efficient
+                            solutions.
+                        </p>
                     </div>
-
-                    <div
-                        class=" third px-[10px] py-[5px] hover:text-black border-[1.6px] border-blue-600 rounded-[6px]">
-                        <a href="#contactt">
-                            <i class=" fa-solid fa-envelope mr-2"></i><span class="">Email</span></a>
-                    </div>
-
                 </div>
-
             </div>
-
-            <img class="w-[300px] md:w-[350px] h-[300px] md:h-[350px] object-cover rounded-full border-[3px] border-yellow-500 lg:border-[5px]"
-                src="./image/devloper.avif" alt="john doe headshot" data-aos="fade-left" data-aos-duration="1000">
-
-
-
         </section>
-
-        <div class="flex justify-center md:gap-[1.5rem] gap-[1.1rem] ">
-            <!-- Contact Button -->
-            <a href="#contactt" class="no-underline" id="con">
-                <div class="h-[55px] w-[180px] border border-black rounded-[95px] flex justify-center items-center cursor-pointer bg-black transition-colors hover:bg-opacity-90">
-                    <span class="text font-medium text-white">Contact</span>
-                    <span class="img h-7 ml-[9px]">
-                        <img src="./image/contact.svg" alt="Contact" 
-                             class="h-full w-full object-contain">
-                    </span>
-                </div>
-            </a>
-        
-            <!-- Resume Button -->
-            <a href="./image/resume-demo-page.png"  download class="no-underline" id="res">
-                <div class="h-[55px] w-[180px] border border-black rounded-[95px] flex justify-center items-center cursor-pointer">
-                    <span class="text font-medium">Resume</span>
-                    <span class="img h-7 ml-[9px]">
-                        <img src="./image/resume-d.svg" alt="Resume" 
-                             class="h-full w-full object-contain">
-                    </span>
-                </div>
-            </a>
-        </div>
-        <div class="flex justify-center mb-[100px] gap-[0.5rem] md:gap-[0.8rem] mt-[40px]">
-
-            <div class="inkedin cursor-pointer">
-                <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308
-                        " target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="42" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-linkedin">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect width="4" height="12" x="2" y="9"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg></a>
-            </div>
-
-            <div class="githup-gif cursor-pointer">
-                <a href="https://github.com/abhishek-coder-0" target="_blank">
-                    <img class="h-[45px] rounded-[50%]" src="./image/clear_bg_gif.gif" alt="github">
-                </a>
-            </div>
-
-
-        </div>
-
-
-
-        <hr class="border-red-600">
-
-
-
-
-        </section>
-        <hr class="border-red-600">
-
-        <section class="skill mb-[100px]" id="skills">
-            <div class="container text-center mb-12" data-aos="fade-up">
-                <h1 class="text-[35px] font-bold">Skills</h1>
-                <p style="color: oklch(0.556 0 0)" class="max-w-[900px] mx-auto">
-                    I am proficient in HTML for creating structured, SEO-friendly web pages, and CSS3 for building responsive layouts with Flexbox and Grid. 
-                    I have strong expertise in JavaScript for dynamic interactivity, Tailwind CSS for rapid, utility-based styling, and Bootstrap for responsive design. 
-                    Additionally, I use Git for version control and efficient collaboration in development projects.
-                </p>
-            </div>
-        
-            <div class="flex  flex-wrap  gap-9 items-center  justify-center ">
-        
-                <!-- HTML -->
-                <div class="card  relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px]  overflow-hidden" id="media" data-aos="flip-right">
-                <div class="bg-pink-500 card_all text-white font-bold text-center px-6 py-6" id="card_all">
-                        <p class="text-sm uppercase">PHASE</p>
-                        <p class="text-4xl">01</p>
-                    </div>
-                    <div class="flex-1 px-4 py-4">
-                        <h2 class="text-lg font-bold text-pink-600 flex items-center gap-2">
-                            <i class="fab fa-html5 text-orange-500 text-2xl"></i> HTML
-                        </h2>
-                        <p class="text-sm text-gray-700 font-bold  mr-[80px]">Training - HTML Basics to Advanced</p>
-                    </div>
-                    <div class="absolute right-0 h-full w-24 bg-pink-500 flex items-center justify-center rounded-l-full">
-                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
-                            <i class="fab fa-html5 text-orange-500 text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- CSS -->
-                <div class="card  relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px] overflow-hidden" id="media"data-aos="flip-right">
-                <div class="bg-blue-500 card_all text-white font-bold text-center px-6 py-6" id="card_all">
-                        <p class="text-sm uppercase">PHASE</p>
-                        <p class="text-4xl">02</p>
-                    </div>
-                    <div class="flex-1 px-4 py-4">
-                        <h2 class="text-lg font-bold text-blue-600 flex items-center gap-2">
-                            <i class="fab fa-css3-alt text-blue-500 text-2xl"></i> CSS
-                        </h2>
-                        <p class="text-sm text-gray-700 font-bold   mr-[80px]">Training - Styling with CSS3</p>
-                    </div>
-                    <div class="absolute right-0 h-full w-24 bg-blue-500 flex items-center justify-center rounded-l-full">
-                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
-                            <i class="fab fa-css3-alt text-blue-500 text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Tailwind -->
-                <div class="card  media relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px] overflow-hidden" id="media" data-aos="flip-right">
-                <div class="bg-teal-500  text-white font-bold text-center px-6 py-6" id="card_all">
-                        <p class="text-sm uppercase">PHASE</p>
-                        <p class="text-4xl">03</p>
-                    </div>
-                    <div class="flex-1 px-4 py-4">
-                        <h2 class="text-lg font-bold text-teal-600 flex items-center gap-2">
-                            <i class="fas fa-wind text-teal-500 text-2xl"></i> Tailwind CSS
-                        </h2>
-                        <p class="text-sm text-gray-700 font-bold  mr-[83px]">Training - Modern Styling with Tailwind</p>
-                    </div>
-                    <div class="absolute right-0 h-full w-24 bg-teal-500 flex items-center justify-center rounded-l-full">
-                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
-                            <i class="fas fa-wind text-teal-500 text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Bootstrap -->
-                <div class="card media relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px] overflow-hidden" id="media" data-aos="flip-right">
-                <div class="bg-purple-500 card_all text-white font-bold text-center px-6 py-6" id="card_all">
-                        <p class="text-sm uppercase">PHASE</p>
-                        <p class="text-4xl">04</p>
-                    </div>
-                    <div class="flex-1 px-4 py-4">
-                        <h2 class="text-lg font-bold text-purple-600 flex items-center gap-2">
-                            <i class="fab fa-bootstrap text-purple-500 text-2xl"></i> Bootstrap
-                        </h2>
-                        <p class="text-sm text-gray-700 font-bold mr-[80px] ">Training - Bootstrap UI Framework</p>
-                    </div>
-                    <div class="absolute right-0 h-full w-24 bg-purple-500 flex items-center justify-center rounded-l-full ">
-                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
-                            <i class="fab fa-bootstrap text-purple-500 text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
-
-                  <!-- Node.js -->
-                  <div class="card  relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px] overflow-hidden" id="media"data-aos="flip-right">
-                  <div class="bg-green-500 card_all text-white font-bold text-center px-6 py-6" id="card_all">
-                <p class="text-sm uppercase">PHASE</p>
-                <p class="text-4xl">05</p>
-            </div>
-            <div class="flex-1 px-4 py-4">
-                <h2 class="text-lg font-bold text-green-600 flex items-center gap-2">
-                    <i class="fab fa-node-js text-green-500 text-2xl"></i> Node.js
-                </h2>
-                <p class="text-sm text-gray-700 font-bold break-words leading-relaxed mr-[80px]">
-                    Training - Node.js, REST APIs & Express.js
-                </p>
-            </div>
-            <div class="absolute right-0 h-full w-24 bg-green-500 flex items-center justify-center rounded-l-full">
-                <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
-                    <i class="fab fa-node-js text-green-500 text-2xl"></i>
-                </div>
-            </div>
-        </div>
-        
-                <!-- JavaScript -->
-                <div class="card card_all media relative flex items-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 w-full max-w-[550px] overflow-hidden" id="media"data-aos="flip-right">
-                <div class="bg-yellow-500 text-white font-bold text-center px-6 py-6" id="card_all">
-                        <p class="text-sm uppercase">PHASE</p>
-                        <p class="text-4xl">06</p>
-                    </div>
-                    <div class="flex-1 px-4 py-4">
-                        <h2 class="text-lg font-bold text-yellow-600 flex items-center gap-2">
-                            <i class="fab fa-js-square text-yellow-500 text-2xl"></i> JavaScript
-                        </h2>
-                        <p class="text-sm text-gray-700 font-bold  mr-[80px]">Training - JavaScript Basics to Advanced</p>
-                    </div>
-                    <div class="absolute right-0 h-full w-24 bg-yellow-500 flex items-center justify-center rounded-l-full">
-                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center">
-                            <i class="fab fa-js-square text-yellow-500 text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
-        
-            </div>
-        </div>
-        </section>
-        
-
 
         <!-- Projects Section -->
-        <section id="projects" class=" mb-[100px]">
-            <h2 class="text-[35px] text-center  mb-12 font-bold">Projects</h2>
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <section id="projects" class="py-12 sm:py-16 lg:py-20 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 lg:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">Featured
+                        Projects</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mb-6"></div>
+                    <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
+                        Here are some of my recent projects that showcase my skills and passion for development
+                    </p>
+                </div>
 
-                    <!--Wheather-API 1 -->
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl "
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Project 1: Canvas Drawing App -->
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
                         data-aos="zoom-in-up">
-                        <img src="./image/weather.png" alt="Project 2" class="w-full h-48  object-contain">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 font-mono">Wheather-API</h3>
-                            <p class="mt-2 text-gray-600"> "A Weather API provides real-time weather data"</p>
-                            <div class="mt-4 flex space-x-4">
-                                <a href="https://abhishek-coder-01.github.io/Weather-API/" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
-                                <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
-                                    GitHub</a>
+                        <div class="relative overflow-hidden">
+                            <img src="./image/canvas.png" alt="Canvas Drawing App"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
                             </div>
                         </div>
-                    </div>
-
-
-
-                    <!-- TO-Do-List 2 -->
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl "
-                        data-aos="zoom-in-up">
-                        <img src="./image/to do list.jpg" alt="Project 2" class="w-full h-48  object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 font-mono">To-Do List</h3>
-                            <p class="mt-2 text-gray-600"> "A To-Do List is a tool to organize tasks, stay focused, and
-                                achieve goals efficiently."</p>
-                            <div class="mt-4 flex space-x-4">
-                                <a href="https://abhishek-coder-01.github.io/To-Do-List/" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
-                                <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
-                                    GitHub</a>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">Canvas Drawing
+                                Application</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                Interactive drawing application with custom colors, adjustable line widths, and
+                                undo/redo
+                                functionality.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs rounded-full">Canvas
+                                    API</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs rounded-full">JavaScript</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs rounded-full">Tailwind</span>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Canvas drawing Applicatio 3  -->
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl "
-                        data-aos="zoom-in-up">
-                        <img src="./image/canvas.png" alt="Project 2" class="w-full h-48  object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 font-mono">Canvas Drawing Application</h3>
-                            <p class="mt-2 text-gray-600"> "It allows users draw with custom colors, adjustable line
-                                widths, and supports undo, redo, and sharing."</p>
-                            <div class="mt-4 flex space-x-4">
+                            <div class="flex justify-between items-center">
                                 <a href="https://abhishek-coder-01.github.io/Canvas-Drawing-Application/"
-                                    target="_blank" class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
+                                    target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
                                 <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
-                                    GitHub</a>
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-
-
-
-                    <!-- webisite 4  -->
-
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                    <!-- Project 2: Spotify Clone -->
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
                         data-aos="zoom-in-up">
-                        <img src="./image/website-1.png" alt="Project 2" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 font-mono">WEB-SITE</h3>
-                            <p class="mt-2 text-gray-600"> "This simple website design includes a clean, user-friendly
-                                interface and responsive layout."</p>
-                            <div class="mt-4 flex space-x-4">
-                                <a href="https://abhishek-coder-01.github.io/WEB-SITE/" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
+                        <div class="relative overflow-hidden">
+                            <img src="./image/Spotify-5.webp" alt="Spotify Clone"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">Spotify Clone
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                A fully functional music player application with modern UI, playlist management, and
+                                audio
+                                controls.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">HTML5</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full">CSS3</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs rounded-full">JavaScript</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <a href="https://abhishek-coder-01.github.io/Spotify-Clone-Advance/" target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
                                 <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
-                                    GitHub</a>
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- spotify 5 -->
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                    <!-- Project 3: Expense Tracker -->
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
                         data-aos="zoom-in-up">
-                        <img src="./image/Spotify-5.webp" alt="Project 3" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 font-mono">Spotify-Clone</h3>
-                            <p class="mt-2 text-gray-600">"Here are the basic design and functions of the Spotify
-                                Clone."</p>
-                            <div class="mt-4 flex space-x-4">
-                                <a href="https://abhishek-coder-01.github.io/Spotify-Clone-Advance/"
-                                    class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
-                                <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
-                                    GitHub</a>
+                        <div class="relative overflow-hidden">
+                            <img src="./image/Expense traker.jpeg" alt="Expense Tracker"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
                             </div>
                         </div>
-                    </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">💸 Expense
+                                Tracker</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                Track and manage expenses with ease. Built with modern web technologies for seamless
+                                user
+                                experience.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">HTML5</span>
 
-
-                    <!-- Toast notification 6 -->
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                        data-aos="zoom-in-up">
-                        <img src="./image/notifaction.png" alt="Project 3" class="w-full h-48 object-contain">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 font-mono">Toast Notification</h3>
-                            <p class="mt-2 text-gray-600">"The toast notification UI design includes the following
-                                elements:"</p>
-                            <div class="mt-4 flex space-x-4">
-                                <a href="https://abhishek-coder-01.github.io/Notification-Button/" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
-                                <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
-                                    GitHub</a>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs rounded-full">JavaScript</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs rounded-full">LocalStorage</span>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Portfolio 7 -->
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                        data-aos="zoom-in-up">
-                        <img src="./image/bmi.webp" alt="Project 3" class="w-full h-48 object-contain">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 font-mono">BMI-Calculator</h3>
-                            <p class="mt-2 text-gray-600 ">
-                                "BMI is a number calculated from weight and height to assess body fat.." </p>
-                            <div class="mt-4 flex space-x-4">
-
-                                <a href="https://abhishek-coder-01.github.io/BMI-Calculator/" target="_blank"
-                                    href="https://abhishek-coder-01.github.io/Spotify-Clone-Advance/" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
-                                <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
-                                    GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Portfolio 8 -->
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                        data-aos="zoom-in-up">
-                        <img src="./image/Gemini-clone.jpg" alt="Gemini-clone" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 font-mono">Gemini-clone</h3>
-                            <p class="mt-2 text-gray-600 ">
-                                "Gemini Ai.." </p>
-                            <div class="mt-4 flex space-x-4">
-
-                                <a href="https://abhishek-coder-01.github.io/Gemini-Clone/" target="_blank"
-                                    href="https://abhishek-coder-01.github.io/Spotify-Clone-Advance/" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
-                                <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
-                                    GitHub</a>
-                            </div>
-                        </div style="object-contain">
-                    </div>
-                    <!-- 💸Expense Tracker 9 -->
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                        data-aos="zoom-in-up">
-                        <img src="./image/Expense traker.jpeg" alt="Gemini-clone" class="w-full h-48 object-contain">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 font-mono">💸Expense Tracker</h3>
-                            <p class="mt-2 text-gray-600 ">
-                                "Track & manage expenses with ease. Built using HTML, Tailwind & JS." </p>
-                            <div class="mt-4 flex space-x-4">
-
+                            <div class="flex justify-between items-center">
                                 <a href="https://abhishek-coder-01.github.io/Expense-Tracker/" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
                                 <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
-                                    GitHub</a>
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Password vault web app 10 -->
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                    <!-- Project 4: BGMI-->
+
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
                         data-aos="zoom-in-up">
-                        <img src="./image/passwword-vault.png" alt="Gemini-clone" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 font-mono">Password Vault Web App</h3>
-                            <p class="mt-2 text-gray-600 ">
-                                "Password Vault is a secure web app to store and manage your passwords safely." </p>
-                            <div class="mt-4 flex space-x-4">
-
-                                <a href="https://password-vault-web-app.onrender.com/" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-external-link-alt mr-2"></i> Live Demo</a>
+                        <div class="relative overflow-hidden">
+                            <img src="./image/BMI.jpg" alt="Expense Tracker"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">BMI-Calculator
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                BMI (Body Mass Index) is a number calculated from your weight and height to help assess
+                                body fat and overall health.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs rounded-full">Tailwind</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs rounded-full">JavaScript</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs rounded-full">LocalStorage</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <a href="https://abhishek-coder-01.github.io/BMI-Calculator/" target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
                                 <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    class="text-blue-500 hover:text-blue-700"> <i class="fab fa-github mr-2"></i>
-                                    GitHub</a>
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Add more project cards here if needed -->
 
+
+                    <!-- Project 5: WEB-SITE-->
+
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+                        data-aos="zoom-in-up">
+                        <div class="relative overflow-hidden">
+                            <img src="./image/website-1.png" alt="Expense Tracker"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">WEB-SITE</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                This simple website, built using HTML and CSS, features a clean, user-friendly interface
+                                and a fully responsive layout.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">HTML5</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full">CSS3</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs rounded-full">JavaScript</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <a href="https://abhishek-coder-01.github.io/WEB-SITE/" target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/abhishek-coder-01" target="_blank"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Project 6: TODO List-->
+
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+                        data-aos="zoom-in-up">
+                        <div class="relative overflow-hidden">
+                            <img src="./image/to do list.jpg" alt="Expense Tracker"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">WEB-SITE</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                This simple website, built using HTML and CSS, features a clean, user-friendly interface
+                                and a fully responsive layout.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">HTML5</span>
+
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs rounded-full">JavaScript</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs rounded-full">LocalStorage</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <a href="https://abhishek-coder-01.github.io/To-Do-List/" target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/abhishek-coder-01" target="_blank"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6: Gemini Clone -->
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+                        data-aos="zoom-in-up">
+                        <div class="relative overflow-hidden">
+                            <img src="./image/Gemini-clone.jpg" alt="Gemini Clone"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">Gemini AI Clone
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                AI-powered chat interface clone with modern design and responsive layout for seamless
+                                conversations.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">HTML5</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs rounded-full">Tailwind</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs rounded-full">JavaScript</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">Modern
+                                    UI</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <a href="https://abhishek-coder-01.github.io/Gemini-clone-2/" target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/abhishek-coder-01" target="_blank"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 7: Password Vault -->
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+                        data-aos="zoom-in-up">
+                        <div class="relative overflow-hidden">
+                            <img src="./image/passwword-vault.png" alt="Password Vault"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">Password Vault
+                                Web App</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                A secure web application to store and manage passwords safely with encryption and user
+                                authentication.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs rounded-full">Python</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs rounded-full">Flask</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs rounded-full">Security</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <a href="https://password-vault-web-app.onrender.com/" target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/abhishek-coder-01" target="_blank"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 8: React websites -->
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+                        data-aos="zoom-in-up">
+                        <div class="relative overflow-hidden">
+                            <img src="./image/react.jpg" alt="Gemini Clone"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                React+Vite-Website
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                This is a modern, responsive web application built with React that allows users to
+                                register and log in.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs rounded-full">React</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full">AI
+                                    Integration</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">Modern
+                                    UI</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <a href="https://abhishek-coder-01.github.io/Generate-image/" target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/abhishek-coder-01" target="_blank"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 7: Image Generated -->
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+                        data-aos="zoom-in-up">
+                        <div class="relative overflow-hidden">
+                            <img src="./image/text-to-image.jpg" alt="Gemini Clone"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">Image Generate
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                Text-to-Image Generation is an advanced AI technique where a computer creates an image
+                                based on a text description provided by the use
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">HTML5</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs rounded-full">Tailwind</span>
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs rounded-full">JavaScript</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <a href="https://abhishek-coder-01.github.io/Generate-image/" target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/abhishek-coder-01" target="_blank"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View More Projects Button -->
+                <div class="text-center mt-12" data-aos="fade-up">
+                    <a href="https://github.com/abhishek-coder-01" target="_blank"
+                        class="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary-600 to-purple-600 text-white font-semibold rounded-full hover:from-primary-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 text-sm sm:text-base">
+                        <i class="fab fa-github mr-2"></i>
+                        View More Projects
+                    </a>
                 </div>
             </div>
         </section>
 
+        <!-- Enhanced Contact Section -->
+        <section id="contact" class="py-12 sm:py-16 lg:py-20 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 lg:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">Get In
+                        Touch</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mb-6"></div>
+                    <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
+                        I'm always excited to connect with others for new projects, collaborations, or just to share
+                        ideas
+                        about web development.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                    <!-- Enhanced Contact Information -->
+                    <div class="space-y-8 border border-blue-200 dark:border-blue-800 p-[25px] rounded-2xl shadow-lg"
+                        data-aos="zoom-in-up" data-aos-delay="100">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">Let's Work
+                                Together</h3>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm sm:text-base">
+                                As a Full Stack Developer with a focus on creating intuitive and responsive web
+                                applications, I'm passionate about bringing ideas to life through code.
+                            </p>
+                        </div>
+
+                        <!-- Enhanced Contact Methods -->
+                        <div class="space-y-6">
+                            <div
+                                class="contact-method flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+                                <div
+                                    class="w-10 sm:w-12 h-10 sm:h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope text-primary-600 dark:text-primary-400"></i>
+                                </div>
+                                <div>
+                                    <a href="mailto:abhishekyadav749994@gmail.com" target="_blank">
+                                        <h4 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                                            Email
+                                        </h4>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                                            abhishekyadav749994@gmail
+                                            .com
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div
+                                class="contact-method flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+                                <div
+                                    class="w-10 sm:w-12 h-10 sm:h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fab fa-linkedin text-primary-600 dark:text-primary-400"></i>
+                                </div>
+                                <div> <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank">
+                                        <h4 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                                            LinkedIn</h4>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">Connect with me
+                                            professionally
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div
+                                class="contact-method flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
 
 
+                                <div
+                                    class="w-10 sm:w-12 h-10 sm:h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center flex-shrink-0">
 
+                                    <i class="fab fa-github text-primary-600 dark:text-primary-400"></i>
+                                </div>
+                                <div>
+                                    <a href="https://github.com/abhishek-coder-01" target="_blank">
+                                        <h4 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                                            GitHub
+                                        </h4>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">Check out my code</p>
+                                    </a>
+                                </div>
 
-        <section class="about flex flex-col gap-[50px] md:flex-row md:justify-center md:items-center mb-[100px]"
-            id="test">
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="container flex flex-col justify-center items-center">
-                <h1 class="text-[35px] mb-[30px] font-bold">About</h1>
-                <img class=" w-[210px] rounded-[50%]   h-[210px] max-w-none mb-[10px] border-[4px] border-yellow-500 "
-                    src="./image/dev.webp" alt="" data-aos="zoom-in">
-                <p class="font-bold text-[25px]">Abhishek yadav</p>
-                <p class="font-medium text-[20px] md:text-[18.5px] text-center"> Second Year Computer Science (SYCS)</p>
+                    <!-- Enhanced Contact Form -->
+                    <div class="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl shadow-lg border border-green-200 dark:border-green-800"
+                        data-aos-delay="200" data-aos="zoom-in-up">
+                        <form action="https://formspree.io/f/xzzzelyl" method="POST" class="space-y-6">
+
+                            <!-- Name -->
+                            <div>
+                                <label
+                                    class="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Name
+                                </label>
+                                <input class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg outline-none 
+             focus:border-primary-500 dark:focus:border-primary-400 
+             bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
+             placeholder:text-xs sm:placeholder:text-sm text-sm sm:text-base transition-all" type="text" name="name"
+                                    placeholder="Your Name" required>
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label
+                                    class="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Email
+                                </label>
+                                <input class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg outline-none 
+             focus:border-primary-500 dark:focus:border-primary-400 
+             bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
+             placeholder:text-xs sm:placeholder:text-sm text-sm sm:text-base transition-all" type="email" name="email"
+                                    placeholder="your.email@example.com" required>
+                            </div>
+
+                            <!-- Message -->
+                            <div>
+                                <label
+                                    class="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Message
+                                </label>
+                                <textarea class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg resize-none outline-none 
+             focus:border-primary-500 dark:focus:border-primary-400 
+             bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
+             placeholder:text-xs sm:placeholder:text-sm text-sm sm:text-base transition-all" name="message" rows="5"
+                                    placeholder="Your message here..." required></textarea>
+                            </div>
+
+                            <!-- Button -->
+                            <button class="w-full bg-primary-600 hover:bg-primary-700 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-medium sm:font-semibold 
+           text-sm sm:text-base transition-all duration-300 hover:scale-105 shadow-md sm:shadow-lg" type="submit">
+                                <span class="flex items-center justify-center">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Send Message
+                                </span>
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
             </div>
-
-            <div style="color: oklch(0.556 0 0)" class="text pr-[8px] pl-[8px]" data-aos="zoom-in" data-aos-duration="1200">
-                "Hi, I'm Abhishek Yadav, a passionate Full Stack Developer with expertise in HTML, CSS3, JavaScript,
-                Tailwind, and Bootstrap. rently, I'm pursuing a degree in Computer Science and enjoy creating
-                innovative, functional, and visually appealing web solutions. I'm always eager to learn new technologies
-                and bring fresh ideas to life. Let's collaborate and create something extraordinary!.😇 "
-            </div>
-
         </section>
 
-
-
-        <section class="contact flex gap-[40px] justify-center md:flex-row-reverse flex-wrap md:flex-nowrap mb-[100px]"
-            id="contactt">
-            <div class="detail flex-1 basis-1/2" data-aos="zoom-in" data-aos-duration="1500">
-                <h1 class="text-[35px] mb-[20px] mr-2 flex md:justify-end justify-center font-bold ">Contact</h1>
-                <p style="color: oklch(0.556 0 0)" class="flex md:items-right md:text-right md:pr-[8px] pr-[8px] pl-[8px] ">
-                    " I'm always excited to connect with others, whether it's for new projects, collaborations, or just
-                    to
-                    share ideas about the world of web development. As a Full Stack Developer with a focus on creating
-                    intuitive and responsive web applications, I'm passionate about bringing ideas to life through
-                    code."</p>
-
+        <!-- Enhanced Footer -->
+        <footer class="text-center py-8 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900" data-aos="fade-up">
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-4">
+                <div class="flex space-x-6">
+                    <a href="https://github.com/abhishek-coder-01" target="_blank"
+                        class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors">
+                        <i class="fab fa-github text-xl hover:dark:text-white"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank"
+                        class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors">
+                        <i class="fab fa-linkedin text-xl hover:dark:text-white"></i>
+                    </a>
+                    <a href="mailto:abhishekya301@gmail.com"
+                        class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors">
+                        <i class="fas fa-envelope text-xl hover:dark:text-white"></i>
+                    </a>
+                </div>
             </div>
-
-
-            <div class="con flex-1 basis-1/2  " data-aos="zoom-in" data-aos-duration="1500">
-
-                <form action="https://formspree.io/f/xzzzelyl" method="POST"
-                    class="w-full p-4 border-2 rounded-lg shadow-md ">
-
-
-                    <input class="border-2 w-full mb-4 p-2 rounded outline-none border-3 border-blue-500 " type="text"
-                        name="name" placeholder="Name" required><br>
-
-
-                    <input class="border-2 w-full mb-4 p-2 rounded outline-none border-3 border-blue-500" type="email"
-                        name="email" placeholder="Email" required><br>
-
-
-                    <textarea class="border-2 w-full mb-4 p-2 rounded resize-none outline-none border-3 border-blue-500"
-                        name="message" rows="5" placeholder="Message" required></textarea><br>
-
-                    <button class="border-2 bg-blue-500 text-white py-2 px-4 rounded w-full hover:bg-blue-600"
-                        type="submit">
-                        Submit
-                    </button>
-
-                </form>
-
-            </div>
-
-        </section>
-
-
-            <!-- Footer -->
-<footer class="text-center">
-    <p style="color:#9CA3A2;">© 2025 Portfolio Abhishek Yadav. All rights reserved</p>
-</footer>
-
- <!-- Scroll to Top Button -->
- <button  id="scrollButton" onclick="scrollToTop()" 
- class="fixed bottom-4 right-5 bg-purple-600 text-white px-4 py-3 rounded-full shadow-lg hidden">
- 
- <!-- Smooth bouncing icon -->
- <span class="fa-solid fa-arrow-up helo" data-icon="mdi:arrow-up" data-inline="false" style="font-size: 24px;"></span>
-</button>
+            <p class="text-gray-500 dark:text-gray-400 text-sm" id="footerText">
+                © 2025 Portfolio Abhishek Yadav. All rights reserved
+            </p>
+            <p class="text-gray-500 dark:text-gray-400 text-xs mt-[2px]" id="footerSubText">
+                Made with ❤️ using modern web technologies
+            </p>
+        </footer>
     </div>
-    
-    
 
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 900,
-            offset: 150,
-        });
-    </script>
-
-
-    <script>
-        const body = document.body;
-        let sun = document.getElementById("sunn");
-        let moon = document.getElementById("moon");
-        let con = document.getElementById("con");
-        let res = document.getElementById("res");
-
-        sun.addEventListener("click", () => {
-            body.classList.add("bg-[#1a202c]", "text-[#ffffff]");
-            sun.classList.add("hidden");
-            moon.classList.remove("hidden");
-            res.style.background = "white";
-            res.style.color = "black";
-            res.style.borderRadius = "95px";
-           
-        });
-
-        moon.addEventListener("click", () => {
-            body.classList.remove("bg-[#1a202c]", "text-[#ffffff]");
-            moon.classList.add("hidden");
-            sun.classList.remove("hidden");
-           
-        });
-    </script>
-
-
-<script>
-    // Scroll button show/hide logic
-    const scrollButton = document.getElementById("scrollButton");
-
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 200) {
-            scrollButton.classList.remove("hidden");
-        } else {
-            scrollButton.classList.add("hidden");
-        }
-    });
-
-    // Scroll to top function
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-</script>
-
+   <script src="script.js"></script>
 </body>
 
 </html>
