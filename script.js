@@ -1,4 +1,4 @@
-
+// Initialize AOS
 AOS.init({
     duration: 1000,
     once: true,
@@ -511,9 +511,14 @@ window.addEventListener('resize', () => {
     });
 
 })();
+
 console.log(
   "%c✨ Welcome to My Portfolio! ✨\n%cFeel free to explore the code and reach out if you have any questions.\n\n%c📩 Contact me anytime 😊",
   "color:#6366f1; font-size:20px; font-weight:700;",
   "color:#10b981; font-size:14px;",
   "color:#f43f5e; font-size:14px; font-weight:600;"
 );
+
+// ============================================
+// End of script.js
+// ============================================

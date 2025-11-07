@@ -17,15 +17,16 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- AOS Animation -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <!-- Add this inside <head> or just before </body> -->
+    <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
+    <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
 
     <script>
@@ -158,7 +159,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Dark Mode Glassmorphism */
         .dark .glass {
             background: rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -171,23 +171,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             position: relative;
-        }
-
-        .gradient-text::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-            border-radius: 8px;
-        }
-
-        .gradient-text:hover::after {
-            opacity: 0.1;
         }
 
         /* Typing Animation */
@@ -343,19 +326,6 @@
             box-shadow: 0 0 10px #60a5fa;
         }
 
-        /* Enhanced Floating Particles for Dark Mode */
-        .dark .particle::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: radial-gradient(circle, rgba(96, 165, 250, 0.5), transparent);
-            border-radius: 50%;
-            animation: pulse-slow 3s infinite;
-        }
-
         /* Enhanced Navigation */
         .nav-link {
             position: relative;
@@ -395,14 +365,17 @@
             opacity: 1;
         }
 
-        /* Enhanced Mobile Menu Animation */
+        /* FIXED: Enhanced Mobile Menu Animation */
         .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0;
         }
 
         .mobile-menu.active {
-            transform: translateX(0);
+            max-height: 500px;
+            opacity: 1;
         }
 
         /* Loading Animation */
@@ -422,7 +395,7 @@
             }
         }
 
-        /* Enhanced Dark Mode Styles with Smooth Transitions */
+        /* Enhanced Dark Mode Styles */
         .dark {
             background-color: #111827;
             color: #f7fafc;
@@ -439,6 +412,22 @@
         }
 
         /* Enhanced Responsive adjustments */
+        @media (max-width: 1024px) {
+
+
+
+
+            /* Reduce particles on mobile for performance */
+            .particle {
+                display: none;
+            }
+
+            /* Reduce sparkles on mobile */
+            .sparkle-dot:nth-child(n+15) {
+                display: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .typewriter {
                 font-size: 1.5rem;
@@ -447,6 +436,8 @@
             .gradient-text {
                 font-size: 2.5rem;
             }
+
+
         }
 
         @media (max-width: 640px) {
@@ -456,6 +447,38 @@
 
             .gradient-text {
                 font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 575px) {
+            #popupText {
+                font-size: smaller;
+            }
+
+            #popup {
+                width: 248px !important;
+            }
+        }
+
+        @media (max-width: 410px) {
+
+            #footerText,
+            #footerSubText {
+                font-size: 12px;
+                margin-top: 1px;
+            }
+        }
+
+
+        @media (max-width: 750px) {
+
+            .mobile_mode,
+            #mobile_toggle {
+                display: none;
+            }
+
+            #menu_button {
+                display: block;
             }
         }
 
@@ -559,7 +582,7 @@
 
             50% {
                 opacity: 1;
-                transform: translate(var(--moveX), var(--moveY)) scale(1.5);
+                transform: translate(var(--moveX, 0), var(--moveY, 0)) scale(1.5);
             }
         }
 
@@ -613,42 +636,13 @@
             }
         }
 
-        @media (max-width: 575px) {
-            #popupText {
-                font-size: smaller;
-            }
-
-            #popup {
-                width: 248px !important;
-            }
-        }
-
-        @media (max-width: 410px) {
-
-            #footerText,
-            #footerSubText {
-                font-size: 12px;
-                margin-top: 1px;
-            }
-        }
-
-        @media (max-width: 750px) {
-
-            .mobile_mode,
-            #mobile_toggle {
-                display: none;
-            }
-
-            #menu_button {
-                display: block;
-            }
-        }
-
+        /* FIXED: Hamburger Menu Animation */
         .hamburger-line {
-            transition: transform 0.35s ease, opacity 0.35s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
         }
 
-        /* When menu-open class is active */
+        /* When menu is open */
         .menu-open .hamburger-line:nth-child(1) {
             transform: translateY(6px) rotate(45deg);
         }
@@ -699,49 +693,38 @@
                        text-[#1C5E66] hover:text-[#154046] 
                      dark:text-[#EFF1E4] dark:hover:text-[#EFF1E4]
               transition-colors duration-300">
-
                         Home
-
                         <span class="absolute left-0 -bottom-0.5 w-0 h-[1.5px] 
                bg-[#154046] transition-all duration-300 
                    group-hover:w-full 
                   dark:group-hover:bg-[#EFF1E4]"></span>
                     </a>
 
-
                     <a href="#about" class="group relative px-3 py-2 text-[1.05rem] font-bold 
                text-[#1C5E66] hover:text-[#154046] 
                      dark:text-[#EFF1E4] dark:hover:text-[#EFF1E4]
              transition-colors duration-300">
-
                         About
-
                         <span class="absolute left-0 -bottom-0.5 w-0 h-[1.5px] 
                    bg-[#154046] transition-all duration-300 
                group-hover:w-full 
                      dark:group-hover:bg-[#EFF1E4]"></span>
                     </a>
 
-
                     <a href="#contact" class="group relative px-3 py-2 text-[1.05rem] font-bold 
                   text-[#1C5E66] hover:text-[#154046] 
                dark:text-[#EFF1E4] dark:hover:text-[#EFF1E4]
                   transition-colors duration-300">
-
                         Contact
-
                         <span class="absolute left-0 -bottom-0.5 w-0 h-[1.5px] 
               bg-[#154046] transition-all duration-300 
              group-hover:w-full 
              dark:group-hover:bg-[#EFF1E4]"></span>
                     </a>
-
                 </nav>
 
-
-
                 <!-- Theme Toggle Desktop mode -->
-                <div class=" flex items-center gap-2 bg-[#1C5E66] dark:bg-[#EFF1E4] text-black backdrop-blur-md rounded-full shadow px-4 py-[7px] "
+                <div class="flex items-center gap-2 bg-[#1C5E66] dark:bg-[#EFF1E4] text-black backdrop-blur-md rounded-full shadow px-4 py-[7px]"
                     id="mobile_toggle">
                     <button id="themeSystem"
                         class="theme-btn h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition text-white dark:text-black"
@@ -775,45 +758,42 @@
                     </button>
                 </div>
 
-
-
-
                 <!-- Mobile Menu Button -->
-                <div class="hidden flex items-center gap-3" id="menu_button">
+                <div class="hidden items-center gap-3" id="menu_button">
                     <button id="mobileMenuBtn"
-                        class="p-2 rounded-md  bg-[#2A676D]  dark:bg-[#E2E7DC] text-[#EFF1E4] dark:text-[#1C5E66] transition flex flex-col justify-center items-center w-10 h-10"
-                        aria-label="Toggle menu">
+                        class="p-2 rounded-md bg-[#2A676D] dark:bg-[#E2E7DC] text-[#EFF1E4] dark:text-[#1C5E66] transition flex flex-col justify-center items-center w-10 h-10"
+                        aria-label="Toggle menu" aria-expanded="false">
                         <span class="hamburger-line block w-5 h-0.5 bg-current mb-1"></span>
                         <span class="hamburger-line block w-5 h-0.5 bg-current mb-1"></span>
                         <span class="hamburger-line block w-5 h-0.5 bg-current"></span>
                     </button>
                 </div>
+
             </div>
 
-
-
             <!-- Mobile Menu -->
-            <div id="mobileMenu" class="hidden">
+            <div id="mobileMenu" class="mobile-menu">
                 <nav class="flex flex-col p-4 gap-3">
-                    <a href="#homeee" class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold ">
+                    <a href="#homeee"
+                        class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold rounded ">
                         Home
                     </a>
                     <a href="#about"
-                        class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold hover:text-[hsl(var(--foreground))]">
+                        class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold rounded ">
                         About
                     </a>
                     <a href="#contact"
-                        class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold hover:text-[hsl(var(--foreground))]">
+                        class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold rounded ">
                         Contact
                     </a>
-
 
                     <!-- Theme Buttons Mobile -->
                     <div class="w-full flex justify-center mt-2">
                         <div
-                            class="flex w-[180px] justify-center items-center gap-2 bg-[#1C5E66] dark:bg-[#EFF1E4] text-black backdrop-blur-md rounded-full shadow px-4 py-[7px] bg-white text-black">
+                            class="flex w-[180px] justify-center items-center gap-2 bg-[#1C5E66] dark:bg-[#EFF1E4] text-black backdrop-blur-md rounded-full shadow px-4 py-[7px]">
                             <button id="themeSystemMobile"
-                                class="theme-btn-mobile text-white dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition">
+                                class="theme-btn-mobile text-white dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition"
+                                aria-label="System theme">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2">
                                     <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
@@ -822,7 +802,8 @@
                                 </svg>
                             </button>
                             <button id="themeLightMobile"
-                                class="theme-btn-mobile text-white  dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center transition dark:hover:bg-gray-300">
+                                class="theme-btn-mobile text-white dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center transition dark:hover:bg-gray-300"
+                                aria-label="Light mode">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="12" r="4" />
@@ -831,7 +812,8 @@
                                 </svg>
                             </button>
                             <button id="themeDarkMobile"
-                                class="theme-btn-mobile text-white dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition">
+                                class="theme-btn-mobile text-white dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition"
+                                aria-label="Dark mode">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2">
                                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
@@ -839,7 +821,6 @@
                             </button>
                         </div>
                     </div>
-
                 </nav>
             </div>
         </header>
@@ -1156,7 +1137,8 @@
                      opacity-0 transition-all duration-300 ease-out"></div>
 
                     <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4">
-                        <button id="close-full-stack" class="group absolute top-3 right-3 p-[2px] rounded-full bg-red-500">
+                        <button id="close-full-stack"
+                            class="group absolute top-3 right-3 p-[2px] rounded-full bg-red-500">
                             <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                     d="M6 18L18 6M6 6l12 12" />
@@ -1217,7 +1199,7 @@
                 </div>
 
 
-                 <!--  python  -->
+                <!--  python  -->
                 <div id="modal-python" class="fixed inset-0 z-50 flex items-center justify-center
                           opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-out">
 
@@ -1260,62 +1242,111 @@
                     <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">Certifications &
                         Courses</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-
                         <!-- Generative Ai -->
-                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-blue-900 !cursor-pointer"
+                        <div class="relative skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-blue-900 cursor-pointer"
                             id="card-first">
+
+                            <!-- Visit Button with Requested Custom Padding -->
+                            <a href="#" class="absolute -top-3 -left-3 bg-blue-600 text-white text-xs font-medium
+        pt-[1.2rem] pb-[0.5rem] pl-[1.75rem] pr-[0.75rem]
+        rounded-br-2xl rounded-tl-xl flex items-center justify-center gap-1
+        hover:bg-blue-700 transition">
+                                <span>Visit</span> <span class="text-sm">→</span>
+                            </a>
+
                             <div
                                 class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
                                 <i class="fas fa-brain text-purple-600 dark:text-purple-400"></i>
                             </div>
 
                             <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Generative AI Mastermind</h4>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">OutSkill</p>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">AI Concepts • Prompt Crafting • Model
+                                Tuning</p>
                         </div>
 
 
+
+
+
+
+
+
                         <!-- full stack web devlopment  -->
-                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-blue-900 cursor-pointer"
+                        <div class="relative skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-green-900 cursor-pointer"
                             id="card-second">
+
+                   
+                            <!-- Visit Button with Requested Custom Padding -->
+                            <a href="#" class="absolute -top-3 -left-3 bg-blue-600 text-white text-xs font-medium
+        pt-[1.2rem] pb-[0.5rem] pl-[1.75rem] pr-[0.75rem]
+        rounded-br-2xl rounded-tl-xl flex items-center justify-center gap-1
+        hover:bg-blue-700 transition">
+                                <span>Visit</span> <span class="text-sm">→</span>
+                            </a>
+
                             <div
                                 class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
                                 <i class="fas fa-laptop-code text-blue-600 dark:text-blue-400 text-lg"></i>
                             </div>
+
                             <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Full Stack Web Development</h4>
                             <p class="text-gray-600 dark:text-gray-400 text-sm">Frontend + Backend with modern
                                 frameworks</p>
+
                         </div>
 
 
-                           <!-- React   -->
-                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-purple-900 !cursor-pointer"
+
+
+                        <!-- React   -->
+                        <div class="relative skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-purple-900 cursor-pointer"
                             id="card-third">
+
+                           <!-- Visit Button with Requested Custom Padding -->
+                            <a href="#" class="absolute -top-3 -left-3 bg-blue-600 text-white text-xs font-medium
+        pt-[1.2rem] pb-[0.5rem] pl-[1.75rem] pr-[0.75rem]
+        rounded-br-2xl rounded-tl-xl flex items-center justify-center gap-1
+        hover:bg-blue-700 transition">
+                                <span>Visit</span> <span class="text-sm">→</span>
+                            </a>
+
                             <div
                                 class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fab fa-react text-purple-600 dark:text-purple-400"></i>
+                                <i class="fab fa-react text-blue-600 dark:text-blue-400"></i>
                             </div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">React Development</h4>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">Frontend framework mastery</p>
+
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2 text-center">React Development
+                            </h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm text-center">Frontend framework mastery
+                            </p>
+
                         </div>
+
+
 
 
                         <!-- python programming   -->
-                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-green-900 !cursor-pointer"
+                        <div class="relative skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-green-900 cursor-pointer"
                             id="card-four">
+
+                           <!-- Visit Button with Requested Custom Padding -->
+                            <a href="#" class="absolute -top-3 -left-3 bg-blue-600 text-white text-xs font-medium
+        pt-[1.2rem] pb-[0.5rem] pl-[1.75rem] pr-[0.75rem]
+        rounded-br-2xl rounded-tl-xl flex items-center justify-center gap-1
+        hover:bg-blue-700 transition">
+                                <span>Visit</span> <span class="text-sm">→</span>
+                            </a>
+
                             <div
-                                class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fab fa-python text-blue-600 dark:text-blue-400"></i>
+                                class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fab fa-python text-green-600 dark:text-green-400"></i>
                             </div>
+
                             <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Python Programming</h4>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">Self-taught Python development</p>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Crafting scalable backend systems in
+                                Python</p>
+
                         </div>
-
-
-                     
-
-
-
-
 
                     </div>
                 </div>
@@ -2231,46 +2262,6 @@
         </footer>
     </div>
 
-    <script>
-
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            const isOpen = !mobileMenu.classList.contains('hidden');
-
-            if (isOpen) {
-                mobileMenu.classList.add('hidden');
-                mobileMenuBtn.classList.remove('menu-open');
-            } else {
-                mobileMenu.classList.remove('hidden');
-                mobileMenuBtn.classList.add('menu-open');
-            }
-        });
-
-        // Close mobile menu when clicking nav links
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenuBtn.classList.remove('menu-open');
-            });
-        });
-
-
-
-
-        // Close mobile menu on window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 1024) {
-                mobileMenu.classList.add('hidden');
-                mobileMenuBtn.classList.remove('menu-open');
-            }
-        });
-
-    </script>
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>
