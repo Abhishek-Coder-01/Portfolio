@@ -511,29 +511,9 @@ window.addEventListener('resize', () => {
     });
 
 })();
-
-console.log(`
-🚀 Welcome to Abhishek's Enhanced Portfolio with Education & Skills!
-
-✨ New Enhanced Features:
-- Three-way theme toggle (System/Light/Dark)
-- Complete Education timeline with animations
-- Enhanced Skills section with progress bars
-- Improved responsive design and accessibility
-- Dark mode with sparkle effects
-- AOS animations throughout
-- Modern card layouts and hover effects
-
-Built with:
-- HTML5 & CSS3 with advanced animations
-- JavaScript (ES6+) with enhanced interactions
-- Tailwind CSS with custom extensions
-- AOS Animation Library
-- Custom progress bar animations
-
-Feel free to explore and reach out for collaborations!
-
-GitHub: https://github.com/abhishek-coder-01
-LinkedIn: https://www.linkedin.com/in/abhishek-yadav-292ba9308
-Email: abhishekya301@gmail.com
-`);
+console.log(
+  "%c✨ Welcome to My Portfolio! ✨\n%cFeel free to explore the code and reach out if you have any questions.\n\n%c📩 Contact me anytime 😊",
+  "color:#6366f1; font-size:20px; font-weight:700;",
+  "color:#10b981; font-size:14px;",
+  "color:#f43f5e; font-size:14px; font-weight:600;"
+);
