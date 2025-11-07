@@ -17,8 +17,8 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- AOS Animation -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -180,7 +180,6 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -1;
@@ -425,7 +424,7 @@
 
         /* Enhanced Dark Mode Styles with Smooth Transitions */
         .dark {
-            background-color: #1a202c;
+            background-color: #111827;
             color: #f7fafc;
         }
 
@@ -632,6 +631,35 @@
                 margin-top: 1px;
             }
         }
+
+        @media (max-width: 750px) {
+
+            .mobile_mode,
+            #mobile_toggle {
+                display: none;
+            }
+
+            #menu_button {
+                display: block;
+            }
+        }
+
+        .hamburger-line {
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+
+        /* When menu-open class is active */
+        .menu-open .hamburger-line:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .menu-open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-open .hamburger-line:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
     </style>
 </head>
 
@@ -651,53 +679,171 @@
 
         <header
             class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-700">
-            <div class="navbar flex justify-between items-center h-16 sm:h-20 px-4">
-                <!-- Logo -->
-                <div class="logo text-xl sm:text-2xl lg:text-3xl font-bold gradient-text"
-                    style='font-family: "Orbitron", sans-serif;'>A-k-y</div>
+            <div class="flex justify-between items-center h-16 sm:h-20 px-4">
 
-
-                <!-- Navbar Items -->
-                <div class="flex items-center space-x-5 md:text-[20px] text-[23px]">
-                    <span class="cursor-pointer lg:text-[21px]">
-                        <a href="https://github.com/abhishek-coder-01" target="_blank"
-                            class="flex items-center gap-1 nav-link">
-                            <i class="fa-brands fa-github"></i>
-                            <span class="hidden md:inline-block">Github</span>
-                        </a>
-                    </span>
-
-                    <span class="cursor-pointer lg:text-[21px]">
-                        <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank"
-                            class="flex items-center gap-1 nav-link">
-                            <i class="fa-brands fa-linkedin"></i>
-                            <span class="hidden md:inline-block">Linkedin</span>
-                        </a>
-                    </span>
-
+                <!-- LEFT: Logo -->
+                <a href="#" class="flex items-center gap-2 group">
                     <span
-                        class="md:m-5 md:px-[11px] md:py-[4px] md:rounded-md md:bg-black md:text-white md:text-[15px] cursor-pointer lg:text-[17px]">
-                        <a href="#contactt" class="flex items-center gap-1 nav-link">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span class="hidden md:inline-block">Email</span>
-                        </a>
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-full text-white bg-[#1C5E66] dark:bg-[#EFF1E4] dark:text-[#1C5E66] font-bold text-lg shadow-md"
+                        id="homeee">
+                        A
                     </span>
+                    <span class="text-lg font-bold tracking-tight text-[#1C5E66] dark:text-[#EFF1E4]">
+                        Abhishek Yadav
+                    </span>
+                </a>
 
-                    <!-- Enhanced Theme Toggle -->
-                    <button id="themeToggle" aria-label="Toggle theme"
-                        class="theme-toggle flex items-center justify-center cursor-pointer p-1 align-middle relative">
-                        <img src="./image/sun-mode.gif" alt="Light Mode"
-                            class="w-7 h-7 sm:w-8 sm:h-8 transition-transform duration-300" id="sunIcon">
+                <!-- CENTER: Navigation -->
+                <nav class="mobile_mode lg:flex items-center gap-6">
+                    <a href="#homeee" class="group relative px-3 py-2 text-[1.05rem] font-bold 
+                       text-[#1C5E66] hover:text-[#154046] 
+                     dark:text-[#EFF1E4] dark:hover:text-[#EFF1E4]
+              transition-colors duration-300">
 
-                        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white hidden transition-transform duration-300"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24" id="moonIcon">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        Home
+
+                        <span class="absolute left-0 -bottom-0.5 w-0 h-[1.5px] 
+               bg-[#154046] transition-all duration-300 
+                   group-hover:w-full 
+                  dark:group-hover:bg-[#EFF1E4]"></span>
+                    </a>
+
+
+                    <a href="#about" class="group relative px-3 py-2 text-[1.05rem] font-bold 
+               text-[#1C5E66] hover:text-[#154046] 
+                     dark:text-[#EFF1E4] dark:hover:text-[#EFF1E4]
+             transition-colors duration-300">
+
+                        About
+
+                        <span class="absolute left-0 -bottom-0.5 w-0 h-[1.5px] 
+                   bg-[#154046] transition-all duration-300 
+               group-hover:w-full 
+                     dark:group-hover:bg-[#EFF1E4]"></span>
+                    </a>
+
+
+                    <a href="#contact" class="group relative px-3 py-2 text-[1.05rem] font-bold 
+                  text-[#1C5E66] hover:text-[#154046] 
+               dark:text-[#EFF1E4] dark:hover:text-[#EFF1E4]
+                  transition-colors duration-300">
+
+                        Contact
+
+                        <span class="absolute left-0 -bottom-0.5 w-0 h-[1.5px] 
+              bg-[#154046] transition-all duration-300 
+             group-hover:w-full 
+             dark:group-hover:bg-[#EFF1E4]"></span>
+                    </a>
+
+                </nav>
+
+
+
+                <!-- Theme Toggle Desktop mode -->
+                <div class=" flex items-center gap-2 bg-[#1C5E66] dark:bg-[#EFF1E4] text-black backdrop-blur-md rounded-full shadow px-4 py-[7px] "
+                    id="mobile_toggle">
+                    <button id="themeSystem"
+                        class="theme-btn h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition text-white dark:text-black"
+                        aria-label="System theme">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg>
+                    </button>
+
+                    <button id="themeLight"
+                        class="theme-btn h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition text-white dark:text-black"
+                        aria-label="Light mode">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="4" />
+                            <path
+                                d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.5 6.5-1.5-1.5M8 7 6.5 5.5m11 0L16.5 7M7 17l-1.5 1.5" />
+                        </svg>
+                    </button>
+
+                    <button id="themeDark"
+                        class="theme-btn h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition text-white dark:text-black"
+                        aria-label="Dark mode">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
                 </div>
+
+
+
+
+                <!-- Mobile Menu Button -->
+                <div class="hidden flex items-center gap-3" id="menu_button">
+                    <button id="mobileMenuBtn"
+                        class="p-2 rounded-md  bg-[#2A676D]  dark:bg-[#E2E7DC] text-[#EFF1E4] dark:text-[#1C5E66] transition flex flex-col justify-center items-center w-10 h-10"
+                        aria-label="Toggle menu">
+                        <span class="hamburger-line block w-5 h-0.5 bg-current mb-1"></span>
+                        <span class="hamburger-line block w-5 h-0.5 bg-current mb-1"></span>
+                        <span class="hamburger-line block w-5 h-0.5 bg-current"></span>
+                    </button>
+                </div>
+            </div>
+
+
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden">
+                <nav class="flex flex-col p-4 gap-3">
+                    <a href="#homeee" class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold ">
+                        Home
+                    </a>
+                    <a href="#about"
+                        class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold hover:text-[hsl(var(--foreground))]">
+                        About
+                    </a>
+                    <a href="#contact"
+                        class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold hover:text-[hsl(var(--foreground))]">
+                        Contact
+                    </a>
+
+
+                    <!-- Theme Buttons Mobile -->
+                    <div class="w-full flex justify-center mt-2">
+                        <div
+                            class="flex w-[180px] justify-center items-center gap-2 bg-[#1C5E66] dark:bg-[#EFF1E4] text-black backdrop-blur-md rounded-full shadow px-4 py-[7px] bg-white text-black">
+                            <button id="themeSystemMobile"
+                                class="theme-btn-mobile text-white dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                    <line x1="8" y1="21" x2="16" y2="21" />
+                                    <line x1="12" y1="17" x2="12" y2="21" />
+                                </svg>
+                            </button>
+                            <button id="themeLightMobile"
+                                class="theme-btn-mobile text-white  dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center transition dark:hover:bg-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="4" />
+                                    <path
+                                        d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.5 6.5-1.5-1.5M8 7 6.5 5.5m11 0L16.5 7M7 17l-1.5 1.5" />
+                                </svg>
+                            </button>
+                            <button id="themeDarkMobile"
+                                class="theme-btn-mobile text-white dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </nav>
             </div>
         </header>
+
 
 
         <!-- Hero Section -->
@@ -847,7 +993,8 @@
         <section id="education" class="py-12 sm:py-16 lg:py-20 px-4  ">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-12 lg:mb-16" data-aos="fade-down">
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">Education
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+                        data-aos="fade-down" data-aos-delay="400">Education
                     </h2>
                     <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mb-6"></div>
                     <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
@@ -977,28 +1124,172 @@
                     </div>
                 </div>
 
+
+                <!-- Additional Certifications or Courses certification image  st-->
+
+                <!-- Modal GenAI -->
+                <div id="modal-genai" class="fixed inset-0 z-50 flex items-center justify-center
+                  opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-out">
+
+                    <div id="backdrop-genai" class="absolute inset-0 bg-black/30 backdrop-blur-sm
+                     opacity-0 transition-all duration-300 ease-out"></div>
+
+                    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4">
+                        <button id="close-genai" class="group absolute top-3 right-3 p-[2px] rounded-full bg-red-500">
+                            <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <img src="./certificate/GenAI certificate.jpg" class="w-full h-auto rounded-2xl"
+                            alert="Error GenAi" />
+                    </div>
+                </div>
+
+
+
+                <!-- Modal Full stack web devlopment -->
+                <div id="modal-full-stack" class="fixed inset-0 z-50 flex items-center justify-center
+                  opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-out">
+
+                    <div id="backdrop-full-stack" class="absolute inset-0 bg-black/30 backdrop-blur-sm
+                     opacity-0 transition-all duration-300 ease-out"></div>
+
+                    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4">
+                        <button id="close-full-stack" class="group absolute top-3 right-3 p-[2px] rounded-full bg-red-500">
+                            <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <img src="./certificate/Full stack web Devlopment.png" class="w-full h-auto rounded-2xl"
+                            alert="Error Full stack.." />
+                    </div>
+                </div>
+
+                <!-- Modal Python -->
+                <div id="modal-javascript" class="fixed inset-0 z-50 flex items-center justify-center
+                  opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-out">
+
+                    <div id="backdrop-javascript" class="absolute inset-0 bg-black/30 backdrop-blur-sm
+                     opacity-0 transition-all duration-300 ease-out"></div>
+
+                    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4">
+                        <button id="close-javascript"
+                            class="group absolute top-3 right-3 p-[2px] rounded-full bg-red-500">
+                            <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <img src="./image/ChatGPT-clone.png" class="w-full h-auto rounded-2xl" alert="Error Js" />
+                    </div>
+                </div>
+
+
+                <!--  React Devlopment -->
+                <div id="modal-react" class="fixed inset-0 z-50 flex items-center justify-center
+                          opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-out">
+
+                    <div id="backdrop-react" class="absolute inset-0 bg-black/30 backdrop-blur-sm
+                       opacity-0 transition-all duration-300 ease-out"></div>
+                    <div
+                        class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full mx-4 p-6 text-center">
+                        <!-- Close Button -->
+                        <button id="close-react"
+                            class="absolute top-3 right-3 p-[2px] rounded-full bg-red-500 hover:bg-red-600 transition">
+                            <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <div
+                            class="w-14 h-14 mx-auto flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 mb-4">
+                            <i class="fas fa-file-circle-xmark text-gray-600 dark:text-gray-300 text-2xl"></i>
+                        </div>
+                        <!-- Message -->
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">No Certificate Available</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                            This skill is self-learned & currently being improved. 🚀
+                        </p>
+
+                    </div>
+                </div>
+
+
+                 <!--  python  -->
+                <div id="modal-python" class="fixed inset-0 z-50 flex items-center justify-center
+                          opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-out">
+
+                    <div id="backdrop-python" class="absolute inset-0 bg-black/30 backdrop-blur-sm
+                       opacity-0 transition-all duration-300 ease-out"></div>
+                    <div
+                        class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full mx-4 p-6 text-center">
+                        <!-- Close Button -->
+                        <button id="close-python"
+                            class="absolute top-3 right-3 p-[2px] rounded-full bg-red-500 hover:bg-red-600 transition">
+                            <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <div
+                            class="w-14 h-14 mx-auto flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 mb-4">
+                            <i class="fas fa-file-circle-xmark text-gray-600 dark:text-gray-300 text-2xl"></i>
+                        </div>
+                        <!-- Message -->
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">No Certificate Available</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                            This skill is self-learned & currently being improved. 🚀
+                        </p>
+
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!-- Additional Certifications or Courses certification image end -->
+
+
+
                 <!-- Additional Certifications or Courses -->
                 <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
                     <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">Certifications &
                         Courses</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg">
+
+                        <!-- Generative Ai -->
+                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-blue-900 !cursor-pointer"
+                            id="card-first">
+                            <div
+                                class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-brain text-purple-600 dark:text-purple-400"></i>
+                            </div>
+
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Generative AI Mastermind</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">OutSkill</p>
+                        </div>
+
+
+                        <!-- full stack web devlopment  -->
+                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-blue-900 cursor-pointer"
+                            id="card-second">
                             <div
                                 class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fab fa-python text-blue-600 dark:text-blue-400"></i>
+                                <i class="fas fa-laptop-code text-blue-600 dark:text-blue-400 text-lg"></i>
                             </div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Python Programming</h4>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">Self-taught Python development</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Full Stack Web Development</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Frontend + Backend with modern
+                                frameworks</p>
                         </div>
-                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg">
-                            <div
-                                class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fab fa-js-square text-green-600 dark:text-green-400"></i>
-                            </div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">JavaScript ES6+</h4>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">Modern JavaScript development</p>
-                        </div>
-                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg">
+
+
+                           <!-- React   -->
+                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-purple-900 !cursor-pointer"
+                            id="card-third">
                             <div
                                 class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
                                 <i class="fab fa-react text-purple-600 dark:text-purple-400"></i>
@@ -1006,6 +1297,26 @@
                             <h4 class="font-semibold text-gray-900 dark:text-white mb-2">React Development</h4>
                             <p class="text-gray-600 dark:text-gray-400 text-sm">Frontend framework mastery</p>
                         </div>
+
+
+                        <!-- python programming   -->
+                        <div class="skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-green-900 !cursor-pointer"
+                            id="card-four">
+                            <div
+                                class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fab fa-python text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Python Programming</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Self-taught Python development</p>
+                        </div>
+
+
+                     
+
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -1017,7 +1328,8 @@
         <section class="skill py-12 sm:py-16 lg:py-20" id="skills">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12 lg:mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">Technical
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+                        data-aos="fade-down" data-aos-delay="400">Technical
                         Skills</h2>
                     <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mb-6"></div>
                     <p class="text-gray-600 dark:text-gray-400 max-w-4xl mx-auto text-sm sm:text-base leading-relaxed">
@@ -1029,7 +1341,7 @@
                 <!-- Skills Categories -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
                     <!-- Frontend Skills -->
-                    <div class="space-y-6" data-aos="fade-right" data-aos-delay="100">
+                    <div class="space-y-6" data-aos="fade-up" data-aos-delay="100">
                         <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white flex items-center">
                             <i class="fas fa-palette text-primary-600 mr-3"></i>
                             Frontend Development
@@ -1104,7 +1416,7 @@
                     </div>
 
                     <!-- Backend Skills -->
-                    <div class="space-y-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="space-y-6" data-aos="fade-down" data-aos-delay="200">
                         <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white flex items-center">
                             <i class="fas fa-server text-primary-600 mr-3"></i>
                             Backend Development
@@ -1749,7 +2061,8 @@
         <section id="contact" class="py-12 sm:py-16 lg:py-20 px-4">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-12 lg:mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">Get In
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+                        data-aos="fade-down" data-aos-delay="400">Get In
                         Touch</h2>
                     <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mb-6"></div>
                     <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
@@ -1918,6 +2231,46 @@
         </footer>
     </div>
 
+    <script>
+
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+
+            if (isOpen) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.classList.remove('menu-open');
+            } else {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuBtn.classList.add('menu-open');
+            }
+        });
+
+        // Close mobile menu when clicking nav links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.classList.remove('menu-open');
+            });
+        });
+
+
+
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.classList.remove('menu-open');
+            }
+        });
+
+    </script>
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>

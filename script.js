@@ -1,82 +1,183 @@
 
-// Initialize AOS
 AOS.init({
     duration: 1000,
     once: true,
     offset: 100
 });
 
-// Enhanced Theme Toggle Functionality with Animations
-const themeToggle = document.getElementById('themeToggle');
-const sunIcon = document.getElementById('sunIcon');
-const moonIcon = document.getElementById('moonIcon');
+
+// ============================================
+// Certificate Modal Functionality
+// ============================================
+
+function modalSetup(cardId, modalId, closeId, backdropId) {
+    const card = document.getElementById(cardId);
+    const modal = document.getElementById(modalId);
+    const close = document.getElementById(closeId);
+    const backdrop = document.getElementById(backdropId);
+
+    const openModal = () => {
+        modal.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+        backdrop.classList.remove('opacity-0');
+    };
+
+    const closeModal = () => {
+        modal.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+        backdrop.classList.add('opacity-0');
+    };
+
+    card.addEventListener('click', openModal);
+    close.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+}
+
+modalSetup('card-first', 'modal-genai', 'close-genai', 'backdrop-genai');
+modalSetup('card-second', 'modal-full-stack', 'close-full-stack', 'backdrop-full-stack');
+modalSetup('card-third', 'modal-react', 'close-react', 'backdrop-react');
+modalSetup('card-four', 'modal-python', 'close-python', 'backdrop-python');
+
+
+// ============================================
+// End Certificate Modal Functionality
+// ============================================
+
+
+
+// ============================================
+// Enhanced Theme Toggle Functionality
+// ============================================
+const themeSystem = document.getElementById('themeSystem');
+const themeLight = document.getElementById('themeLight');
+const themeDark = document.getElementById('themeDark');
+// Mobile theme buttons (inside mobile menu)
+const themeSystemMobile = document.getElementById('themeSystemMobile');
+const themeLightMobile = document.getElementById('themeLightMobile');
+const themeDarkMobile = document.getElementById('themeDarkMobile');
 const html = document.documentElement;
 const darkSparkles = document.getElementById('darkSparkles');
 
-// Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'light';
+// Check for saved theme preference or default to system
+const currentTheme = localStorage.getItem('theme') || 'system';
 
-// Apply the saved theme
-if (currentTheme === 'dark') {
-    html.classList.add('dark');
-    sunIcon.classList.add('hidden');
-    moonIcon.classList.remove('hidden');
-}
-
+// Function to create sparkles for dark mode
 function createSparkles(count = 50) {
+    if (!darkSparkles) return;
     darkSparkles.innerHTML = ''; // Clear previous sparkles
     for (let i = 0; i < count; i++) {
         const dot = document.createElement('div');
         dot.classList.add('sparkle-dot');
         dot.style.top = `${Math.random() * 100}%`;
         dot.style.left = `${Math.random() * 100}%`;
-        dot.style.animationDuration = `${2 + Math.random() * 2}s`; // Random twinkle speed
+        dot.style.animationDuration = `${2 + Math.random() * 2}s`;
         darkSparkles.appendChild(dot);
     }
 }
 
-// Apply the saved theme
-if (currentTheme === 'dark') {
-    html.classList.add('dark');
-    sunIcon.classList.add('hidden');
-    moonIcon.classList.remove('hidden');
+function applyTheme(theme) {
 
-    // Create sparkles on load
-    createSparkles();
-    darkSparkles.classList.add('active');
-}
+    // Remove highlight from all buttons
+    // include both desktop and mobile theme button classes
+    document.querySelectorAll('.theme-btn, .theme-btn-mobile').forEach(btn => {
+        btn.classList.remove('bg-gray-300', 'dark:bg-gray-300');
+    });
 
-// Theme toggle click event
-themeToggle.addEventListener('click', () => {
-    // Add switching animation
-    themeToggle.classList.add('switching');
+    // Remove color from all icons in theme buttons
+    document.querySelectorAll('.theme-btn svg, .theme-btn-mobile svg').forEach(icon => {
+        icon.classList.remove('text-black');
+    });
 
-    html.classList.toggle('dark');
-
-    if (html.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-
-        // Create sparkles only if not exist
-        if (!document.querySelectorAll('.sparkle-dot').length) {
-            createSparkles();
-        }
-        darkSparkles.classList.add('active');
-    } else {
-        localStorage.setItem('theme', 'light');
-        moonIcon.classList.add('hidden');
-        sunIcon.classList.remove('hidden');
-        darkSparkles.classList.remove('active');
+    if (theme === 'dark') {
+        html.classList.add('dark');
+        if (themeDark) themeDark.classList.add('bg-gray-300', 'dark:bg-gray-300');
+        if (themeDark && themeDark.querySelector) themeDark.querySelector('svg').classList.add('text-black');
+        if (themeDarkMobile) themeDarkMobile.classList.add('bg-gray-300', 'dark:bg-gray-300');
+        if (themeDarkMobile && themeDarkMobile.querySelector) themeDarkMobile.querySelector('svg').classList.add('text-black');
+        createSparkles();
+        if (darkSparkles) darkSparkles.classList.add('active');
     }
 
-    // Remove switching animation after short delay
-    setTimeout(() => {
-        themeToggle.classList.remove('switching');
-    }, 500);
+    else if (theme === 'light') {
+        html.classList.remove('dark');
+        if (themeLight) themeLight.classList.add('bg-gray-300');
+        if (themeLight && themeLight.querySelector) themeLight.querySelector('svg').classList.add('text-black');
+        if (themeLightMobile) themeLightMobile.classList.add('bg-gray-300');
+        if (themeLightMobile && themeLightMobile.querySelector) themeLightMobile.querySelector('svg').classList.add('text-black');
+        if (darkSparkles) darkSparkles.classList.remove('active');
+    }
+
+    else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (prefersDark) {
+            html.classList.add('dark');
+            createSparkles();
+            if (darkSparkles) darkSparkles.classList.add('active');
+        } else {
+            html.classList.remove('dark');
+            if (darkSparkles) darkSparkles.classList.remove('active');
+        }
+
+        if (themeSystem) themeSystem.classList.add('bg-gray-300');
+        if (themeSystem && themeSystem.querySelector) themeSystem.querySelector('svg').classList.add('text-black');
+        if (themeSystemMobile) themeSystemMobile.classList.add('bg-gray-300');
+        if (themeSystemMobile && themeSystemMobile.querySelector) themeSystemMobile.querySelector('svg').classList.add('text-black');
+    }
+}
+
+
+// Apply saved theme on load
+applyTheme(currentTheme);
+
+// Theme button event listeners
+themeSystem.addEventListener('click', () => {
+    localStorage.setItem('theme', 'system');
+    applyTheme('system');
 });
 
+
+
+themeLight.addEventListener('click', () => {
+    localStorage.setItem('theme', 'light');
+    applyTheme('light');
+});
+
+themeDark.addEventListener('click', () => {
+    localStorage.setItem('theme', 'dark');
+    applyTheme('dark');
+});
+
+// Mobile theme button listeners (mirror desktop behavior)
+if (themeSystemMobile) {
+    themeSystemMobile.addEventListener('click', () => {
+        localStorage.setItem('theme', 'system');
+        applyTheme('system');
+    });
+}
+
+if (themeLightMobile) {
+    themeLightMobile.addEventListener('click', () => {
+        localStorage.setItem('theme', 'light');
+        applyTheme('light');
+    });
+}
+
+if (themeDarkMobile) {
+    themeDarkMobile.addEventListener('click', () => {
+        localStorage.setItem('theme', 'dark');
+        applyTheme('dark');
+    });
+}
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (localStorage.getItem('theme') === 'system') {
+        applyTheme('system');
+    }
+});
+
+// ============================================
 // Progress bar animation on scroll
+// ============================================
 const observeProgressBars = () => {
     const progressBars = document.querySelectorAll('.progress-fill');
 
@@ -103,10 +204,15 @@ const observeProgressBars = () => {
 // Initialize progress bar observer
 observeProgressBars();
 
+// ============================================
 // Enhanced email.js with animations
+// ============================================
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
+    if (!form) return;
+
     const button = form.querySelector('button[type="submit"]');
+    if (!button) return;
 
     // Create enhanced popup element
     let popup = document.createElement('div');
@@ -135,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const serviceID = 'service_7ipfx1u';
         const templateID = 'template_mxnu8ig';
-        const publicKey = 'pj9DmWpHrB7izjlYu'; // EmailJS public key
+        const publicKey = 'pj9DmWpHrB7izjlYu';
 
         // Save original button HTML
         const originalBtnHTML = button.innerHTML;
@@ -143,43 +249,49 @@ document.addEventListener('DOMContentLoaded', () => {
         // Disable button and show loading spinner
         button.disabled = true;
         button.innerHTML = `
-                    <span class="flex items-center justify-center gap-2">
-                        Sending...
-                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-                        </svg>
-                    </span>
-                `;
+        <span class="flex items-center justify-center gap-2">
+    Sending...
+    <svg class="h-5 w-5 animate-spin" viewBox="0 0 50 50">
+        <defs>
+            <linearGradient id="instaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#feda75"/>
+                <stop offset="25%" stop-color="#fa7e1e"/>
+                <stop offset="50%" stop-color="#d62976"/>
+                <stop offset="75%" stop-color="#962fbf"/>
+                <stop offset="100%" stop-color="#4f5bd5"/>
+            </linearGradient>
+        </defs>
+        <circle cx="25" cy="25" r="20" stroke="url(#instaGradient)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </svg>
+</span>
+
+        `;
 
         // Send the email using EmailJS
         emailjs.sendForm(serviceID, templateID, form, publicKey)
             .then(() => {
-                // Restore button
                 button.disabled = false;
                 button.innerHTML = originalBtnHTML;
                 form.reset();
-
-                // Show success popup
                 showPopup('✅ Message Sent Successfully!');
             })
             .catch((error) => {
                 console.error('EmailJS error:', error);
-
-                // Restore button
                 button.disabled = false;
                 button.innerHTML = originalBtnHTML;
-
-                // Show error popup
                 showPopup('❌ Failed to send message.');
             });
     });
 });
 
+// ============================================
 // Enhanced Particle Background
+// ============================================
 function createParticles() {
     const particlesContainer = document.getElementById('particles');
-    const particleCount = window.innerWidth < 768 ? 30 : 50; // Fewer particles on mobile
+    if (!particlesContainer) return;
+
+    const particleCount = window.innerWidth < 768 ? 30 : 50;
 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -192,7 +304,9 @@ function createParticles() {
     }
 }
 
+// ============================================
 // Typing animation restart on scroll
+// ============================================
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -212,7 +326,9 @@ if (heroSection) {
     observer.observe(heroSection);
 }
 
+// ============================================
 // Enhanced Project Card Interactions
+// ============================================
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mouseenter', function () {
         this.style.transform = 'translateY(-8px) scale(1.02)';
@@ -223,7 +339,9 @@ document.querySelectorAll('.project-card').forEach(card => {
     });
 });
 
+// ============================================
 // Smooth scrolling for anchor links
+// ============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -243,33 +361,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Enhanced Console message
-console.log(`
-        🚀 Welcome to Abhishek's Enhanced Portfolio with Education & Skills!
-        
-        ✨ New Enhanced Features:
-        - Complete Education timeline with animations
-        - Enhanced Skills section with progress bars
-        - Improved responsive design and accessibility
-        - Dark mode with sparkle effects
-        - AOS animations throughout
-        - Modern card layouts and hover effects
-        
-        Built with:
-        - HTML5 & CSS3 with advanced animations
-        - JavaScript (ES6+) with enhanced interactions
-        - Tailwind CSS with custom extensions
-        - AOS Animation Library
-        - Custom progress bar animations
-        
-        Feel free to explore and reach out for collaborations!
-        
-        GitHub: https://github.com/abhishek-coder-01
-        LinkedIn: https://www.linkedin.com/in/abhishek-yadav-292ba9308
-        Email: abhishekya301@gmail.com
-        `);
-
+// ============================================
 // Enhanced JS-driven typing + erasing animation
+// ============================================
 (function () {
     const phrases = [
         'Full Stack Developer',
@@ -286,9 +380,9 @@ console.log(`
     let typing = true;
     let timeout = null;
 
-    const typeSpeed = 80; // ms per char
-    const eraseSpeed = 40; // ms per char
-    const nextDelay = 1200; // pause before typing next phrase
+    const typeSpeed = 80;
+    const eraseSpeed = 40;
+    const nextDelay = 1200;
 
     function typeLoop() {
         const current = phrases[phraseIndex];
@@ -313,7 +407,6 @@ console.log(`
         }
     }
 
-    // Start typing when hero section becomes visible
     const hero = document.getElementById('home');
     if (hero) {
         const io = new IntersectionObserver((entries) => {
@@ -321,22 +414,21 @@ console.log(`
                 if (entry.isIntersecting) {
                     if (!timeout) typeLoop();
                 } else {
-                    // stop typing when out of view
                     if (timeout) { clearTimeout(timeout); timeout = null; }
                 }
             });
         }, { threshold: 0.1 });
         io.observe(hero);
     } else {
-        // fallback: start immediately
         typeLoop();
     }
 })();
 
-// Initialize Lenis
+// ============================================
+// Initialize Lenis Smooth Scroll
+// ============================================
 const lenis = new Lenis();
 
-// Use requestAnimationFrame to continuously update the scroll
 function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
@@ -344,12 +436,104 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
+// ============================================
 // Initialize particles
+// ============================================
 createParticles();
 
 // Responsive particle adjustment
 window.addEventListener('resize', () => {
     const particlesContainer = document.getElementById('particles');
-    particlesContainer.innerHTML = '';
-    createParticles();
+    if (particlesContainer) {
+        particlesContainer.innerHTML = '';
+        createParticles();
+    }
 });
+
+
+
+// ============================================
+// Enhanced Console message
+// ============================================
+// ============================================
+// Mobile menu toggle (smooth)
+// ============================================
+(function () {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const menuButtonContainer = document.getElementById('menu_button');
+
+    if (!mobileMenu || !mobileMenuBtn) return;
+
+    // ensure accessible state
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        const isActive = mobileMenu.classList.toggle('active');
+
+        if (menuButtonContainer) menuButtonContainer.classList.toggle('menu-open');
+
+        mobileMenuBtn.setAttribute('aria-expanded', String(isActive));
+
+        // prevent body scroll when menu is open on mobile
+        if (isActive) document.body.classList.add('overflow-hidden');
+        else document.body.classList.remove('overflow-hidden');
+    });
+
+    // Close when clicking nav links inside mobile menu
+    mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            if (menuButtonContainer) menuButtonContainer.classList.remove('menu-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('overflow-hidden');
+        });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            if (menuButtonContainer) menuButtonContainer.classList.remove('menu-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('overflow-hidden');
+        }
+    });
+
+    // Close when resizing to large screens
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            mobileMenu.classList.remove('active');
+            if (menuButtonContainer) menuButtonContainer.classList.remove('menu-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('overflow-hidden');
+        }
+    });
+
+})();
+
+console.log(`
+🚀 Welcome to Abhishek's Enhanced Portfolio with Education & Skills!
+
+✨ New Enhanced Features:
+- Three-way theme toggle (System/Light/Dark)
+- Complete Education timeline with animations
+- Enhanced Skills section with progress bars
+- Improved responsive design and accessibility
+- Dark mode with sparkle effects
+- AOS animations throughout
+- Modern card layouts and hover effects
+
+Built with:
+- HTML5 & CSS3 with advanced animations
+- JavaScript (ES6+) with enhanced interactions
+- Tailwind CSS with custom extensions
+- AOS Animation Library
+- Custom progress bar animations
+
+Feel free to explore and reach out for collaborations!
+
+GitHub: https://github.com/abhishek-coder-01
+LinkedIn: https://www.linkedin.com/in/abhishek-yadav-292ba9308
+Email: abhishekya301@gmail.com
+`);
