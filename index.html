@@ -919,7 +919,7 @@
                                 aria-label="Download CV">
                                 <!-- Default content -->
                                 <span id="btnIcon" class="mr-2">
-                                    <i class="fas fa-download"></i> 
+                                    <i class="fas fa-download"></i>
                                 </span>
                                 <span id="btnText">Download CV</span>
                             </a>
@@ -1182,6 +1182,47 @@
                     </div>
                 </div>
 
+
+                <!-- PowerBi -->
+                <div id="modal-power" class="fixed inset-0 z-50 flex items-center justify-center
+                  opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-out">
+
+                    <div id="backdrop-power" class="absolute inset-0 bg-black/30 backdrop-blur-sm
+                     opacity-0 transition-all duration-300 ease-out"></div>
+
+                    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4">
+                        <button id="close-power" class="group absolute top-3 right-3 p-[2px] rounded-full bg-red-500">
+                            <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <img src="./certificate/PowerBI.png" class="w-full h-auto rounded-2xl" alert="Error Js" />
+                    </div>
+                </div>
+
+
+
+                <!-- data anaylisis -->
+                <div id="modal-data" class="fixed inset-0 z-50 flex items-center justify-center
+                  opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-out">
+
+                    <div id="backdrop-data" class="absolute inset-0 bg-black/30 backdrop-blur-sm
+                     opacity-0 transition-all duration-300 ease-out"></div>
+
+                    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4">
+                        <button id="close-data" class="group absolute top-3 right-3 p-[2px] rounded-full bg-red-500">
+                            <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <img src="./certificate/Data Anaylsis.png" class="w-full h-auto rounded-2xl" alert="Error Js" />
+                    </div>
+                </div>
+
+
+
                 <!-- Modal Python -->
                 <div id="modal-javascript" class="fixed inset-0 z-50 flex items-center justify-center
                   opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-out">
@@ -1266,6 +1307,9 @@
 
 
 
+
+
+
                 <!-- Additional Certifications or Courses certification image end -->
 
 
@@ -1299,11 +1343,6 @@
 
 
 
-
-
-
-
-
                         <!-- full stack web devlopment  -->
                         <div class="relative skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-green-900 cursor-pointer"
                             id="card-second">
@@ -1311,9 +1350,9 @@
 
                             <!-- Visit Button with Requested Custom Padding -->
                             <a href="#" class="absolute -top-3 -left-3 bg-blue-600 text-white text-xs font-medium
-        pt-[1.2rem] pb-[0.5rem] pl-[1.75rem] pr-[0.75rem]
-        rounded-br-2xl rounded-tl-xl flex items-center justify-center gap-1
-        hover:bg-blue-700 transition">
+                                     pt-[1.2rem] pb-[0.5rem] pl-[1.75rem] pr-[0.75rem]
+                                       rounded-br-2xl rounded-tl-xl flex items-center justify-center gap-1
+                                     hover:bg-blue-700 transition">
                                 <span>Visit</span> <span class="text-sm">→</span>
                             </a>
 
@@ -1325,6 +1364,60 @@
                             <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Full Stack Web Development</h4>
                             <p class="text-gray-600 dark:text-gray-400 text-sm">Frontend + Backend with modern
                                 frameworks</p>
+
+                        </div>
+
+
+
+                        <!-- PowerBi  -->
+                        <div class="relative skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-orange-900 cursor-pointer"
+                            id="card-six">
+
+
+                            <!-- Visit Button with Requested Custom Padding -->
+                            <a href="#" class="absolute -top-3 -left-3 bg-blue-600 text-white text-xs font-medium
+                                     pt-[1.2rem] pb-[0.5rem] pl-[1.75rem] pr-[0.75rem]
+                                       rounded-br-2xl rounded-tl-xl flex items-center justify-center gap-1
+                                     hover:bg-blue-700 transition">
+                                <span>Visit</span> <span class="text-sm">→</span>
+                            </a>
+
+                            <div
+                                class="w-10 h-10 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-chart-bar text-yellow-600 dark:text-yellow-400 text-lg"></i>
+                            </div>
+
+
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Get data in Power BI</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Data Modeling • DAX Intelligence •
+                                Visualization Mastery</p>
+
+                        </div>
+
+
+                        <!-- data Anaylsis  -->
+                        <div class="relative skill-card bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border dark:border-Emerald-900 cursor-pointer"
+                            id="card-five">
+
+
+                            <!-- Visit Button with Requested Custom Padding -->
+                            <a href="#" class="absolute -top-3 -left-3 bg-blue-600 text-white text-xs font-medium
+                                     pt-[1.2rem] pb-[0.5rem] pl-[1.75rem] pr-[0.75rem]
+                                       rounded-br-2xl rounded-tl-xl flex items-center justify-center gap-1
+                                     hover:bg-blue-700 transition">
+                                <span>Visit</span> <span class="text-sm">→</span>
+                            </a>
+
+                            <div
+                                class="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-chart-line text-orange-600 dark:text-orange-400 text-lg"></i>
+                            </div>
+
+
+
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Discover data analysis</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">From Raw Data to Real-World Decisions
+                            </p>
 
                         </div>
 
@@ -2295,7 +2388,7 @@
         </footer>
     </div>
 
-    
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>

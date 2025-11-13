@@ -35,6 +35,8 @@ modalSetup('card-first', 'modal-genai', 'close-genai', 'backdrop-genai');
 modalSetup('card-second', 'modal-full-stack', 'close-full-stack', 'backdrop-full-stack');
 modalSetup('card-third', 'modal-react', 'close-react', 'backdrop-react');
 modalSetup('card-four', 'modal-python', 'close-python', 'backdrop-python');
+modalSetup('card-six', 'modal-power', 'close-power', 'backdrop-power');
+modalSetup('card-five', 'modal-data', 'close-data', 'backdrop-data');
 
 
 // ============================================
