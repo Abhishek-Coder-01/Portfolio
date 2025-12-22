@@ -37,6 +37,7 @@ modalSetup('card-third', 'modal-react', 'close-react', 'backdrop-react');
 modalSetup('card-four', 'modal-python', 'close-python', 'backdrop-python');
 modalSetup('card-six', 'modal-power', 'close-power', 'backdrop-power');
 modalSetup('card-five', 'modal-data', 'close-data', 'backdrop-data');
+modalSetup('card-seven', 'modal-google', 'close-google', 'backdrop-google');
 
 
 // ============================================
