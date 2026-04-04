@@ -856,11 +856,7 @@
         }
 
         /* Hide loader on mobile and tablet */
-        @media (max-width: 768px) {
-            #loader {
-                display: none;
-            }
-        }
+    
     </style>
 </head>
 
@@ -903,50 +899,59 @@
         </div>
 
         <!-- Content -->
-        <div class="relative z-10 flex flex-col items-center" style="animation:fadeUp 0.6s ease both;">
+     <div class="relative z-10 flex flex-col items-center justify-center h-full animate-fadeUp">
 
-            <!-- Spinner — smaller on mobile -->
-            <div class="relative flex items-center justify-center"
-                style="width:clamp(80px,22vw,140px); height:clamp(80px,22vw,140px);">
-                <div class="ring-outer absolute rounded-full" style="inset:0; border:1px solid;"></div>
-                <div class="ring-spin absolute rounded-full"
-                    style="inset:calc(100%/7); border-width:2px; border-style:solid; border-right-color:transparent; border-bottom-color:transparent; border-left-color:transparent; animation:spin 1.2s cubic-bezier(0.4,0,0.6,1) infinite;">
-                </div>
-                <div class="ring-rev absolute rounded-full"
-                    style="inset:calc(100%/3.5); border-width:1.5px; border-style:solid; border-top-color:transparent; border-bottom-color:transparent; border-left-color:transparent; animation:spin-rev 1.8s linear infinite;">
-                </div>
-                <div class="ring-inner absolute rounded-full" style="inset:calc(100%/2.5); border:1px solid;"></div>
-                <div class="dot"
-                    style="width:6px;height:6px;border-radius:50%;animation:blink 1.2s ease-in-out infinite;"></div>
-            </div>
+  <!-- Spinner -->
+  <div class="relative flex items-center justify-center w-[clamp(80px,22vw,140px)] h-[clamp(80px,22vw,140px)]">
 
-            <!-- Number — fluid size -->
-            <div class="flex flex-col items-center mt-4 sm:mt-10">
-                <div class="num"
-                    style="font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,16vw,96px); line-height:1; letter-spacing:-2px;">
-                    <span id="progress">0</span><span class="pct" style="font-size:clamp(20px,5vw,32px);">%</span>
-                </div>
-                <p class="lbl"
-                    style="font-size:clamp(7px,2.2vw,10px); letter-spacing:0.3em; text-transform:uppercase; margin-top:4px;">
-                    Loading portfolio</p>
-            </div>
+    <div class="absolute inset-0 rounded-full border border-gray-500 opacity-30"></div>
 
-            <!-- Bar — fluid width -->
-            <div class="mt-4 sm:mt-8" style="width:clamp(110px,48vw,220px);">
-                <div class="bar-track" style="width:100%;height:1px;overflow:hidden;position:relative;">
-                    <div id="progress-bar" class="bar-fill"
-                        style="position:absolute;left:0;top:0;height:100%;width:0%;transition:width 0.08s linear;">
-                    </div>
-                </div>
-                <div class="flex justify-between mt-2">
-                    <span class="bar-lbl" style="font-size:9px;letter-spacing:0.2em;">INIT</span>
-                    <span class="bar-lbl" style="font-size:9px;letter-spacing:0.2em;">COMPLETE</span>
-                </div>
-            </div>
+    <div class="absolute rounded-full border-2 border-white border-t-transparent border-l-transparent animate-spin"
+         style="inset:calc(100%/7);"></div>
 
-            <p id="load-status" class="stat-txt mt-3 sm:mt-7" style="font-size:10px;letter-spacing:0.12em;">
-                Initializing...</p>
-        </div>
+    <div class="absolute rounded-full border border-gray-400 border-b-transparent border-r-transparent animate-[spin_1.8s_linear_infinite_reverse]"
+         style="inset:calc(100%/3.5);"></div>
+
+    <div class="absolute rounded-full border border-gray-500 opacity-40"
+         style="inset:calc(100%/2.5);"></div>
+
+    <div class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
+  </div>
+
+  <!-- Percentage -->
+  <div class="flex flex-col items-center mt-6 sm:mt-10">
+    <div class="font-bold text-white tracking-tight"
+         style="font-size:clamp(52px,16vw,96px); line-height:1;">
+      <span id="progress">0</span>
+      <span class="text-lg sm:text-2xl">%</span>
+    </div>
+
+    <p class="text-[10px] tracking-[0.3em] uppercase mt-1 text-gray-400">
+      Loading Portfolio
+    </p>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="mt-6 sm:mt-8 w-[clamp(110px,48vw,220px)]">
+    <div class="w-full h-[2px] bg-gray-700 relative overflow-hidden">
+      <div id="progress-bar"
+           class="absolute left-0 top-0 h-full bg-white transition-all duration-100"
+           style="width:0%;">
+      </div>
+    </div>
+
+    <div class="flex justify-between mt-2 text-[9px] tracking-widest text-gray-400">
+      <span>INIT</span>
+      <span>COMPLETE</span>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <p id="load-status" class="mt-4 text-[10px] tracking-wider text-gray-400">
+    Initializing...
+  </p>
+
+</div>
     </div>
     <div class="absolute pointer-events-none" 
     style="top:0;left:0;width:100%;height:clamp(80px,18vh,120px); animation:scanline 3s linear infinite;">
@@ -1117,7 +1122,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
                     <!-- Profile Image (mobile: top) -->
-                    <div class="flex justify-center order-1 lg:order-2" data-aos-delay="200" data-aos="fade-left">
+                    <div class="flex justify-center order-1 lg:order-2" data-aos-delay="200" data-aos="fade-up">
                         <div class="relative">
                             <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full animate-float">
                                 <!-- Animated Google-colored ring with background for light mode -->
@@ -1257,7 +1262,7 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-center" data-aos="fade-left" data-aos-delay="300">
+                    <div class="flex justify-center" data-aos="fade-up" data-aos-delay="300">
                         <div class="relative">
                             <img src="./image/dev.webp" alt="About Abhishek"
                                 class="w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-2xl shadow-2xl">
@@ -1329,7 +1334,7 @@
                     </div>
 
                     <!-- Higher Secondary -->
-                    <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                         <div class="timeline-dot"></div>
                         <div
                             class="skill-card md:w-1/2 md:pl-8 bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg relative border border-purple-200 dark:border-purple-800">
