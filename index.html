@@ -783,10 +783,10 @@
             background-size: 40px 40px;
         }
 
-        /* Dark mode */
+        /* Dark mode - OS level */
         @media (prefers-color-scheme: dark) {
             #loader {
-                background: #050505;
+                background: #000000;
             }
 
             #loader .ring-outer {
@@ -842,9 +842,71 @@
             }
 
             #loader .grid-bg {
-                background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+                background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
                 background-size: 40px 40px;
             }
+        }
+
+        /* Dark mode - class-based (manual toggle) */
+        html.dark #loader {
+            background: #000000;
+        }
+
+        html.dark #loader .ring-outer {
+            border-color: #ffffff10;
+        }
+
+        html.dark #loader .ring-spin {
+            border-top-color: #fff;
+        }
+
+        html.dark #loader .ring-rev {
+            border-right-color: #ffffff60;
+        }
+
+        html.dark #loader .ring-inner {
+            border-color: #ffffff15;
+        }
+
+        html.dark #loader .dot {
+            background: #fff;
+        }
+
+        html.dark #loader .num {
+            color: #fff;
+        }
+
+        html.dark #loader .pct {
+            color: #ffffff40;
+        }
+
+        html.dark #loader .lbl {
+            color: #ffffff30;
+        }
+
+        html.dark #loader .bar-track {
+            background: #ffffff10;
+        }
+
+        html.dark #loader .bar-fill {
+            background: #fff;
+        }
+
+        html.dark #loader .bar-lbl {
+            color: #ffffff20;
+        }
+
+        html.dark #loader .stat-txt {
+            color: #ffffff25;
+        }
+
+        html.dark #loader .corner-acc {
+            border-color: #ffffff30;
+        }
+
+        html.dark #loader .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
         /* Mobile loader fix */
@@ -856,7 +918,6 @@
         }
 
         /* Hide loader on mobile and tablet */
-    
     </style>
 </head>
 
@@ -899,63 +960,63 @@
         </div>
 
         <!-- Content -->
-     <div class="relative z-10 flex flex-col items-center justify-center h-full animate-fadeUp">
+        <div class="relative z-10 flex flex-col items-center justify-center h-full animate-fadeUp">
 
-  <!-- Spinner -->
-  <div class="relative flex items-center justify-center w-[clamp(80px,22vw,140px)] h-[clamp(80px,22vw,140px)]">
+            <!-- Spinner -->
+            <div
+                class="relative flex items-center justify-center w-[clamp(80px,22vw,140px)] h-[clamp(80px,22vw,140px)]">
 
-    <div class="absolute inset-0 rounded-full border border-gray-500 opacity-30"></div>
+                <div class="absolute inset-0 rounded-full border border-gray-900 dark:border-white opacity-30"></div>
 
-    <div class="absolute rounded-full border-2 border-white border-t-transparent border-l-transparent animate-spin"
-         style="inset:calc(100%/7);"></div>
+                <div class="absolute rounded-full border-2 border-gray-900 dark:border-white border-t-transparent border-l-transparent dark:border-t-transparent dark:border-l-transparent animate-spin"
+                    style="inset:calc(100%/7);"></div>
 
-    <div class="absolute rounded-full border border-gray-400 border-b-transparent border-r-transparent animate-[spin_1.8s_linear_infinite_reverse]"
-         style="inset:calc(100%/3.5);"></div>
+                <div class="absolute rounded-full border border-gray-900 dark:border-white border-b-transparent border-r-transparent dark:border-b-transparent dark:border-r-transparent animate-[spin_1.8s_linear_infinite_reverse]"
+                    style="inset:calc(100%/3.5);"></div>
 
-    <div class="absolute rounded-full border border-gray-500 opacity-40"
-         style="inset:calc(100%/2.5);"></div>
+                <div class="absolute rounded-full border border-gray-900 dark:border-white opacity-40"
+                    style="inset:calc(100%/2.5);">
+                </div>
 
-    <div class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
-  </div>
+                <div class="w-1.5 h-1.5 rounded-full animate-pulse bg-gray-900 dark:bg-white"></div>
+            </div>
 
-  <!-- Percentage -->
-  <div class="flex flex-col items-center mt-6 sm:mt-10">
-    <div class="font-bold text-white tracking-tight"
-         style="font-size:clamp(52px,16vw,96px); line-height:1;">
-      <span id="progress">0</span>
-      <span class="text-lg sm:text-2xl">%</span>
+            <!-- Percentage -->
+            <div class="flex flex-col items-center mt-6 sm:mt-10">
+                <div class="font-bold text-gray-800 dark:text-white tracking-tight"
+                    style="font-size:clamp(52px,16vw,96px); line-height:1;">
+                    <span id="progress">0</span>
+                    <span class="text-lg sm:text-2xl">%</span>
+                </div>
+
+                <p class="text-[14px] tracking-[0.3em] uppercase mt-1 text-gray-800 dark:text-gray-300">
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mt-6 sm:mt-8 w-[clamp(110px,48vw,220px)]">
+                <div class="w-full h-[2px] bg-gray-700 dark:bg-gray-400 relative overflow-hidden">
+                    <div id="progress-bar"
+                        class="absolute left-0 top-0 h-full bg-white dark:bg-gray-300 transition-all duration-100"
+                        style="width:0%;">
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-2 text-[11px] tracking-widest text-gray-600 dark:text-gray-400">
+                    <span>INIT</span>
+                    <span>COMPLETE</span>
+                </div>
+            </div>
+
+            <!-- Status -->
+            <p id="load-status" class="mt-4 text-[14px] tracking-wider text-gray-600 dark:text-gray-400">
+                Initializing...
+            </p>
+
+        </div>
     </div>
-
-    <p class="text-[10px] tracking-[0.3em] uppercase mt-1 text-gray-400">
-      Loading Portfolio
-    </p>
-  </div>
-
-  <!-- Progress Bar -->
-  <div class="mt-6 sm:mt-8 w-[clamp(110px,48vw,220px)]">
-    <div class="w-full h-[2px] bg-gray-700 relative overflow-hidden">
-      <div id="progress-bar"
-           class="absolute left-0 top-0 h-full bg-white transition-all duration-100"
-           style="width:0%;">
-      </div>
+    <div class="absolute pointer-events-none"
+        style="top:0;left:0;width:100%;height:clamp(80px,18vh,120px); animation:scanline 3s linear infinite;">
     </div>
-
-    <div class="flex justify-between mt-2 text-[9px] tracking-widest text-gray-400">
-      <span>INIT</span>
-      <span>COMPLETE</span>
-    </div>
-  </div>
-
-  <!-- Status -->
-  <p id="load-status" class="mt-4 text-[10px] tracking-wider text-gray-400">
-    Initializing...
-  </p>
-
-</div>
-    </div>
-    <div class="absolute pointer-events-none" 
-    style="top:0;left:0;width:100%;height:clamp(80px,18vh,120px); animation:scanline 3s linear infinite;">
-</div>
     <!-- /// Main content starts here -->
 
     <div class="main px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
