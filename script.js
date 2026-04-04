@@ -58,9 +58,44 @@ const themeLightMobile = document.getElementById('themeLightMobile');
 const themeDarkMobile = document.getElementById('themeDarkMobile');
 const html = document.documentElement;
 const darkSparkles = document.getElementById('darkSparkles');
-
+// screen loading section elements
+const loader = document.getElementById('loader');
+const prog = document.getElementById('progress');
+const bar = document.getElementById('progress-bar');
+const status = document.getElementById('load-status');
+const msgs = ['Initializing...', 'Loading assets...', 'Building UI...', 'Almost done...'];
 // Check for saved theme preference or default to system
 const currentTheme = localStorage.getItem('theme') || 'system';
+
+
+
+// First visit check
+if (!sessionStorage.getItem('visited')) {
+    sessionStorage.setItem('visited', '1');
+    document.body.style.overflow = 'hidden';
+    let count = 0;
+
+    const iv = setInterval(() => {
+        count += Math.floor(Math.random() * 3) + 1;
+        if (count >= 100) count = 100;
+        prog.textContent = count;
+        bar.style.width = count + '%';
+        status.textContent = msgs[Math.floor(count / 25)] || 'Almost done...';
+
+        if (count === 100) {
+            clearInterval(iv);
+            status.textContent = '— Ready —';
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+                document.body.style.overflow = '';
+            }, 600);
+        }
+    }, 35);
+
+} else {
+    loader.style.display = 'none';
+}
 
 // Function to create sparkles for dark mode
 function createSparkles(count = 50) {
@@ -369,10 +404,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ============================================
 (function () {
     const phrases = [
-        'Full Stack Developer',
-        'Python & Flask Enthusiast',
-        'Frontend with Tailwind CSS',
-        'Node.js & REST APIs',
+        "MERN Stack Developer",
+        "Ideas into Real-World Products",
+        "React & Tailwind CSS Specialist",
+        "Node.js, REST APIs & Python (Flask)",
+        "15+ Projects Built & Deployed 🚀"
     ];
 
     const typeElem = document.querySelector('.typewriter');
@@ -626,10 +662,10 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 console.log(
-  "%c✨ Welcome to My Portfolio! ✨\n%cFeel free to explore the code and reach out if you have any questions.\n\n%c📩 Contact me anytime 😊",
-  "color:#6366f1; font-size:20px; font-weight:700;",
-  "color:#10b981; font-size:14px;",
-  "color:#f43f5e; font-size:14px; font-weight:600;"
+    "%c✨ Welcome to My Portfolio! ✨\n%cFeel free to explore the code and reach out if you have any questions.\n\n%c📩 Contact me anytime 😊",
+    "color:#6366f1; font-size:20px; font-weight:700;",
+    "color:#10b981; font-size:14px;",
+    "color:#f43f5e; font-size:14px; font-weight:600;"
 );
 
 // ============================================
