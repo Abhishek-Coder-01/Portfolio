@@ -386,7 +386,7 @@
         .glass-submit-btn {
             position: relative;
             overflow: hidden;
-            background: #16a34a;
+            background: linear-gradient(135deg, rgba(23, 60, 53, 0.88), rgba(34, 128, 107, 0.72));
             border: 1px solid rgba(255, 255, 255, 0.18);
             color: #ffffff;
             backdrop-filter: blur(18px) saturate(160%);
@@ -396,7 +396,6 @@
         }
 
         .glass-submit-btn:hover {
-            background: #15803d;
             transform: translateY(-2px);
             box-shadow: 0 18px 34px rgba(23, 60, 53, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.24);
         }
@@ -411,14 +410,13 @@
         }
 
         .dark .glass-submit-btn {
-            background: #16a34a;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(52, 211, 153, 0.12));
             border-color: rgba(255, 255, 255, 0.12);
             color: #ecfdf5;
             box-shadow: 0 14px 28px rgba(2, 6, 23, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .dark .glass-submit-btn:hover {
-            background: #15803d;
             box-shadow: 0 18px 34px rgba(2, 6, 23, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.14);
         }
 
@@ -718,41 +716,8 @@
         }
 
         /* Enhanced Responsive adjustments */
-        @media (max-width: 1023px) {
-            header.nav-shell {
-                top: 12px;
-                border-radius: 1.5rem;
-            }
+        @media (max-width: 1024px) {
 
-            header.nav-shell > div {
-                min-height: 72px;
-                padding-left: 20px;
-                padding-right: 20px;
-                gap: 0.75rem;
-            }
-
-            #homeee {
-                width: 3rem;
-                height: 3rem;
-                font-size: 1.5rem;
-            }
-
-            header.nav-shell > div > a {
-                gap: 0.75rem;
-                min-width: 0;
-                flex: 1 1 auto;
-            }
-
-            header.nav-shell > div > a span:last-child {
-                font-size: 1.1rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            #menu_button {
-                flex-shrink: 0;
-            }
 
 
             /* Reduce particles on mobile for performance */
@@ -763,6 +728,11 @@
             /* Reduce sparkles on mobile */
             .sparkle-dot:nth-child(n+15) {
                 display: none;
+            }
+
+            #dev{
+                padding-top: 17px;
+                padding-bottom: 17px;
             }
         }
 
@@ -809,13 +779,14 @@
 
 
         @media (max-width: 750px) {
-            header.nav-shell > div {
-                padding-left: 16px;
-                padding-right: 16px;
+
+            .mobile_mode,
+            #mobile_toggle {
+                display: none;
             }
 
-            header.nav-shell > div > a span:last-child {
-                font-size: 1rem;
+            #menu_button {
+                display: block;
             }
         }
 
@@ -1369,10 +1340,10 @@
                 </a>
 
                 <!-- CENTER: Navigation -->
-                <nav class="mobile_mode hidden lg:flex items-center gap-2 lg:gap-3 nav-pill
+                <nav id="dev" class="mobile_mode lg:flex items-center gap-2 lg:gap-3 nav-pill
   border
   backdrop-blur-md
-  rounded-full px-3 py-2
+  rounded-full px-3 py-2 sm:
   transition-all duration-300">
                     <a href="#home" data-nav-link
                         class="nav-item is-active group relative px-5 py-3 text-[1.02rem] font-bold rounded-full">
@@ -1395,7 +1366,7 @@
 
 
                 <!-- Theme Toggle Desktop mode -->
-                <div class="nav-control-wrap hidden lg:flex items-center gap-2 backdrop-blur-md rounded-full shadow px-3 py-[7px]"
+                <div class="nav-control-wrap flex items-center gap-2 backdrop-blur-md rounded-full shadow px-3 py-[7px]"
                     id="mobile_toggle">
                     <button id="themeSystem"
                         class="theme-btn nav-control-btn nav-icon-btn h-9 w-9 rounded-full grid place-items-center transition"
@@ -1430,7 +1401,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="flex items-center gap-3 lg:hidden" id="menu_button">
+                <div class="hidden items-center gap-3" id="menu_button">
                     <button id="mobileMenuBtn"
                         class="nav-control-wrap p-2 rounded-xl nav-control-btn transition flex flex-col justify-center items-center w-11 h-11"
                         aria-label="Toggle menu" aria-expanded="false">
@@ -1504,7 +1475,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
                     <!-- Profile Image (mobile: top) -->
-                    <div class="flex justify-center order-1 lg:order-2" data-aos-delay="200" data-aos="fade-up">
+                    <div class="flex justify-center order-1 lg:order-2" data-aos-delay="200" data-aos="fade-left">
                         <div class="relative">
                             <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full animate-float">
                                 <!-- Animated Google-colored ring with background for light mode -->
@@ -3627,7 +3598,7 @@
                             <div class="pt-2">
                                 <button class="glass-submit-btn w-full group
                        py-3.5 px-6 rounded-xl 
-                       font-semibold text-sm
+                       font-semibold text-sm bg-gradient-to-r from-primary-600 to-purple-600 text-white dark:bg-gradient-to-r dark:from-primary-500 dark:to-purple-500
                        transition-all duration-300" type="submit">
 
                                     <!-- Button shine effect -->
