@@ -116,30 +116,21 @@ function applyTheme(theme) {
     // Remove highlight from all buttons
     // include both desktop and mobile theme button classes
     document.querySelectorAll('.theme-btn, .theme-btn-mobile').forEach(btn => {
-        btn.classList.remove('bg-gray-300', 'dark:bg-gray-300');
-    });
-
-    // Remove color from all icons in theme buttons
-    document.querySelectorAll('.theme-btn svg, .theme-btn-mobile svg').forEach(icon => {
-        icon.classList.remove('text-black');
+        btn.classList.remove('theme-btn-active');
     });
 
     if (theme === 'dark') {
         html.classList.add('dark');
-        if (themeDark) themeDark.classList.add('bg-gray-300', 'dark:bg-gray-300');
-        if (themeDark && themeDark.querySelector) themeDark.querySelector('svg').classList.add('text-black');
-        if (themeDarkMobile) themeDarkMobile.classList.add('bg-gray-300', 'dark:bg-gray-300');
-        if (themeDarkMobile && themeDarkMobile.querySelector) themeDarkMobile.querySelector('svg').classList.add('text-black');
+        if (themeDark) themeDark.classList.add('theme-btn-active');
+        if (themeDarkMobile) themeDarkMobile.classList.add('theme-btn-active');
         createSparkles();
         if (darkSparkles) darkSparkles.classList.add('active');
     }
 
     else if (theme === 'light') {
         html.classList.remove('dark');
-        if (themeLight) themeLight.classList.add('bg-gray-300');
-        if (themeLight && themeLight.querySelector) themeLight.querySelector('svg').classList.add('text-black');
-        if (themeLightMobile) themeLightMobile.classList.add('bg-gray-300');
-        if (themeLightMobile && themeLightMobile.querySelector) themeLightMobile.querySelector('svg').classList.add('text-black');
+        if (themeLight) themeLight.classList.add('theme-btn-active');
+        if (themeLightMobile) themeLightMobile.classList.add('theme-btn-active');
         if (darkSparkles) darkSparkles.classList.remove('active');
     }
 
@@ -155,10 +146,8 @@ function applyTheme(theme) {
             if (darkSparkles) darkSparkles.classList.remove('active');
         }
 
-        if (themeSystem) themeSystem.classList.add('bg-gray-300');
-        if (themeSystem && themeSystem.querySelector) themeSystem.querySelector('svg').classList.add('text-black');
-        if (themeSystemMobile) themeSystemMobile.classList.add('bg-gray-300');
-        if (themeSystemMobile && themeSystemMobile.querySelector) themeSystemMobile.querySelector('svg').classList.add('text-black');
+        if (themeSystem) themeSystem.classList.add('theme-btn-active');
+        if (themeSystemMobile) themeSystemMobile.classList.add('theme-btn-active');
     }
 }
 
@@ -255,13 +244,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create enhanced popup element
     let popup = document.createElement('div');
     popup.id = 'popup';
-    popup.className = 'fixed top-5 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-3 rounded-lg flex items-center space-x-3 shadow-lg z-50 opacity-0 transition-all duration-500 pointer-events-none';
-    popup.innerHTML = `<span id="popupText"></span>`;
+    popup.className = 'glass-toast fixed top-5 left-1/2 flex items-center gap-3 px-4 py-3 rounded-2xl z-50 opacity-0 transition-all duration-500 pointer-events-none';
+    popup.innerHTML = `
+        <span id="popupBadge" class="glass-toast-badge inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold"></span>
+        <span id="popupText" class="text-sm sm:text-[15px] font-medium tracking-[0.01em]"></span>
+    `;
     document.body.appendChild(popup);
+    popup.style.transform = 'translateX(-50%) translateY(-20px)';
 
-    function showPopup(message) {
+    function showPopup(message, type = 'success') {
         const popupText = document.getElementById('popupText');
-        popupText.textContent = message;
+        const popupBadge = document.getElementById('popupBadge');
+        const normalizedMessage = message.includes('Message Sent Successfully')
+            ? 'Message sent successfully!'
+            : message.includes('Failed to send message')
+                ? 'Failed to send message.'
+                : message;
+        const resolvedType = normalizedMessage.toLowerCase().includes('failed') ? 'error' : type;
+
+        popupText.textContent = normalizedMessage;
+        popupBadge.textContent = resolvedType === 'error' ? '!' : 'OK';
+        popup.classList.remove('glass-toast-success', 'glass-toast-error');
+        popup.classList.add(resolvedType === 'error' ? 'glass-toast-error' : 'glass-toast-success');
         popup.classList.remove('opacity-0', 'pointer-events-none');
         popup.classList.add('opacity-100');
         popup.style.transform = 'translateX(-50%) translateY(0)';
@@ -380,6 +384,14 @@ document.querySelectorAll('.project-card').forEach(card => {
 // ============================================
 // Smooth scrolling for anchor links
 // ============================================
+function getStickyHeaderOffset() {
+    const header = document.querySelector('header');
+    if (!header) return 96;
+
+    const headerHeight = header.getBoundingClientRect().height;
+    return Math.ceil(headerHeight + 24);
+}
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -387,7 +399,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const targetElement = document.getElementById(targetId);
 
         if (targetElement) {
-            const headerOffset = 80;
+            const headerOffset = getStickyHeaderOffset();
             const elementPosition = targetElement.offsetTop;
             const offsetPosition = elementPosition - headerOffset;
 
@@ -398,6 +410,71 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// ============================================
+// Navbar active state sync
+// ============================================
+(function () {
+    const navLinks = Array.from(document.querySelectorAll('[data-nav-link]'));
+    if (!navLinks.length) return;
+
+    const sectionIds = ['home', 'about', 'contact'];
+    const visibleSections = sectionIds
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+    function setActiveNav(targetId) {
+        navLinks.forEach(link => {
+            const isMatch = link.getAttribute('href') === `#${targetId}`;
+            link.classList.toggle('is-active', isMatch);
+            if (isMatch) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+    }
+
+    if (!visibleSections.length) {
+        setActiveNav('home');
+        return;
+    }
+
+    function syncActiveNavByScroll() {
+        const scrollMarker = window.scrollY + getStickyHeaderOffset() + 120;
+        let activeSectionId = visibleSections[0].id;
+
+        visibleSections.forEach(section => {
+            if (section.offsetTop <= scrollMarker) {
+                activeSectionId = section.id;
+            }
+        });
+
+        setActiveNav(activeSectionId);
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const targetId = link.getAttribute('href').replace('#', '');
+            setActiveNav(targetId);
+            requestAnimationFrame(syncActiveNavByScroll);
+        });
+    });
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                syncActiveNavByScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    window.addEventListener('resize', syncActiveNavByScroll);
+    syncActiveNavByScroll();
+})();
 
 // ============================================
 // Enhanced JS-driven typing + erasing animation

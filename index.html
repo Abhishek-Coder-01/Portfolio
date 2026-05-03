@@ -135,6 +135,307 @@
     </script>
 
     <style>
+        html {
+            background-color: #ffffff;
+        }
+
+        html.dark {
+            background-color: #111827;
+        }
+
+        body {
+            max-width: none;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .main {
+            width: min(100%, 1400px);
+            margin: 0 auto;
+        }
+
+        :root {
+            --nav-accent: #173c35;
+            --nav-accent-soft: #22806b;
+            --nav-cream: #f7fffb;
+            --nav-border: #d7efe3;
+            --nav-shell: #edf9f2;
+            --nav-pill-bg: rgba(255, 255, 255, 0.88);
+            --nav-selected-bg: #c9f4da;
+            --nav-selected-shadow: rgba(34, 128, 107, 0.2);
+            --glass-white-10: rgba(255, 255, 255, 0.1);
+            --glass-white-06: rgba(255, 255, 255, 0.06);
+            --glass-dark-18: rgba(15, 23, 42, 0.72);
+            --glass-dark-12: rgba(30, 41, 59, 0.48);
+            --glass-dark-08: rgba(51, 65, 85, 0.3);
+        }
+
+        .nav-accent-text {
+            color: var(--nav-accent);
+        }
+
+        .nav-accent-hover:hover {
+            color: var(--nav-accent-soft);
+        }
+
+        .nav-accent-bg {
+            background-color: var(--nav-accent);
+        }
+
+        .nav-accent-underline {
+            background-color: var(--nav-accent-soft);
+        }
+
+        .nav-shell {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            background: linear-gradient(135deg, var(--glass-white-10), var(--glass-white-06));
+            border: 1px solid var(--nav-border);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            box-shadow: 0 20px 45px rgba(23, 60, 53, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+        }
+
+        .dark .nav-shell {
+            background: linear-gradient(135deg, var(--glass-dark-18), var(--glass-dark-12) 55%, var(--glass-dark-08));
+            border-color: rgba(148, 163, 184, 0.16);
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-shell::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.08) 42%, transparent 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .dark .nav-shell::before {
+            background: linear-gradient(180deg, rgba(148, 163, 184, 0.08), rgba(148, 163, 184, 0.02) 42%, transparent 100%);
+        }
+
+        .nav-brand-badge {
+            background: linear-gradient(135deg, #34d399, #10b981);
+            box-shadow: 0 12px 24px rgba(16, 185, 129, 0.28);
+        }
+
+        .dark .nav-brand-badge {
+            background: linear-gradient(135deg, #6ee7b7, #34d399);
+            color: var(--nav-accent);
+        }
+
+        .nav-pill {
+            position: relative;
+            background: linear-gradient(135deg, var(--glass-white-10), rgba(255, 255, 255, 0.08));
+            border-color: var(--nav-border);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            box-shadow: 0 12px 28px rgba(23, 60, 53, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+        }
+
+        .dark .nav-pill {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.62), rgba(30, 41, 59, 0.42));
+            border-color: rgba(148, 163, 184, 0.16);
+            box-shadow: 0 12px 28px rgba(2, 6, 23, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-item {
+            color: var(--nav-accent);
+            transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .dark .nav-item {
+            color: var(--nav-cream);
+        }
+
+        .nav-item:hover {
+            color: var(--nav-accent-soft);
+            transform: translateY(-1px);
+        }
+
+        .nav-item.is-active {
+            background: var(--nav-selected-bg);
+            color: var(--nav-accent);
+            box-shadow: inset 0 0 0 1px rgba(34, 128, 107, 0.16), 0 10px 20px var(--nav-selected-shadow);
+        }
+
+        .dark .nav-item.is-active {
+            background: rgba(52, 211, 153, 0.16);
+            color: #dcfff2;
+            box-shadow: inset 0 0 0 1px rgba(110, 231, 183, 0.22);
+        }
+
+        .nav-link-indicator {
+            display: none;
+        }
+
+        .nav-control-wrap {
+            background: linear-gradient(135deg, var(--glass-white-10), rgba(255, 255, 255, 0.08));
+            border: 1px solid var(--nav-border);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            box-shadow: 0 12px 28px rgba(23, 60, 53, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+        }
+
+        .dark .nav-control-wrap {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.62), rgba(30, 41, 59, 0.42));
+            border-color: rgba(148, 163, 184, 0.16);
+            box-shadow: 0 12px 28px rgba(2, 6, 23, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-control-btn {
+            color: var(--nav-accent);
+        }
+
+        .dark .nav-control-btn {
+            color: var(--nav-cream);
+        }
+
+        .nav-icon-btn:hover {
+            background: rgba(34, 128, 107, 0.1);
+        }
+
+        .dark .nav-icon-btn:hover {
+            background: rgba(52, 211, 153, 0.12);
+        }
+
+        .theme-btn-active {
+            background: var(--nav-selected-bg);
+            color: var(--nav-accent);
+            box-shadow: inset 0 0 0 1px rgba(34, 128, 107, 0.16), 0 8px 18px rgba(34, 128, 107, 0.12);
+        }
+
+        .dark .theme-btn-active {
+            background: rgba(52, 211, 153, 0.16);
+            color: #dcfff2;
+            box-shadow: inset 0 0 0 1px rgba(110, 231, 183, 0.22);
+        }
+
+        .theme-btn-active svg,
+        .theme-btn-active span {
+            color: currentColor;
+        }
+
+        .glass-toast {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            background: linear-gradient(135deg, var(--glass-white-10), var(--glass-white-06));
+            border: 1px solid var(--nav-border);
+            color: #173c35;
+            backdrop-filter: blur(22px) saturate(170%);
+            -webkit-backdrop-filter: blur(22px) saturate(170%);
+            box-shadow: 0 20px 45px rgba(23, 60, 53, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+        }
+
+        .dark .glass-toast {
+            background: linear-gradient(135deg, var(--glass-dark-18), var(--glass-dark-12) 55%, var(--glass-dark-08));
+            border-color: rgba(148, 163, 184, 0.16);
+            color: #f7fffb;
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-toast::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.08) 42%, transparent 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .dark .glass-toast::before {
+            background: linear-gradient(180deg, rgba(148, 163, 184, 0.08), rgba(148, 163, 184, 0.02) 42%, transparent 100%);
+        }
+
+        .glass-toast-success {
+            border-color: rgba(16, 185, 129, 0.28);
+        }
+
+        .glass-toast-error {
+            border-color: rgba(239, 68, 68, 0.28);
+        }
+
+        .glass-toast-badge {
+            background: rgba(16, 185, 129, 0.14);
+            color: #047857;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .dark .glass-toast-badge {
+            background: rgba(52, 211, 153, 0.16);
+            color: #a7f3d0;
+            border-color: rgba(110, 231, 183, 0.18);
+        }
+
+        .glass-toast-error .glass-toast-badge {
+            background: rgba(239, 68, 68, 0.12);
+            color: #dc2626;
+            border-color: rgba(239, 68, 68, 0.18);
+        }
+
+        .dark .glass-toast-error .glass-toast-badge {
+            background: rgba(248, 113, 113, 0.14);
+            color: #fecaca;
+            border-color: rgba(248, 113, 113, 0.2);
+        }
+
+        .glass-submit-btn {
+            position: relative;
+            overflow: hidden;
+            background: #16a34a;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            backdrop-filter: blur(18px) saturate(160%);
+            -webkit-backdrop-filter: blur(18px) saturate(160%);
+            box-shadow: 0 14px 28px rgba(23, 60, 53, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .glass-submit-btn:hover {
+            background: #15803d;
+            transform: translateY(-2px);
+            box-shadow: 0 18px 34px rgba(23, 60, 53, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.24);
+        }
+
+        .glass-submit-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .glass-submit-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.86;
+        }
+
+        .dark .glass-submit-btn {
+            background: #16a34a;
+            border-color: rgba(255, 255, 255, 0.12);
+            color: #ecfdf5;
+            box-shadow: 0 14px 28px rgba(2, 6, 23, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .glass-submit-btn:hover {
+            background: #15803d;
+            box-shadow: 0 18px 34px rgba(2, 6, 23, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+        }
+
+        .mobile-nav-shell {
+            background: linear-gradient(135deg, var(--glass-white-10), rgba(255, 255, 255, 0.08));
+            border: 1px solid var(--nav-border);
+            backdrop-filter: blur(22px) saturate(170%);
+            -webkit-backdrop-filter: blur(22px) saturate(170%);
+            box-shadow: 0 16px 30px rgba(23, 60, 53, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+        }
+
+        .dark .mobile-nav-shell {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.46));
+            border-color: rgba(148, 163, 184, 0.14);
+            box-shadow: 0 16px 30px rgba(2, 6, 23, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -417,9 +718,41 @@
         }
 
         /* Enhanced Responsive adjustments */
-        @media (max-width: 1024px) {
+        @media (max-width: 1023px) {
+            header.nav-shell {
+                top: 12px;
+                border-radius: 1.5rem;
+            }
 
+            header.nav-shell > div {
+                min-height: 72px;
+                padding-left: 20px;
+                padding-right: 20px;
+                gap: 0.75rem;
+            }
 
+            #homeee {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.5rem;
+            }
+
+            header.nav-shell > div > a {
+                gap: 0.75rem;
+                min-width: 0;
+                flex: 1 1 auto;
+            }
+
+            header.nav-shell > div > a span:last-child {
+                font-size: 1.1rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            #menu_button {
+                flex-shrink: 0;
+            }
 
 
             /* Reduce particles on mobile for performance */
@@ -476,14 +809,13 @@
 
 
         @media (max-width: 750px) {
-
-            .mobile_mode,
-            #mobile_toggle {
-                display: none;
+            header.nav-shell > div {
+                padding-left: 16px;
+                padding-right: 16px;
             }
 
-            #menu_button {
-                display: block;
+            header.nav-shell > div > a span:last-child {
+                font-size: 1rem;
             }
         }
 
@@ -922,7 +1254,7 @@
 </head>
 
 <body
-    class="m-0 p-0 box-border max-w-[1400px] my-0 mx-auto font-inter bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-300">
+    class="m-0 p-0 box-border font-inter bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-300">
 
     <!-- Dark Mode Overlay -->
     <div class="dark-mode-overlay"></div>
@@ -1021,63 +1353,52 @@
 
     <div class="main px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
 
-        <header
-            class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-700">
-            <div class="flex justify-between items-center h-16 sm:h-20 px-4">
+        <header class="sticky top-4 z-50 nav-shell backdrop-blur-xl rounded-[2rem]">
+            <div class="flex justify-between items-center h-16 sm:h-20 px-4 sm:px-6">
 
                 <!-- LEFT: Logo -->
-                <a href="#" class="flex items-center gap-2 group">
+                <a href="#home" class="flex items-center gap-3 group">
                     <span
-                        class="inline-flex h-10 w-10 items-center justify-center rounded-full text-white bg-[#1C5E66] dark:bg-[#EFF1E4] dark:text-[#1C5E66] font-bold text-lg shadow-md"
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-full text-white nav-brand-badge font-bold text-lg"
                         id="homeee">
                         A
                     </span>
-                    <span class="text-lg font-bold tracking-tight text-[#1C5E66] dark:text-[#EFF1E4]">
+                    <span class="text-lg font-bold tracking-tight nav-accent-text dark:text-[var(--nav-cream)]">
                         Abhishek Yadav
                     </span>
                 </a>
 
                 <!-- CENTER: Navigation -->
-                <nav class="mobile_mode lg:flex items-center gap-6">
-                    <a href="#homeee" class="group relative px-3 py-2 text-[1.05rem] font-bold 
-                       text-[#1C5E66] hover:text-[#154046] 
-                     dark:text-[#EFF1E4] dark:hover:text-[#EFF1E4]
-              transition-colors duration-300">
+                <nav class="mobile_mode hidden lg:flex items-center gap-2 lg:gap-3 nav-pill
+  border
+  backdrop-blur-md
+  rounded-full px-3 py-2
+  transition-all duration-300">
+                    <a href="#home" data-nav-link
+                        class="nav-item is-active group relative px-5 py-3 text-[1.02rem] font-bold rounded-full">
                         Home
-                        <span class="absolute left-0 -bottom-0.5 w-0 h-[1.5px] 
-               bg-[#154046] transition-all duration-300 
-                   group-hover:w-full 
-                  dark:group-hover:bg-[#EFF1E4]"></span>
+                        <span class="nav-link-indicator absolute left-0 -bottom-0.5 w-0 h-[1.5px]"></span>
                     </a>
 
-                    <a href="#about" class="group relative px-3 py-2 text-[1.05rem] font-bold 
-               text-[#1C5E66] hover:text-[#154046] 
-                     dark:text-[#EFF1E4] dark:hover:text-[#EFF1E4]
-             transition-colors duration-300">
+                    <a href="#about" data-nav-link
+                        class="nav-item group relative px-5 py-3 text-[1.02rem] font-bold rounded-full">
                         About
-                        <span class="absolute left-0 -bottom-0.5 w-0 h-[1.5px] 
-                   bg-[#154046] transition-all duration-300 
-               group-hover:w-full 
-                     dark:group-hover:bg-[#EFF1E4]"></span>
+                        <span class="nav-link-indicator absolute left-0 -bottom-0.5 w-0 h-[1.5px]"></span>
                     </a>
 
-                    <a href="#contact" class="group relative px-3 py-2 text-[1.05rem] font-bold 
-                  text-[#1C5E66] hover:text-[#154046] 
-               dark:text-[#EFF1E4] dark:hover:text-[#EFF1E4]
-                  transition-colors duration-300">
+                    <a href="#contact" data-nav-link
+                        class="nav-item group relative px-5 py-3 text-[1.02rem] font-bold rounded-full">
                         Contact
-                        <span class="absolute left-0 -bottom-0.5 w-0 h-[1.5px] 
-              bg-[#154046] transition-all duration-300 
-             group-hover:w-full 
-             dark:group-hover:bg-[#EFF1E4]"></span>
+                        <span class="nav-link-indicator absolute left-0 -bottom-0.5 w-0 h-[1.5px]"></span>
                     </a>
                 </nav>
 
+
                 <!-- Theme Toggle Desktop mode -->
-                <div class="flex items-center gap-2 bg-[#1C5E66] dark:bg-[#EFF1E4] text-black backdrop-blur-md rounded-full shadow px-4 py-[7px]"
+                <div class="nav-control-wrap hidden lg:flex items-center gap-2 backdrop-blur-md rounded-full shadow px-3 py-[7px]"
                     id="mobile_toggle">
                     <button id="themeSystem"
-                        class="theme-btn h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition text-white dark:text-black"
+                        class="theme-btn nav-control-btn nav-icon-btn h-9 w-9 rounded-full grid place-items-center transition"
                         aria-label="System theme">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -1088,7 +1409,7 @@
                     </button>
 
                     <button id="themeLight"
-                        class="theme-btn h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition text-white dark:text-black"
+                        class="theme-btn nav-control-btn nav-icon-btn h-9 w-9 rounded-full grid place-items-center transition"
                         aria-label="Light mode">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -1099,7 +1420,7 @@
                     </button>
 
                     <button id="themeDark"
-                        class="theme-btn h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition text-white dark:text-black"
+                        class="theme-btn nav-control-btn nav-icon-btn h-9 w-9 rounded-full grid place-items-center transition"
                         aria-label="Dark mode">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -1109,9 +1430,9 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="hidden items-center gap-3" id="menu_button">
+                <div class="flex items-center gap-3 lg:hidden" id="menu_button">
                     <button id="mobileMenuBtn"
-                        class="p-2 rounded-md bg-[#2A676D] dark:bg-[#E2E7DC] text-[#EFF1E4] dark:text-[#1C5E66] transition flex flex-col justify-center items-center w-10 h-10"
+                        class="nav-control-wrap p-2 rounded-xl nav-control-btn transition flex flex-col justify-center items-center w-11 h-11"
                         aria-label="Toggle menu" aria-expanded="false">
                         <span class="hamburger-line block w-5 h-0.5 bg-current mb-1"></span>
                         <span class="hamburger-line block w-5 h-0.5 bg-current mb-1"></span>
@@ -1123,26 +1444,26 @@
 
             <!-- Mobile Menu -->
             <div id="mobileMenu" class="mobile-menu">
-                <nav class="flex flex-col p-4 gap-3">
-                    <a href="#homeee"
-                        class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold rounded ">
+                <nav class="mobile-nav-shell mx-3 mb-3 flex flex-col gap-3 rounded-[1.75rem] p-4">
+                    <a href="#home" data-nav-link
+                        class="mobile-nav-link nav-item is-active px-4 py-3 text-lg font-semibold rounded-2xl">
                         Home
                     </a>
-                    <a href="#about"
-                        class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold rounded ">
+                    <a href="#about" data-nav-link
+                        class="mobile-nav-link nav-item px-4 py-3 text-lg font-semibold rounded-2xl">
                         About
                     </a>
-                    <a href="#contact"
-                        class="mobile-nav-link text-[#1C5E66] dark:text-[#EFF1E4] px-3 py-2 text-lg font-semibold rounded ">
+                    <a href="#contact" data-nav-link
+                        class="mobile-nav-link nav-item px-4 py-3 text-lg font-semibold rounded-2xl">
                         Contact
                     </a>
 
                     <!-- Theme Buttons Mobile -->
                     <div class="w-full flex justify-center mt-2">
                         <div
-                            class="flex w-[180px] justify-center items-center gap-2 bg-[#1C5E66] dark:bg-[#EFF1E4] text-black backdrop-blur-md rounded-full shadow px-4 py-[7px]">
+                            class="nav-control-wrap flex w-[180px] justify-center items-center gap-2 backdrop-blur-md rounded-full shadow px-4 py-[7px]">
                             <button id="themeSystemMobile"
-                                class="theme-btn-mobile text-white dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition"
+                                class="theme-btn-mobile nav-control-btn nav-icon-btn h-9 w-9 rounded-full grid place-items-center transition"
                                 aria-label="System theme">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2">
@@ -1152,7 +1473,7 @@
                                 </svg>
                             </button>
                             <button id="themeLightMobile"
-                                class="theme-btn-mobile text-white dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center transition dark:hover:bg-gray-300"
+                                class="theme-btn-mobile nav-control-btn nav-icon-btn h-9 w-9 rounded-full grid place-items-center transition"
                                 aria-label="Light mode">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2">
@@ -1162,7 +1483,7 @@
                                 </svg>
                             </button>
                             <button id="themeDarkMobile"
-                                class="theme-btn-mobile text-white dark:text-black h-9 w-9 rounded-full hover:bg-gray-300 grid place-items-center dark:hover:bg-gray-300 transition"
+                                class="theme-btn-mobile nav-control-btn nav-icon-btn h-9 w-9 rounded-full grid place-items-center transition"
                                 aria-label="Dark mode">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2">
@@ -1259,18 +1580,48 @@
                         </div>
 
                         <!-- Social Links -->
-                        <div class="flex justify-center lg:justify-start space-x-6">
-                            <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors text-2xl">
-                                <i class="fab fa-github"></i>
+                        <div class="flex justify-center lg:justify-start items-center gap-3">
+                            <!-- GitHub -->
+                            <a href="https://github.com/abhishek-coder-01" target="_blank" class="relative group flex h-12 w-12 items-center justify-center rounded-xl 
+                   backdrop-blur-md bg-white/40 dark:bg-gray-900/40 
+                   border border-gray-300 dark:border-gray-700/50 
+                   shadow-[0_4px_16px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.25)]
+                   hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)]
+                   hover:-translate-y-1 transition-all duration-300">
+                                <!-- Inner glow ring -->
+                                <span
+                                    class="absolute inset-0 rounded-xl bg-gradient-to-br from-white/80 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                                <i class="fab fa-github text-xl text-gray-700 dark:text-gray-300 
+                  group-hover:text-[#1C5E66] dark:group-hover:text-[#EFF1E4] 
+                  relative z-10 transition-colors duration-300"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank"
-                                class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors text-2xl">
-                                <i class="fab fa-linkedin"></i>
+
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank" class="relative group flex h-12 w-12 items-center justify-center rounded-xl 
+                   backdrop-blur-md bg-white/40 dark:bg-gray-900/40 
+                   border border-gray-300 dark:border-gray-700/50 
+                   shadow-[0_4px_16px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.25)]
+                   hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)]
+                   hover:-translate-y-1 transition-all duration-300">
+                                <span
+                                    class="absolute inset-0 rounded-xl bg-gradient-to-br from-white/80 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                                <i class="fab fa-linkedin text-xl text-gray-700 dark:text-gray-300 
+                  group-hover:text-[#1C5E66] dark:group-hover:text-[#EFF1E4] 
+                  relative z-10 transition-colors duration-300"></i>
                             </a>
-                            <a href="mailto:contact@abhishek.dev"
-                                class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors text-2xl">
-                                <i class="fas fa-envelope"></i>
+
+                            <!-- Email -->
+                            <a href="mailto:contact@abhishek.dev" class="relative group flex h-12 w-12 items-center justify-center rounded-xl 
+                   backdrop-blur-md bg-white/40 dark:bg-gray-900/40 
+                   border border-gray-300 dark:border-gray-700/50 
+                   shadow-[0_4px_16px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.25)]
+                   hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)]
+                   hover:-translate-y-1 transition-all duration-300">
+                                <span
+                                    class="absolute inset-0 rounded-xl bg-gradient-to-br from-white/80 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                                <i class="fas fa-envelope text-lg text-gray-700 dark:text-gray-300 
+                  group-hover:text-[#1C5E66] dark:group-hover:text-[#EFF1E4] 
+                  relative z-10 transition-colors duration-300"></i>
                             </a>
                         </div>
 
@@ -2873,6 +3224,62 @@
                     </div>
 
 
+
+                    <!-- Project 14: Expense-Tracker (MERN Stack)  -->
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+                        data-aos="zoom-in-up">
+                        <div class="relative overflow-hidden">
+                            <img src="./image/PluseGuard.png" alt="Expense Tracker"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                Pulse Guard (MERN Stack)
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                A real-time uptime monitoring system that tracks APIs and URLs, performs automated ping
+                                checks to keep servers alive, and provides live status updates and performance insights
+                                through an interactive web interface.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs rounded-full">React</span>
+
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">Node.js</span>
+
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs rounded-full">MongoDB</span>
+
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-900/30 text-gray-600 dark:text-gray-400 text-xs rounded-full">Express.js</span>
+
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs rounded-full">Tailwind</span>
+
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs rounded-full">LocalStorage</span>
+
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <a href="https://pulse-guard-frontend-git-main-abhisheks-projects-ffe0b0f6.vercel.app/"
+                                    target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/abhishek-coder-01" target="_blank"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <!-- View More Projects Button -->
@@ -2903,197 +3310,451 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                     <!-- Enhanced Contact Information -->
-                    <div class="space-y-8 border border-blue-200 dark:border-blue-800 p-[25px] rounded-2xl shadow-lg"
-                        data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="space-y-8 border border-gray-200 dark:border-gray-700 p-[25px] rounded-2xl 
+            bg-white dark:bg-gray-800/50
+            shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)]
+            hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)]
+            transition-shadow duration-500" data-aos="zoom-in-up" data-aos-delay="100">
+
+                        <!-- Header Section -->
                         <div>
-                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">Let's Work
-                                Together</h3>
-                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm sm:text-base">
+                            <h3
+                                class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                <span
+                                    class="inline-block w-1.5 h-6 sm:h-7 bg-[#1C5E66] dark:bg-[#EFF1E4] rounded-full"></span>
+                                Let's Work Together
+                            </h3>
+                            <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-sm sm:text-base">
                                 As a Full Stack Developer with a focus on creating intuitive and responsive web
                                 applications, I'm passionate about bringing ideas to life through code.
                             </p>
                         </div>
 
+                        <!-- Divider -->
+                        <div class="flex items-center gap-3">
+                            <div class="h-px flex-1 bg-gray-100 dark:bg-gray-700"></div>
+                            <div class="flex gap-1">
+                                <span class="h-1 w-1 rounded-full bg-[#1C5E66]/40 dark:bg-[#EFF1E4]/40"></span>
+                                <span class="h-1 w-1 rounded-full bg-[#1C5E66]/60 dark:bg-[#EFF1E4]/60"></span>
+                                <span class="h-1 w-1 rounded-full bg-[#1C5E66]/40 dark:bg-[#EFF1E4]/40"></span>
+                            </div>
+                            <div class="h-px flex-1 bg-gray-100 dark:bg-gray-700"></div>
+                        </div>
+
                         <!-- Enhanced Contact Methods -->
-                        <div class="space-y-4 sm:space-y-6">
+                        <div class="space-y-3">
                             <!-- Email Contact -->
                             <div class="contact-method group">
                                 <a href="mailto:abhishekyadav749994@gmail.com" target="_blank" rel="noopener noreferrer"
-                                    class="flex items-center space-x-4 p-4 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 group-hover:translate-x-1 active:scale-[0.98]"
-                                    aria-label="Send email to abhishekyadav749994@gmail.com">
+                                    class="flex items-center gap-4 p-4 rounded-xl 
+                          bg-gray-50/50 dark:bg-gray-900/30
+                          border border-transparent
+                          hover:bg-white dark:hover:bg-gray-800
+                          hover:border-gray-200 dark:hover:border-gray-700
+                          hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_4px_16px_rgba(0,0,0,0.2)]
+                          group-hover:translate-x-1 active:scale-[0.98]
+                          transition-all duration-300" aria-label="Send email to abhishekyadav749994@gmail.com">
                                     <div class="flex-shrink-0">
-                                        <div
-                                            class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/30 rounded-full flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                                            <i
-                                                class="fas fa-envelope text-lg sm:text-xl text-primary-600 dark:text-primary-400 group-hover:scale-110 transition-transform"></i>
+                                        <div class="w-12 h-12 sm:w-14 sm:h-14 
+                                bg-white dark:bg-gray-800
+                                border border-gray-100 dark:border-gray-700
+                                rounded-xl 
+                                shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.15)]
+                                group-hover:shadow-[0_4px_12px_rgba(28,94,102,0.12)] dark:group-hover:shadow-[0_4px_12px_rgba(239,241,228,0.1)]
+                                flex items-center justify-center 
+                                group-hover:scale-105 transition-all duration-300">
+                                            <i class="fas fa-envelope text-lg sm:text-xl text-[#1C5E66] dark:text-[#EFF1E4] 
+                                  group-hover:scale-110 transition-transform duration-300"></i>
                                         </div>
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <h3
-                                            class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg mb-1">
+                                            class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg mb-0.5">
                                             Email
                                         </h3>
-                                        <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base truncate">
+                                        <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-base truncate">
                                             abhishekyadav749994@gmail.com
                                         </p>
-                                        <p
-                                            class="text-xs text-gray-500 dark:text-gray-400 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            Click to compose an email
+                                        <p class="text-xs text-[#1C5E66]/70 dark:text-[#EFF1E4]/70 mt-1 
+                              opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 
+                              transition-all duration-300">
+                                            Click to compose an email →
                                         </p>
                                     </div>
-                                    <i
-                                        class="fas fa-external-link-alt text-gray-400 dark:text-gray-500 text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    <div
+                                        class="flex-shrink-0 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                        <div class="h-8 w-8 rounded-full bg-[#1C5E66]/5 dark:bg-[#EFF1E4]/5 
+                                flex items-center justify-center">
+                                            <svg class="w-3.5 h-3.5 text-[#1C5E66] dark:text-[#EFF1E4]" fill="none"
+                                                stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
 
                             <!-- LinkedIn Contact -->
                             <div class="contact-method group">
                                 <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank"
-                                    rel="noopener noreferrer nofollow"
-                                    class="flex items-center space-x-4 p-4 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 group-hover:translate-x-1 active:scale-[0.98]"
-                                    aria-label="Visit Abhishek Yadav's LinkedIn profile">
+                                    rel="noopener noreferrer nofollow" class="flex items-center gap-4 p-4 rounded-xl 
+                          bg-gray-50/50 dark:bg-gray-900/30
+                          border border-transparent
+                          hover:bg-white dark:hover:bg-gray-800
+                          hover:border-gray-200 dark:hover:border-gray-700
+                          hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_4px_16px_rgba(0,0,0,0.2)]
+                          group-hover:translate-x-1 active:scale-[0.98]
+                          transition-all duration-300" aria-label="Visit Abhishek Yadav's LinkedIn profile">
                                     <div class="flex-shrink-0">
-                                        <div
-                                            class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/30 rounded-full flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                                            <i
-                                                class="fab fa-linkedin text-lg sm:text-xl text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform"></i>
+                                        <div class="w-12 h-12 sm:w-14 sm:h-14 
+                                bg-white dark:bg-gray-800
+                                border border-gray-100 dark:border-gray-700
+                                rounded-xl 
+                                shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.15)]
+                                group-hover:shadow-[0_4px_12px_rgba(10,102,194,0.12)] dark:group-hover:shadow-[0_4px_12px_rgba(10,102,194,0.1)]
+                                flex items-center justify-center 
+                                group-hover:scale-105 transition-all duration-300">
+                                            <i class="fab fa-linkedin text-lg sm:text-xl text-[#0A66C2] dark:text-[#0A66C2] 
+                                  group-hover:scale-110 transition-transform duration-300"></i>
                                         </div>
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <h3
-                                            class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg mb-1">
+                                            class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg mb-0.5">
                                             LinkedIn
                                         </h3>
-                                        <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                                        <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-base">
                                             Connect with me professionally
                                         </p>
-                                        <p
-                                            class="text-xs text-gray-500 dark:text-gray-400 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            Opens in new tab
+                                        <p class="text-xs text-[#0A66C2]/70 dark:text-[#0A66C2]/70 mt-1 
+                              opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 
+                              transition-all duration-300">
+                                            Opens in new tab →
                                         </p>
                                     </div>
-                                    <i
-                                        class="fas fa-external-link-alt text-gray-400 dark:text-gray-500 text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    <div
+                                        class="flex-shrink-0 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                        <div class="h-8 w-8 rounded-full bg-[#0A66C2]/5 dark:bg-[#0A66C2]/10 
+                                flex items-center justify-center">
+                                            <svg class="w-3.5 h-3.5 text-[#0A66C2] dark:text-[#0A66C2]" fill="none"
+                                                stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
 
                             <!-- GitHub Contact -->
                             <div class="contact-method group">
                                 <a href="https://github.com/abhishek-coder-01" target="_blank"
-                                    rel="noopener noreferrer nofollow"
-                                    class="flex items-center space-x-4 p-4 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 group-hover:translate-x-1 active:scale-[0.98]"
-                                    aria-label="Visit Abhishek Yadav's GitHub profile">
+                                    rel="noopener noreferrer nofollow" class="flex items-center gap-4 p-4 rounded-xl 
+                          bg-gray-50/50 dark:bg-gray-900/30
+                          border border-transparent
+                          hover:bg-white dark:hover:bg-gray-800
+                          hover:border-gray-200 dark:hover:border-gray-700
+                          hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_4px_16px_rgba(0,0,0,0.2)]
+                          group-hover:translate-x-1 active:scale-[0.98]
+                          transition-all duration-300" aria-label="Visit Abhishek Yadav's GitHub profile">
                                     <div class="flex-shrink-0">
-                                        <div
-                                            class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/20 dark:to-gray-800/30 rounded-full flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                                            <i
-                                                class="fab fa-github text-lg sm:text-xl text-gray-700 dark:text-gray-300 group-hover:scale-110 transition-transform"></i>
+                                        <div class="w-12 h-12 sm:w-14 sm:h-14 
+                                bg-white dark:bg-gray-800
+                                border border-gray-100 dark:border-gray-700
+                                rounded-xl 
+                                shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.15)]
+                                group-hover:shadow-[0_4px_12px_rgba(51,51,51,0.1)] dark:group-hover:shadow-[0_4px_12px_rgba(200,200,200,0.08)]
+                                flex items-center justify-center 
+                                group-hover:scale-105 transition-all duration-300">
+                                            <i class="fab fa-github text-lg sm:text-xl text-gray-700 dark:text-gray-300 
+                                  group-hover:scale-110 transition-transform duration-300"></i>
                                         </div>
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <h3
-                                            class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg mb-1">
+                                            class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg mb-0.5">
                                             GitHub
                                         </h3>
-                                        <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                                        <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-base">
                                             Check out my projects and code
                                         </p>
-                                        <p
-                                            class="text-xs text-gray-500 dark:text-gray-400 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            Opens in new tab
+                                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 
+                              opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 
+                              transition-all duration-300">
+                                            Opens in new tab →
                                         </p>
                                     </div>
-                                    <i
-                                        class="fas fa-external-link-alt text-gray-400 dark:text-gray-500 text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    <div
+                                        class="flex-shrink-0 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                        <div class="h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-700 
+                                flex items-center justify-center">
+                                            <svg class="w-3.5 h-3.5 text-gray-600 dark:text-gray-400" fill="none"
+                                                stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Enhanced Contact Form -->
-                    <div class="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl shadow-lg border border-green-200 dark:border-green-800"
-                        data-aos-delay="200" data-aos="zoom-in-up">
-                        <form action="https://formspree.io/f/xzzzelyl" method="POST" class="space-y-6">
+                    <div class="bg-white dark:bg-gray-800/80 p-6 sm:p-8 rounded-2xl 
+            border border-gray-200 dark:border-gray-700
+            shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)]
+            hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)]
+            transition-shadow duration-500" data-aos-delay="200" data-aos="zoom-in-up">
 
-                            <!-- Name -->
-                            <div>
+                        <form action="https://formspree.io/f/xzzzelyl" method="POST" class="space-y-5">
+
+                            <!-- Name Field -->
+                            <div class="space-y-2">
                                 <label
-                                    class="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    Name
+                                    class="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                    <span
+                                        class="flex items-center justify-center w-5 h-5 rounded-md bg-[#1C5E66]/10 dark:bg-[#EFF1E4]/10">
+                                        <svg class="w-3 h-3 text-[#1C5E66] dark:text-[#EFF1E4]" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    Full Name
                                 </label>
-                                <input class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg outline-none 
-             focus:border-primary-500 dark:focus:border-primary-400 
-             bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
-             placeholder:text-xs sm:placeholder:text-sm text-sm sm:text-base transition-all" type="text" name="name"
-                                    placeholder="Your Name" required>
+                                <div class="relative group">
+                                    <input class="w-full px-4 py-3 
+                           bg-gray-50 dark:bg-gray-900/50
+                           border border-gray-200 dark:border-gray-700 
+                           rounded-xl outline-none 
+                           text-gray-900 dark:text-white 
+                           placeholder:text-gray-400 dark:placeholder:text-gray-500 
+                           text-sm
+                           focus:bg-white dark:focus:bg-gray-800
+                           focus:border-[#1C5E66] dark:focus:border-[#EFF1E4]
+                           focus:ring-4 focus:ring-[#1C5E66]/5 dark:focus:ring-[#EFF1E4]/5
+                           transition-all duration-300" type="text" name="name" placeholder="John Doe" required>
+                                    <!-- Input glow effect -->
+                                    <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-[#1C5E66]/0 via-[#1C5E66]/0 to-[#1C5E66]/0 
+                            dark:from-[#EFF1E4]/0 dark:via-[#EFF1E4]/0 dark:to-[#EFF1E4]/0
+                            group-focus-within:from-[#1C5E66]/5 group-focus-within:via-transparent group-focus-within:to-[#1C5E66]/5
+                            dark:group-focus-within:from-[#EFF1E4]/5 dark:group-focus-within:via-transparent dark:group-focus-within:to-[#EFF1E4]/5
+                            pointer-events-none transition-all duration-500"></div>
+                                </div>
                             </div>
 
-                            <!-- Email -->
-                            <div>
+                            <!-- Email Field -->
+                            <div class="space-y-2">
                                 <label
-                                    class="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    Email
+                                    class="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                    <span
+                                        class="flex items-center justify-center w-5 h-5 rounded-md bg-[#1C5E66]/10 dark:bg-[#EFF1E4]/10">
+                                        <svg class="w-3 h-3 text-[#1C5E66] dark:text-[#EFF1E4]" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    Email Address
                                 </label>
-                                <input class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg outline-none 
-             focus:border-primary-500 dark:focus:border-primary-400 
-             bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
-             placeholder:text-xs sm:placeholder:text-sm text-sm sm:text-base transition-all" type="email" name="email"
-                                    placeholder="your.email@example.com" required>
+                                <div class="relative group">
+                                    <input class="w-full px-4 py-3 
+                           bg-gray-50 dark:bg-gray-900/50
+                           border border-gray-200 dark:border-gray-700 
+                           rounded-xl outline-none 
+                           text-gray-900 dark:text-white 
+                           placeholder:text-gray-400 dark:placeholder:text-gray-500 
+                           text-sm
+                           focus:bg-white dark:focus:bg-gray-800
+                           focus:border-[#1C5E66] dark:focus:border-[#EFF1E4]
+                           focus:ring-4 focus:ring-[#1C5E66]/5 dark:focus:ring-[#EFF1E4]/5
+                           transition-all duration-300" type="email" name="email" placeholder="john@example.com"
+                                        required>
+                                    <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-[#1C5E66]/0 via-[#1C5E66]/0 to-[#1C5E66]/0 
+                            dark:from-[#EFF1E4]/0 dark:via-[#EFF1E4]/0 dark:to-[#EFF1E4]/0
+                            group-focus-within:from-[#1C5E66]/5 group-focus-within:via-transparent group-focus-within:to-[#1C5E66]/5
+                            dark:group-focus-within:from-[#EFF1E4]/5 dark:group-focus-within:via-transparent dark:group-focus-within:to-[#EFF1E4]/5
+                            pointer-events-none transition-all duration-500"></div>
+                                </div>
                             </div>
 
-                            <!-- Message -->
-                            <div>
+                            <!-- Message Field -->
+                            <div class="space-y-2">
                                 <label
-                                    class="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    Message
+                                    class="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                    <span
+                                        class="flex items-center justify-center w-5 h-5 rounded-md bg-[#1C5E66]/10 dark:bg-[#EFF1E4]/10">
+                                        <svg class="w-3 h-3 text-[#1C5E66] dark:text-[#EFF1E4]" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    Your Message
                                 </label>
-                                <textarea class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg resize-none outline-none 
-             focus:border-primary-500 dark:focus:border-primary-400 
-             bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
-             placeholder:text-xs sm:placeholder:text-sm text-sm sm:text-base transition-all" name="message" rows="5"
-                                    placeholder="Your message here..." required></textarea>
+                                <div class="relative group">
+                                    <textarea class="w-full px-4 py-3 
+                           bg-gray-50 dark:bg-gray-900/50
+                           border border-gray-200 dark:border-gray-700 
+                           rounded-xl resize-none outline-none 
+                           text-gray-900 dark:text-white 
+                           placeholder:text-gray-400 dark:placeholder:text-gray-500 
+                           text-sm
+                           focus:bg-white dark:focus:bg-gray-800
+                           focus:border-[#1C5E66] dark:focus:border-[#EFF1E4]
+                           focus:ring-4 focus:ring-[#1C5E66]/5 dark:focus:ring-[#EFF1E4]/5
+                           transition-all duration-300" name="message" rows="5"
+                                        placeholder="Tell me about your project, idea, or just say hello..."
+                                        required></textarea>
+                                    <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-[#1C5E66]/0 via-[#1C5E66]/0 to-[#1C5E66]/0 
+                            dark:from-[#EFF1E4]/0 dark:via-[#EFF1E4]/0 dark:to-[#EFF1E4]/0
+                            group-focus-within:from-[#1C5E66]/5 group-focus-within:via-transparent group-focus-within:to-[#1C5E66]/5
+                            dark:group-focus-within:from-[#EFF1E4]/5 dark:group-focus-within:via-transparent dark:group-focus-within:to-[#EFF1E4]/5
+                            pointer-events-none transition-all duration-500"></div>
+                                    <!-- Character count (optional visual) -->
+                                    <span
+                                        class="absolute bottom-2 right-3 text-[10px] text-gray-400 dark:text-gray-500">Max
+                                        500 characters</span>
+                                </div>
                             </div>
 
-                            <!-- Button -->
-                            <button class="w-full bg-primary-600 hover:bg-primary-700 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-medium sm:font-semibold 
-           text-sm sm:text-base transition-all duration-300 hover:scale-105 shadow-md sm:shadow-lg" type="submit">
-                                <span class="flex items-center justify-center">
-                                    <i class="fas fa-paper-plane mr-2"></i>
-                                    Send Message
-                                </span>
-                            </button>
+                            <!-- Submit Button -->
+                            <div class="pt-2">
+                                <button class="glass-submit-btn w-full group
+                       py-3.5 px-6 rounded-xl 
+                       font-semibold text-sm
+                       transition-all duration-300" type="submit">
+
+                                    <!-- Button shine effect -->
+                                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                             -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+
+                                    <!-- Button content -->
+                                    <span class="relative flex items-center justify-center gap-2">
+                                        <svg class="w-4 h-4 group-hover:rotate-45 transition-transform duration-300"
+                                            fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                        </svg>
+                                        <span>Send Message</span>
+                                    </span>
+                                </button>
+
+                                <!-- Form guarantee text -->
+                                <p
+                                    class="text-center text-[11px] text-gray-400 dark:text-gray-500 mt-3 flex items-center justify-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                        </path>
+                                    </svg>
+                                    Your information is secure and will never be shared
+                                </p>
+                            </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Enhanced Footer -->
-        <footer class="text-center py-8 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
-            data-aos="fade-up">
-            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-4">
-                <div class="flex space-x-6">
-                    <a href="https://github.com/abhishek-coder-01" target="_blank"
-                        class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors">
-                        <i class="fab fa-github text-xl hover:dark:text-white"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank"
-                        class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors">
-                        <i class="fab fa-linkedin text-xl hover:dark:text-white"></i>
-                    </a>
-                    <a href="mailto:abhishekya301@gmail.com"
-                        class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors">
-                        <i class="fas fa-envelope text-xl hover:dark:text-white"></i>
-                    </a>
+        <footer class="relative overflow-hidden" data-aos="fade-up">
+            <!-- Background Elements -->
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-gray-50 via-white to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-900">
+            </div>
+
+            <!-- Decorative top border gradient -->
+            <div class="relative border-t border-gray-200 dark:border-gray-800">
+                <div
+                    class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1C5E66]/30 dark:via-[#EFF1E4]/30 to-transparent">
                 </div>
             </div>
-            <p class="text-gray-500 dark:text-gray-400 text-sm" id="footerText">
-                © 2025 Portfolio Abhishek Yadav. All rights reserved
-            </p>
-            <p class="text-gray-500 dark:text-gray-400 text-xs mt-[2px]" id="footerSubText">
-                Made with ❤️ using modern web technologies
-            </p>
+
+            <!-- Main Content -->
+            <div class="relative max-w-6xl mx-auto px-4 py-12">
+
+                <!-- Top Section: Social Links -->
+                <div class="flex flex-col items-center space-y-6 mb-8">
+
+                    <!-- Section Label -->
+                    <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500">
+                        Connect With Me
+                    </span>
+
+                    <!-- Social Icons -->
+                    <div class="flex items-center gap-4">
+                        <!-- GitHub -->
+                        <a href="https://github.com/abhishek-coder-01" target="_blank" rel="noopener noreferrer" class="relative group flex h-12 w-12 items-center justify-center rounded-xl 
+                               bg-white dark:bg-gray-800
+                               border border-gray-200 dark:border-gray-700
+                               shadow-[0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.25)]
+                               hover:shadow-[0_8px_24px_rgba(28,94,102,0.15)] dark:hover:shadow-[0_8px_24px_rgba(239,241,228,0.12)]
+                               hover:-translate-y-1 hover:border-[#1C5E66]/30 dark:hover:border-[#EFF1E4]/30
+                               transition-all duration-300" aria-label="GitHub Profile">
+                            <i class="fab fa-github text-xl text-gray-600 dark:text-gray-400 
+                              group-hover:text-[#1C5E66] dark:group-hover:text-[#EFF1E4] 
+                              transition-colors duration-300"></i>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank"
+                            rel="noopener noreferrer" class="relative group flex h-12 w-12 items-center justify-center rounded-xl 
+                               bg-white dark:bg-gray-800
+                               border border-gray-200 dark:border-gray-700
+                               shadow-[0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.25)]
+                               hover:shadow-[0_8px_24px_rgba(28,94,102,0.15)] dark:hover:shadow-[0_8px_24px_rgba(239,241,228,0.12)]
+                               hover:-translate-y-1 hover:border-[#1C5E66]/30 dark:hover:border-[#EFF1E4]/30
+                               transition-all duration-300" aria-label="LinkedIn Profile">
+                            <i class="fab fa-linkedin text-xl text-gray-600 dark:text-gray-400 
+                              group-hover:text-[#1C5E66] dark:group-hover:text-[#EFF1E4] 
+                              transition-colors duration-300"></i>
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:abhishekya301@gmail.com" class="relative group flex h-12 w-12 items-center justify-center rounded-xl 
+                               bg-white dark:bg-gray-800
+                               border border-gray-200 dark:border-gray-700
+                               shadow-[0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.25)]
+                               hover:shadow-[0_8px_24px_rgba(28,94,102,0.15)] dark:hover:shadow-[0_8px_24px_rgba(239,241,228,0.12)]
+                               hover:-translate-y-1 hover:border-[#1C5E66]/30 dark:hover:border-[#EFF1E4]/30
+                               transition-all duration-300" aria-label="Send Email">
+                            <i class="fas fa-envelope text-lg text-gray-600 dark:text-gray-400 
+                              group-hover:text-[#1C5E66] dark:group-hover:text-[#EFF1E4] 
+                              transition-colors duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Divider Line -->
+                <div class="flex items-center justify-center mb-6">
+                    <div class="h-px w-16 bg-gray-200 dark:bg-gray-700"></div>
+                    <div class="mx-3">
+                        <div class="h-1.5 w-1.5 rounded-full bg-[#1C5E66] dark:bg-[#EFF1E4]"></div>
+                    </div>
+                    <div class="h-px w-16 bg-gray-200 dark:bg-gray-700"></div>
+                </div>
+
+                <!-- Bottom Section: Copyright -->
+                <div class="text-center space-y-2">
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium" id="footerText">
+                        © 2025 <span class="text-[#1C5E66] dark:text-[#EFF1E4] font-semibold">Abhishek Yadav</span>. All
+                        rights reserved
+                    </p>
+                    <p class="text-gray-400 dark:text-gray-500 text-xs flex items-center justify-center gap-1"
+                        id="footerSubText">
+                        Made with
+                        <span class="inline-block animate-pulse text-red-500 mx-0.5">❤️</span>
+                        using modern web technologies
+                    </p>
+                </div>
+            </div>
         </footer>
     </div>
 
