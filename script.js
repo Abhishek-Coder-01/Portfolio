@@ -482,10 +482,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 (function () {
     const phrases = [
         "MERN Stack Developer",
-        "Ideas into Real-World Products",
-        "React & Tailwind CSS Specialist",
-        "Node.js, REST APIs & Python (Flask)",
-        "15+ Projects Built & Deployed 🚀"
+        "Building Real-World Products",
+        "React, Tailwind and Motion UI",
+        "Node.js, REST APIs and Flask",
+        "15+ Projects Built and Deployed"
     ];
 
     const typeElem = document.querySelector('.typewriter');
@@ -516,6 +516,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 typeElem.textContent = current.slice(0, --charIndex);
                 timeout = setTimeout(typeLoop, eraseSpeed);
             } else {
+                typeElem.textContent = '\u00A0';
                 typing = true;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
                 timeout = setTimeout(typeLoop, 300);

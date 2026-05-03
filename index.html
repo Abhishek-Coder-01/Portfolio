@@ -150,6 +150,17 @@
             overflow-x: hidden;
         }
 
+        ::selection {
+            background-color: #28857D;
+            color: white;
+        }
+
+        ::-moz-selection {
+            /* Firefox support */
+            background-color: #28857D;
+            color: white;
+        }
+
         .main {
             width: min(100%, 1400px);
             margin: 0 auto;
@@ -482,7 +493,11 @@
             overflow: hidden;
             border-right: 3px solid #3b82f6;
             white-space: nowrap;
-            margin: 0 auto;
+            margin: 0;
+            display: inline-block;
+            vertical-align: top;
+            line-height: 1.25;
+            min-height: 1.25em;
             animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
         }
 
@@ -506,6 +521,1041 @@
 
         .btn-glow:hover::before {
             left: 100%;
+        }
+
+        .hero-shell {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background:
+                radial-gradient(circle at top left, rgba(16, 185, 129, 0.16), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.16), transparent 24%),
+                linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.8));
+            box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+        }
+
+        .hero-shell::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.48), transparent 38%, transparent 65%, rgba(16, 185, 129, 0.08));
+            pointer-events: none;
+        }
+
+        .dark .hero-shell {
+            border-color: rgba(148, 163, 184, 0.16);
+            background:
+                radial-gradient(circle at top left, rgba(16, 185, 129, 0.18), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.16), transparent 24%),
+                linear-gradient(145deg, rgba(10, 18, 34, 0.96), rgba(17, 24, 39, 0.86) 55%, rgba(12, 22, 38, 0.9));
+            box-shadow: 0 35px 80px rgba(2, 6, 23, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .dark .hero-shell::before {
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.05), transparent 40%, transparent 65%, rgba(16, 185, 129, 0.08));
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.7rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(15, 118, 110, 0.14);
+            background: rgba(255, 255, 255, 0.72);
+            color: #0f766e;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            letter-spacing: 0.04em;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+        }
+
+        .hero-badge-dot {
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 999px;
+            background: #22c55e;
+            box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.16);
+        }
+
+        .dark .hero-badge {
+            border-color: rgba(110, 231, 183, 0.15);
+            background: rgba(15, 23, 42, 0.58);
+            color: #a7f3d0;
+            box-shadow: 0 18px 34px rgba(2, 6, 23, 0.28);
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+            color: #0f172a;
+        }
+
+        .dark .hero-title {
+            color: #f8fafc;
+        }
+
+        .hero-title-name {
+            display: block;
+            margin-top: 0.45rem;
+            color: #0f766e;
+        }
+
+        .dark .hero-title-name {
+            color: #6ee7b7;
+        }
+
+        .hero-wave {
+            margin-left: 0.35rem;
+            font-size: 0.82em;
+        }
+
+        .hero-role-pill {
+            display: inline-flex;
+            align-items: center;
+            max-width: 100%;
+            min-height: 4rem;
+            min-width: min(100%, 31ch);
+            padding: 0.9rem 1.15rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(37, 99, 235, 0.18);
+            background: rgba(255, 255, 255, 0.76);
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .hero-role-pill .typewriter {
+            width: 100%;
+            max-width: 100%;
+            border-right-color: #10b981;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(0.95rem, 2vw, 1.18rem);
+            color: #1e3a8a;
+        }
+
+        .dark .hero-role-pill {
+            border-color: rgba(96, 165, 250, 0.2);
+            background: rgba(15, 23, 42, 0.62);
+            box-shadow: 0 18px 36px rgba(2, 6, 23, 0.24);
+        }
+
+        .dark .hero-role-pill .typewriter {
+            color: #bfdbfe;
+        }
+
+        .hero-summary {
+            max-width: 40rem;
+            font-size: 1.06rem;
+            line-height: 1.95;
+            color: #475569;
+        }
+
+        .dark .hero-summary {
+            color: #94a3b8;
+        }
+
+        .hero-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .hero-stat-card {
+            padding: 1rem 1rem 1.05rem;
+            border-radius: 1.35rem;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: rgba(255, 255, 255, 0.68);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+        }
+
+        .hero-stat-value {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .hero-stat-label {
+            display: block;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #64748b;
+        }
+
+        .dark .hero-stat-card {
+            border-color: rgba(148, 163, 184, 0.12);
+            background: rgba(15, 23, 42, 0.58);
+            box-shadow: 0 20px 42px rgba(2, 6, 23, 0.24);
+        }
+
+        .dark .hero-stat-value {
+            color: #f8fafc;
+        }
+
+        .dark .hero-stat-label {
+            color: #94a3b8;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hero-primary-btn,
+        .hero-secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 12.5rem;
+            padding: 0.95rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .hero-primary-btn {
+            background: #16a34a;
+            color: #ffffff;
+            box-shadow: 0 18px 36px rgba(22, 163, 74, 0.24);
+        }
+
+        .hero-primary-btn:hover {
+            background: #15803d;
+            transform: translateY(-2px);
+            box-shadow: 0 22px 42px rgba(22, 163, 74, 0.28);
+        }
+
+        .hero-secondary-btn {
+            border: 1px solid rgba(15, 118, 110, 0.2);
+            background: rgba(255, 255, 255, 0.72);
+            color: #0f766e;
+            box-shadow: 0 16px 34px rgba(15, 23, 42, 0.06);
+        }
+
+        .hero-secondary-btn:hover {
+            transform: translateY(-2px);
+            border-color: rgba(15, 118, 110, 0.34);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 38px rgba(15, 23, 42, 0.08);
+        }
+
+        .dark .hero-secondary-btn {
+            border-color: rgba(110, 231, 183, 0.16);
+            background: rgba(15, 23, 42, 0.58);
+            color: #a7f3d0;
+            box-shadow: 0 18px 36px rgba(2, 6, 23, 0.24);
+        }
+
+        .dark .hero-secondary-btn:hover {
+            border-color: rgba(110, 231, 183, 0.34);
+            background: rgba(15, 23, 42, 0.72);
+            box-shadow: 0 22px 40px rgba(2, 6, 23, 0.28);
+        }
+
+        .hero-socials {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .hero-social-label {
+            font-size: 0.84rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #64748b;
+        }
+
+        .dark .hero-social-label {
+            color: #94a3b8;
+        }
+
+        .hero-social-link {
+            position: relative;
+            display: inline-flex;
+            height: 3.25rem;
+            width: 3.25rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: rgba(255, 255, 255, 0.7);
+            color: #0f172a;
+            box-shadow: 0 16px 30px rgba(15, 23, 42, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .hero-social-link:hover {
+            transform: translateY(-3px);
+            color: #0f766e;
+            border-color: rgba(15, 118, 110, 0.3);
+            box-shadow: 0 20px 34px rgba(15, 23, 42, 0.08);
+        }
+
+        .dark .hero-social-link {
+            border-color: rgba(148, 163, 184, 0.14);
+            background: rgba(15, 23, 42, 0.58);
+            color: #e2e8f0;
+            box-shadow: 0 18px 34px rgba(2, 6, 23, 0.24);
+        }
+
+        .dark .hero-social-link:hover {
+            color: #6ee7b7;
+            border-color: rgba(110, 231, 183, 0.24);
+            box-shadow: 0 22px 38px rgba(2, 6, 23, 0.3);
+        }
+
+        .hero-visual-wrap {
+            position: relative;
+            width: min(100%, 34rem);
+            padding: 2.25rem 1rem;
+        }
+
+        .hero-visual-glow {
+            position: absolute;
+            inset: 16% 12%;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.26), rgba(59, 130, 246, 0.12) 48%, transparent 72%);
+            filter: blur(36px);
+            pointer-events: none;
+        }
+
+        .hero-portrait-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 29rem;
+            margin: 0 auto;
+            aspect-ratio: 1 / 1;
+        }
+
+        .hero-portrait-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background:
+                conic-gradient(from 220deg,
+                    rgba(16, 185, 129, 0.92),
+                    rgba(14, 165, 233, 0.72),
+                    rgba(245, 158, 11, 0.88),
+                    rgba(16, 185, 129, 0.92));
+            filter: blur(18px);
+            opacity: 0.9;
+        }
+
+        .hero-portrait-frame {
+            position: absolute;
+            inset: 1rem;
+            padding: 0.9rem;
+            border-radius: 50%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.08));
+            border: 1px solid rgba(255, 255, 255, 0.34);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 28px 54px rgba(15, 23, 42, 0.18);
+        }
+
+        .dark .hero-portrait-frame {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(15, 23, 42, 0.3));
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 28px 56px rgba(2, 6, 23, 0.38);
+        }
+
+        .hero-portrait-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.78);
+        }
+
+        .hero-floating-card {
+            position: absolute;
+            z-index: 2;
+            min-width: 11rem;
+            padding: 0.95rem 1rem;
+            border-radius: 1.15rem;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(255, 255, 255, 0.74);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+        }
+
+        .hero-floating-card strong {
+            display: block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            color: #0f172a;
+        }
+
+        .hero-floating-card span {
+            display: block;
+            margin-top: 0.22rem;
+            font-size: 0.82rem;
+            color: #64748b;
+        }
+
+        .dark .hero-floating-card {
+            border-color: rgba(148, 163, 184, 0.12);
+            background: rgba(15, 23, 42, 0.62);
+            box-shadow: 0 20px 38px rgba(2, 6, 23, 0.28);
+        }
+
+        .dark .hero-floating-card strong {
+            color: #f8fafc;
+        }
+
+        .dark .hero-floating-card span {
+            color: #94a3b8;
+        }
+
+        .hero-floating-card-top {
+            top: 6%;
+            right: -4%;
+        }
+
+        .hero-floating-card-bottom {
+            bottom: 12%;
+            left: -2%;
+        }
+
+        .hero-floating-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            margin-bottom: 0.6rem;
+            border-radius: 999px;
+            background: rgba(22, 163, 74, 0.12);
+            color: #16a34a;
+        }
+
+        .hero-orb {
+            position: absolute;
+            border-radius: 999px;
+            opacity: 0.75;
+            filter: blur(0.2px);
+        }
+
+        .hero-orb-one {
+            width: 5.5rem;
+            height: 5.5rem;
+            top: 14%;
+            left: 2%;
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        .hero-orb-two {
+            width: 1.75rem;
+            height: 1.75rem;
+            top: 29%;
+            right: 4%;
+            background: rgba(244, 114, 182, 0.68);
+        }
+
+        .hero-orb-three {
+            width: 2.2rem;
+            height: 2.2rem;
+            bottom: 20%;
+            left: 8%;
+            background: rgba(245, 158, 11, 0.52);
+        }
+
+        .about-shell {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background:
+                radial-gradient(circle at top right, rgba(14, 165, 233, 0.12), transparent 24%),
+                radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.12), transparent 28%),
+                linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.82));
+            box-shadow: 0 28px 80px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.74);
+        }
+
+        .about-shell::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.42), transparent 38%, transparent 68%, rgba(14, 165, 233, 0.08));
+            pointer-events: none;
+        }
+
+        .dark .about-shell {
+            border-color: rgba(148, 163, 184, 0.16);
+            background:
+                radial-gradient(circle at top right, rgba(14, 165, 233, 0.14), transparent 24%),
+                radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.14), transparent 28%),
+                linear-gradient(145deg, rgba(10, 18, 34, 0.96), rgba(17, 24, 39, 0.88) 55%, rgba(12, 22, 38, 0.92));
+            box-shadow: 0 34px 86px rgba(2, 6, 23, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .dark .about-shell::before {
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.05), transparent 38%, transparent 68%, rgba(16, 185, 129, 0.08));
+        }
+
+        .about-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: #0f766e;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .about-eyebrow::before {
+            content: '';
+            width: 2.75rem;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(15, 118, 110, 0.15), rgba(15, 118, 110, 0.9));
+        }
+
+        .dark .about-eyebrow {
+            color: #99f6e4;
+        }
+
+        .about-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.3rem, 4.5vw, 4rem);
+            line-height: 1.04;
+            letter-spacing: -0.04em;
+            color: #0f172a;
+        }
+
+        .dark .about-title {
+            color: #f8fafc;
+        }
+
+        .about-highlight {
+            color: #0f766e;
+        }
+
+        .dark .about-highlight {
+            color: #6ee7b7;
+        }
+
+        .about-intro {
+            max-width: 42rem;
+            color: #475569;
+            font-size: 1.02rem;
+            line-height: 1.9;
+        }
+
+        .dark .about-intro {
+            color: #94a3b8;
+        }
+
+        .about-copy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .about-copy-card {
+            padding: 1.25rem 1.2rem;
+            border-radius: 1.35rem;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(255, 255, 255, 0.68);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+        }
+
+        .about-copy-card h3 {
+            margin-bottom: 0.45rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .about-copy-card p {
+            color: #64748b;
+            line-height: 1.75;
+            font-size: 0.95rem;
+        }
+
+        .dark .about-copy-card {
+            border-color: rgba(148, 163, 184, 0.12);
+            background: rgba(15, 23, 42, 0.58);
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.24);
+        }
+
+        .dark .about-copy-card h3 {
+            color: #f8fafc;
+        }
+
+        .dark .about-copy-card p {
+            color: #94a3b8;
+        }
+
+        .about-signal-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .about-signal-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.8rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(255, 255, 255, 0.72);
+            color: #0f172a;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+        }
+
+        .about-signal-chip i {
+            color: #16a34a;
+        }
+
+        .dark .about-signal-chip {
+            border-color: rgba(148, 163, 184, 0.12);
+            background: rgba(15, 23, 42, 0.58);
+            color: #e2e8f0;
+            box-shadow: 0 16px 34px rgba(2, 6, 23, 0.22);
+        }
+
+        .about-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .about-metric-card {
+            padding: 1.1rem 1rem;
+            border-radius: 1.35rem;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(255, 255, 255, 0.68);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 16px 34px rgba(15, 23, 42, 0.06);
+            text-align: center;
+        }
+
+        .about-metric-value {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .about-metric-label {
+            color: #64748b;
+            font-size: 0.86rem;
+            line-height: 1.5;
+        }
+
+        .dark .about-metric-card {
+            border-color: rgba(148, 163, 184, 0.12);
+            background: rgba(15, 23, 42, 0.58);
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.24);
+        }
+
+        .dark .about-metric-value {
+            color: #f8fafc;
+        }
+
+        .dark .about-metric-label {
+            color: #94a3b8;
+        }
+
+        .about-visual-stack {
+            position: relative;
+            width: min(100%, 34rem);
+            padding: 1.25rem 0 2rem;
+        }
+
+        .about-visual-glow {
+            position: absolute;
+            inset: 12% 10%;
+            border-radius: 2rem;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.2), rgba(59, 130, 246, 0.12) 46%, transparent 74%);
+            filter: blur(34px);
+            pointer-events: none;
+        }
+
+        .about-image-card {
+            position: relative;
+            padding: 1rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(255, 255, 255, 0.74);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 24px 54px rgba(15, 23, 42, 0.12);
+        }
+
+        .dark .about-image-card {
+            border-color: rgba(148, 163, 184, 0.12);
+            background: rgba(15, 23, 42, 0.62);
+            box-shadow: 0 28px 58px rgba(2, 6, 23, 0.32);
+        }
+
+        .about-image-card img {
+            width: 100%;
+            border-radius: 1.4rem;
+            object-fit: cover;
+        }
+
+        .about-image-overlay {
+            position: absolute;
+            inset: 1rem;
+            border-radius: 1.4rem;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0) 46%, rgba(15, 23, 42, 0.58) 100%);
+            pointer-events: none;
+        }
+
+        .about-image-badge {
+            position: absolute;
+            left: 2rem;
+            right: 2rem;
+            bottom: 2rem;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.1rem;
+            border-radius: 1.2rem;
+            background: rgba(15, 23, 42, 0.68);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .about-image-badge strong {
+            color: #f8fafc;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .about-image-badge span {
+            display: block;
+            margin-top: 0.18rem;
+            color: rgba(226, 232, 240, 0.86);
+            font-size: 0.82rem;
+        }
+
+        .about-image-badge .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.68rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(22, 163, 74, 0.18);
+            color: #dcfce7;
+            white-space: nowrap;
+        }
+
+        .about-image-badge .status-pill::before {
+            content: '';
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 999px;
+            background: #4ade80;
+            box-shadow: 0 0 0 5px rgba(74, 222, 128, 0.14);
+        }
+
+        .about-floating-panel {
+            position: absolute;
+            z-index: 2;
+            max-width: 14rem;
+            padding: 1rem 1rem 0.95rem;
+            border-radius: 1.25rem;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 18px 38px rgba(15, 23, 42, 0.1);
+        }
+
+        .about-floating-panel strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #0f172a;
+            font-size: 0.98rem;
+        }
+
+        .about-floating-panel p {
+            color: #64748b;
+            font-size: 0.82rem;
+            line-height: 1.65;
+        }
+
+        .dark .about-floating-panel {
+            border-color: rgba(148, 163, 184, 0.12);
+            background: rgba(15, 23, 42, 0.7);
+            box-shadow: 0 22px 42px rgba(2, 6, 23, 0.28);
+        }
+
+        .dark .about-floating-panel strong {
+            color: #f8fafc;
+        }
+
+        .dark .about-floating-panel p {
+            color: #94a3b8;
+        }
+
+        .about-floating-panel-top {
+            top: -1.2rem;
+            right: -1.1rem;
+        }
+
+        .about-floating-panel-bottom {
+            bottom: 2rem;
+            left: -1.2rem;
+        }
+
+        .education-shell {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background:
+                radial-gradient(circle at top left, rgba(99, 102, 241, 0.12), transparent 24%),
+                radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.12), transparent 30%),
+                linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.84));
+            box-shadow: 0 30px 82px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+        }
+
+        .education-shell::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 36%, transparent 68%, rgba(99, 102, 241, 0.08));
+            pointer-events: none;
+        }
+
+        .dark .education-shell {
+            border-color: rgba(148, 163, 184, 0.16);
+            background:
+                radial-gradient(circle at top left, rgba(99, 102, 241, 0.14), transparent 24%),
+                radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.14), transparent 30%),
+                linear-gradient(145deg, rgba(10, 18, 34, 0.96), rgba(17, 24, 39, 0.88) 55%, rgba(12, 22, 38, 0.92));
+            box-shadow: 0 36px 88px rgba(2, 6, 23, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .dark .education-shell::before {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 36%, transparent 68%, rgba(16, 185, 129, 0.08));
+        }
+
+        .education-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: #4f46e5;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .education-eyebrow::before {
+            content: '';
+            width: 2.75rem;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(79, 70, 229, 0.15), rgba(79, 70, 229, 0.95));
+        }
+
+        .dark .education-eyebrow {
+            color: #c7d2fe;
+        }
+
+        .education-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.3rem, 4.6vw, 4rem);
+            line-height: 1.04;
+            letter-spacing: -0.04em;
+            color: #0f172a;
+        }
+
+        .dark .education-title {
+            color: #f8fafc;
+        }
+
+        .education-title-accent {
+            color: #4f46e5;
+        }
+
+        .dark .education-title-accent {
+            color: #a5b4fc;
+        }
+
+        .education-summary {
+            max-width: 44rem;
+            color: #475569;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .dark .education-summary {
+            color: #94a3b8;
+        }
+
+        .education-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .education-metric-card {
+            padding: 1rem 1rem 1.05rem;
+            border-radius: 1.25rem;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+        }
+
+        .education-metric-card strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            color: #0f172a;
+        }
+
+        .education-metric-card span {
+            color: #64748b;
+            font-size: 0.84rem;
+            line-height: 1.5;
+        }
+
+        .dark .education-metric-card {
+            border-color: rgba(148, 163, 184, 0.12);
+            background: rgba(15, 23, 42, 0.58);
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.24);
+        }
+
+        .dark .education-metric-card strong {
+            color: #f8fafc;
+        }
+
+        .dark .education-metric-card span {
+            color: #94a3b8;
+        }
+
+        .education-track {
+            position: relative;
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .education-track::before {
+            content: '';
+            position: absolute;
+            top: 0.75rem;
+            bottom: 0.75rem;
+            left: 1.25rem;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(79, 70, 229, 0.95), rgba(16, 185, 129, 0.85));
+            opacity: 0.7;
+        }
+
+        .education-item {
+            position: relative;
+            padding-left: 4.2rem;
+        }
+
+        .education-dot {
+            position: absolute;
+            left: 0.45rem;
+            top: 1.35rem;
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            background: #ffffff;
+            border: 5px solid #4f46e5;
+            box-shadow: 0 0 0 8px rgba(79, 70, 229, 0.12);
+            z-index: 2;
+        }
+
+        .dark .education-dot {
+            background: #0f172a;
+            border-color: #818cf8;
+            box-shadow: 0 0 0 8px rgba(129, 140, 248, 0.14);
+        }
+
+        .education-card {
+            position: relative;
+            border-radius: 1.6rem;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(255, 255, 255, 0.74);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 20px 42px rgba(15, 23, 42, 0.08);
+        }
+
+        .dark .education-card {
+            border-color: rgba(148, 163, 184, 0.12);
+            background: rgba(15, 23, 42, 0.6);
+            box-shadow: 0 24px 46px rgba(2, 6, 23, 0.26);
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.22), transparent 42%, transparent 70%, rgba(79, 70, 229, 0.04));
+            pointer-events: none;
+        }
+
+        .education-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(79, 70, 229, 0.14);
+            background: rgba(79, 70, 229, 0.08);
+            color: #4338ca;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .dark .education-badge {
+            border-color: rgba(165, 180, 252, 0.16);
+            background: rgba(99, 102, 241, 0.14);
+            color: #c7d2fe;
+        }
+
+        .education-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.5rem 0.82rem;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(255, 255, 255, 0.78);
+            color: #334155;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .dark .education-chip {
+            border-color: rgba(148, 163, 184, 0.12);
+            background: rgba(15, 23, 42, 0.64);
+            color: #cbd5e1;
         }
 
         /* Enhanced Project Card Hover Effect */
@@ -730,13 +1780,87 @@
                 display: none;
             }
 
-            #dev{
+            #dev {
                 padding-top: 17px;
                 padding-bottom: 17px;
             }
         }
 
         @media (max-width: 768px) {
+            .hero-shell {
+                border-radius: 1.6rem;
+            }
+
+            .about-shell {
+                border-radius: 1.6rem;
+            }
+
+            .education-shell {
+                border-radius: 1.6rem;
+            }
+
+            .hero-stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-copy-grid,
+            .about-metrics-grid,
+            .education-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions {
+                width: 100%;
+            }
+
+            .hero-primary-btn,
+            .hero-secondary-btn {
+                width: 100%;
+            }
+
+            .hero-socials {
+                justify-content: center;
+            }
+
+            .about-image-badge {
+                left: 1.4rem;
+                right: 1.4rem;
+                bottom: 1.4rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-floating-card-top {
+                top: 3%;
+                right: 2%;
+            }
+
+            .hero-floating-card-bottom {
+                left: 2%;
+                bottom: 6%;
+            }
+
+            .about-floating-panel-top {
+                right: 0;
+            }
+
+            .about-floating-panel-bottom {
+                left: 0;
+                bottom: 1rem;
+            }
+
+            .education-item {
+                padding-left: 3.3rem;
+            }
+
+            .education-track::before {
+                left: 1rem;
+            }
+
+            .education-dot {
+                left: 0.2rem;
+            }
+
             .typewriter {
                 font-size: 1.5rem;
             }
@@ -749,6 +1873,61 @@
         }
 
         @media (max-width: 640px) {
+
+            #home,
+            #about {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .hero-badge {
+                width: 100%;
+                justify-content: center;
+                font-size: 0.76rem;
+            }
+
+            .hero-role-pill {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-summary {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            .hero-visual-wrap {
+                padding-top: 1rem;
+                padding-bottom: 2.25rem;
+            }
+
+            .about-image-badge {
+                position: static;
+                margin-top: 1rem;
+            }
+
+            .about-image-overlay {
+                display: none;
+            }
+
+            .about-floating-panel {
+                position: static;
+                max-width: none;
+            }
+
+            .education-card {
+                border-radius: 1.3rem;
+            }
+
+            .hero-floating-card {
+                min-width: 9rem;
+                padding: 0.8rem 0.85rem;
+            }
+
+            .hero-floating-card strong {
+                font-size: 0.92rem;
+            }
+
             .typewriter {
                 font-size: 1.25rem;
             }
@@ -1470,187 +2649,200 @@
 
 
         <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex items-center justify-center px-4 pt-16 sm:pt-20">
+        <section id="home" class="relative min-h-screen flex items-center justify-center px-4 pt-16 pb-8 sm:pt-20">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="hero-shell px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-14 xl:px-14">
+                    <div class="grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-10 lg:gap-12 items-center">
 
-                    <!-- Profile Image (mobile: top) -->
-                    <div class="flex justify-center order-1 lg:order-2" data-aos-delay="200" data-aos="fade-left">
-                        <div class="relative">
-                            <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full animate-float">
-                                <!-- Animated Google-colored ring with background for light mode -->
-                                <div class="absolute -inset-1 rounded-full">
-                                    <div class="w-full h-full rounded-full 
-                bg-gradient-to-r from-red-500 via-yellow-400 via-green-400 to-blue-500
-                blur-xl animate-spin-slow
-                shadow-[0_0_30px_rgba(255,0,0,0.5),
-                        0_0_30px_rgba(255,255,0,0.5),
-                        0_0_30px_rgba(0,255,0,0.5),
-                        0_0_30px_rgba(0,0,255,0.5)]"></div>
-                                </div>
-
-                                <!-- Image inside the ring -->
-                                <div class="absolute inset-0 rounded-full overflow-hidden border-2 ">
-                                    <img src="./image/Abhishek.jpg" alt="Abhishek Yadav"
-                                        class="w-full h-full object-cover rounded-full">
+                        <div class="flex justify-center order-1 lg:order-2" data-aos-delay="200" data-aos="fade-left">
+                            <div class="hero-visual-wrap">
+                                <div class="hero-visual-glow"></div>
+                                <div class="hero-orb hero-orb-one"></div>
+                                <div class="hero-orb hero-orb-two"></div>
+                                <div class="hero-orb hero-orb-three"></div>
+                                <div class="hero-portrait-wrap animate-float">
+                                    <div class="hero-portrait-ring"></div>
+                                    <div class="hero-portrait-frame">
+                                        <img src="./image/Abhishek.jpg" alt="Abhishek Yadav portrait">
+                                    </div>
                                 </div>
                             </div>
-                            <!-- Enhanced Decorative Elements -->
-                            <div
-                                class="absolute -top-4 -right-4 w-16 h-16 sm:w-20 sm:h-20 bg-primary-500 rounded-full opacity-20 animate-ping">
-                            </div>
-                            <div
-                                class="absolute -bottom-4 -left-4 w-12 h-12 sm:w-16 sm:h-16 bg-purple-500 rounded-full opacity-20 animate-pulse">
-                            </div>
-                            <div
-                                class="absolute top-1/2 -left-8 w-8 h-8 bg-yellow-400 rounded-full opacity-30 animate-bounce-slow">
-                            </div>
-                            <div
-                                class="absolute top-1/4 -right-8 w-6 h-6 bg-pink-400 rounded-full opacity-40 animate-pulse-slow">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Text Content (mobile: below image, centered) -->
-                    <div class="order-2 lg:order-1  lg:text-left flex flex-col  lg:items-start space-y-6 lg:space-y-8"
-                        data-aos="fade-right" data-aos-delay="100">
-
-                        <div class="space-y-4">
-                            <h1
-                                class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
-                                Hi, I'm <br><span class="gradient-text">Abhishek</span>
-                                <span class="animate-wave inline-block">👋</span>
-                            </h1>
-                            <div class="text-2xl lg:text-3xl text-gray-600 dark:text-gray-300">
-                                <span class="typewriter"></span>
-                            </div>
-                            <p
-                                class="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed lg:text-left text-justify">
-                                I build responsive and user-friendly web applications using the MERN stack, React,
-                                Tailwind CSS, and Python with Flask and its libraries, focusing on scalable backend
-                                systems and seamless user experiences.
-                            </p>
                         </div>
 
-                        <!-- Enhanced CTA Buttons -->
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <a href="#contact"
-                                class="btn-glow inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105">
-                                <span>Get In Touch</span>
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                            <a id="downloadBtn" href="./certificate/Abhishek_MERN_Stack.pdf"
-                                class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary-600 text-primary-600 font-semibold rounded-full transition-all duration-300 hover:scale-105 select-none"
-                                aria-label="Download CV">
-                                <!-- Default content -->
-                                <span id="btnIcon" class="mr-2">
-                                    <i class="fas fa-download"></i>
+                        <!-- Text Content (mobile: below image, centered) -->
+                        <div class="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start space-y-6 lg:space-y-8"
+                            data-aos="fade-right" data-aos-delay="100">
+
+                            <div class="hero-badge">
+                                <span class="hero-badge-dot"></span>
+                                Crafting Scalable Web Apps | MERN Stack Developer
+                            </div>
+                            <div class="space-y-5">
+                                <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl leading-tight">
+                                    Hi, I'm
+                                    <span class="hero-title-name">Abhishek Yadav</span>
+                                </h1>
+                                <div class="hero-role-pill">
+                                    <span class="typewriter"></span>
+                                </div>
+                                <p class="hero-summary max-w-2xl text-justify">
+                                    I build responsive, user-friendly web applications with the MERN stack, React,
+                                    Tailwind CSS, and Python Flask, focused on scalable backend systems and polished
+                                    digital experiences.
+                                </p>
+                            </div>
+
+                            <div class="hero-stats-grid max-w-3xl">
+                                <div class="hero-stat-card">
+                                    <span class="hero-stat-value">15+</span>
+                                    <span class="hero-stat-label">Real-world projects built and deployed</span>
+                                </div>
+                                <div class="hero-stat-card">
+                                    <span class="hero-stat-value">MERN + Flask</span>
+                                    <span class="hero-stat-label">Frontend, backend APIs, and scalable workflows</span>
+                                </div>
+                                <div class="hero-stat-card">
+                                    <span class="hero-stat-value">Fast UI</span>
+                                    <span class="hero-stat-label">Responsive interfaces with clean user
+                                        experience</span>
+                                </div>
+                            </div>
+
+                            <!-- Enhanced CTA Buttons -->
+                            <div class="hero-actions justify-center lg:justify-start">
+                                <a href="#contact" class="hero-primary-btn btn-glow">
+                                    <span>Get In Touch</span>
+                                    <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                                <a id="downloadBtn" href="./certificate/Abhishek_MERN_Stack.pdf"
+                                    class="hero-secondary-btn select-none" aria-label="Download CV">
+                                    <span id="btnIcon" class="mr-2">
+                                        <i class="fas fa-download"></i>
+                                    </span>
+                                    <span id="btnText">Download CV</span>
+                                </a>
+                            </div>
+
+
+                            <!-- Social Links -->
+                            <div class="flex items-center justify-center lg:justify-start gap-4 mt-5 flex-wrap">
+
+                                <!-- Label -->
+                                <span class="text-xs tracking-widest uppercase text-slate-500 dark:text-slate-400">
+                                    Find me on
                                 </span>
-                                <span id="btnText">Download CV</span>
-                            </a>
-                        </div>
 
-                        <!-- Social Links -->
-                        <div class="flex justify-center lg:justify-start items-center gap-3">
-                            <!-- GitHub -->
-                            <a href="https://github.com/abhishek-coder-01" target="_blank" class="relative group flex h-12 w-12 items-center justify-center rounded-xl 
-                   backdrop-blur-md bg-white/40 dark:bg-gray-900/40 
-                   border border-gray-300 dark:border-gray-700/50 
-                   shadow-[0_4px_16px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.25)]
-                   hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)]
-                   hover:-translate-y-1 transition-all duration-300">
-                                <!-- Inner glow ring -->
-                                <span
-                                    class="absolute inset-0 rounded-xl bg-gradient-to-br from-white/80 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                                <i class="fab fa-github text-xl text-gray-700 dark:text-gray-300 
-                  group-hover:text-[#1C5E66] dark:group-hover:text-[#EFF1E4] 
-                  relative z-10 transition-colors duration-300"></i>
-                            </a>
+                                <!-- GitHub -->
+                                <a href="https://github.com/abhishek-coder-01" target="_blank"
+                                    class="flex items-center justify-center w-12 h-12 rounded-xl border border-slate-300/40 dark:border-slate-500/20 bg-white/70 dark:bg-slate-900/60 text-slate-900 dark:text-slate-200 shadow-md hover:-translate-y-1 hover:text-teal-600 dark:hover:text-emerald-300 transition-all duration-300">
+                                    <i class="fab fa-github text-lg"></i>
+                                </a>
 
-                            <!-- LinkedIn -->
-                            <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank" class="relative group flex h-12 w-12 items-center justify-center rounded-xl 
-                   backdrop-blur-md bg-white/40 dark:bg-gray-900/40 
-                   border border-gray-300 dark:border-gray-700/50 
-                   shadow-[0_4px_16px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.25)]
-                   hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)]
-                   hover:-translate-y-1 transition-all duration-300">
-                                <span
-                                    class="absolute inset-0 rounded-xl bg-gradient-to-br from-white/80 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                                <i class="fab fa-linkedin text-xl text-gray-700 dark:text-gray-300 
-                  group-hover:text-[#1C5E66] dark:group-hover:text-[#EFF1E4] 
-                  relative z-10 transition-colors duration-300"></i>
-                            </a>
+                                <!-- LinkedIn -->
+                                <a href="https://www.linkedin.com/in/abhishek-yadav-292ba9308" target="_blank"
+                                    class="flex items-center justify-center w-12 h-12 rounded-xl border border-slate-300/40 dark:border-slate-500/20 bg-white/70 dark:bg-slate-900/60 text-slate-900 dark:text-slate-200 shadow-md hover:-translate-y-1 hover:text-teal-600 dark:hover:text-emerald-300 transition-all duration-300">
+                                    <i class="fab fa-linkedin text-lg"></i>
+                                </a>
 
-                            <!-- Email -->
-                            <a href="mailto:contact@abhishek.dev" class="relative group flex h-12 w-12 items-center justify-center rounded-xl 
-                   backdrop-blur-md bg-white/40 dark:bg-gray-900/40 
-                   border border-gray-300 dark:border-gray-700/50 
-                   shadow-[0_4px_16px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.25)]
-                   hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)]
-                   hover:-translate-y-1 transition-all duration-300">
-                                <span
-                                    class="absolute inset-0 rounded-xl bg-gradient-to-br from-white/80 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                                <i class="fas fa-envelope text-lg text-gray-700 dark:text-gray-300 
-                  group-hover:text-[#1C5E66] dark:group-hover:text-[#EFF1E4] 
-                  relative z-10 transition-colors duration-300"></i>
-                            </a>
+                                <!-- Email -->
+                                <a href="mailto:abhishekya301@gmail.com"
+                                    class="flex items-center justify-center w-12 h-12 rounded-xl border border-slate-300/40 dark:border-slate-500/20 bg-white/70 dark:bg-slate-900/60 text-slate-900 dark:text-slate-200 shadow-md hover:-translate-y-1 hover:text-teal-600 dark:hover:text-emerald-300 transition-all duration-300">
+                                    <i class="fas fa-envelope text-base"></i>
+                                </a>
+
+                            </div>
+
                         </div>
 
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <hr class="border-red-600 my-8">
+        <hr class="border-slate-200/70 dark:border-slate-800 my-10">
 
         <!-- About Me Section -->
         <section id="about" class="py-12 sm:py-16 lg:py-20 px-4">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-12 lg:mb-16" data-aos="fade-down" data-aos-delay="400">
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">About Me
-                    </h2>
-                    <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto"></div>
-                </div>
+                <div class="about-shell px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-14">
+                    <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-12 items-center">
+                        <div class="space-y-6 lg:space-y-8" data-aos="fade-right" data-aos-delay="250">
+                            <div class="space-y-4">
+                                <span class="about-eyebrow">About Me</span>
+                                <h2 class="about-title">
+                                    Building modern products with
+                                    <span class="about-highlight">clean UI and reliable backend logic</span>
+                                </h2>
+                                <p class="about-intro text-justify leading-relaxed max-w-3xl">
+                                    I'm Abhishek Yadav, an aspiring full stack developer passionate about creating
+                                    high-performance and user-centric web applications. I specialize in blending
+                                    modern frontend design with robust backend systems to deliver scalable,
+                                    reliable, and production-ready solutions.
+                                </p>
+                            </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                    <div class="space-y-6" data-aos="fade-right" data-aos-delay="300">
-                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Hi, I'm Abhishek Yadav
-                        </h3>
-                        <p
-                            class="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed lg:text-left text-justify">
-                            A passionate MERN Stack Developer with hands-on experience in building scalable and
-                            user-friendly web applications. I'm currently pursuing a degree in Computer Science and have
-                            a strong foundation in both frontend and backend development using modern technologies.
-                        </p>
+                            <div class="about-copy-grid">
+                                <article class="about-copy-card">
+                                    <h3>What I work with</h3>
+                                    <p class="text-justify leading-relaxed max-w-2xl">
+                                        React, Tailwind CSS, Node.js, REST APIs, and Python Flask are my core tools for
+                                        shipping responsive and maintainable applications.
+                                    </p>
+                                </article>
+                                <article class="about-copy-card">
+                                    <h3>How I build</h3>
+                                    <p class="text-justify leading-relaxed max-w-2xl">
+                                        I focus on clarity, performance, and structure, turning ideas into interfaces
+                                        that feel polished on both desktop and mobile.
+                                    </p>
+                                </article>
+                            </div>
 
-                        <p
-                            class="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed lg:text-left text-justify">
-                            I specialize in React, Tailwind CSS, Node.js, REST APIs, and Python (Flask & libraries), and
-                            have built 15+ real-world projects. I enjoy creating efficient, visually appealing, and
-                            performance-driven web solutions that deliver seamless user experiences.
-                        </p>
+                            <div class="about-signal-row">
+                                <span class="about-signal-chip">
+                                    <i class="fas fa-check-circle"></i>
+                                    Scalable UI thinking
+                                </span>
+                                <span class="about-signal-chip">
+                                    <i class="fas fa-check-circle"></i>
+                                    Backend API experience
+                                </span>
+                                <span class="about-signal-chip">
+                                    <i class="fas fa-check-circle"></i>
+                                    Real project execution
+                                </span>
+                            </div>
 
-                        <!-- Quick Stats -->
-                        <div class="grid grid-cols-2 gap-6 pt-6">
-                            <div class="text-center">
-                                <div class="text-2xl sm:text-3xl font-bold gradient-text">15+</div>
-                                <div class="text-gray-600 dark:text-gray-400 text-sm sm:text-base">Projects Completed
+                            <div class="about-metrics-grid">
+                                <div class="about-metric-card">
+                                    <span class="about-metric-value">15+</span>
+                                    <span class="about-metric-label">Projects completed</span>
+                                </div>
+                                <div class="about-metric-card">
+                                    <span class="about-metric-value">2+</span>
+                                    <span class="about-metric-label">Years of learning</span>
+                                </div>
+                                <div class="about-metric-card">
+                                    <span class="about-metric-value">MERN Stack</span>
+                                    <span class="about-metric-label">Frontend to backend delivery</span>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <div class="text-2xl sm:text-3xl font-bold gradient-text">2+</div>
-                                <div class="text-gray-600 dark:text-gray-400 text-sm sm:text-base">Years Learning</div>
-                            </div>
                         </div>
-                    </div>
 
-                    <div class="flex justify-center" data-aos="fade-up" data-aos-delay="300">
-                        <div class="relative">
-                            <img src="./image/dev.webp" alt="About Abhishek"
-                                class="w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-2xl shadow-2xl">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-purple-500/20 rounded-2xl">
+                        <div class="flex justify-center" data-aos="fade-left" data-aos-delay="300">
+                            <div class="about-visual-stack">
+                                <div class="about-visual-glow"></div>
+                                <div class="about-image-card">
+                                    <img src="./image/dev.webp" alt="About Abhishek">
+                                    <div class="about-image-overlay"></div>
+                                    <div class="about-image-badge">
+                                        <div>
+                                            <strong>MERN Stack Developer</strong>
+                                            <span>Design-minded frontend and dependable backend execution</span>
+                                        </div>
+                                        <span class="status-pill">Open to opportunities</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
