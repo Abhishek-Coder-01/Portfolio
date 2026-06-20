@@ -418,10 +418,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const navLinks = Array.from(document.querySelectorAll('[data-nav-link]'));
     if (!navLinks.length) return;
 
-    const sectionIds = ['home', 'about', 'contact'];
+    const sectionIds = ['home', 'about', 'projects', 'certifications', 'contact'];
     const visibleSections = sectionIds
         .map(id => document.getElementById(id))
-        .filter(Boolean);
+        .filter(Boolean)
+        .sort((a, b) => a.offsetTop - b.offsetTop);
 
     function setActiveNav(targetId) {
         navLinks.forEach(link => {
