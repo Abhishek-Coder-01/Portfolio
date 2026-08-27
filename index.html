@@ -2400,6 +2400,74 @@
         }
 
         /* Hide loader on mobile and tablet */
+
+
+        /* Hover to increase the size of paragrap */
+        .project-card {
+            transition:
+                transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.45s ease;
+            align-self: start;
+        }
+
+        .project-card p {
+            display: block;
+            overflow: hidden;
+            -webkit-line-clamp: unset;
+            max-height: 4.8em;
+            will-change: max-height;
+
+            transition:
+                max-height 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease;
+        }
+
+        .project-card:hover p {
+            max-height: 30em;
+        }
+
+        .scroll-top-button {
+            box-sizing: border-box;
+            right: clamp(1rem, 3vw, 2rem);
+            bottom: clamp(1rem, 3vw, 2rem);
+            width: clamp(2.75rem, 4vw, 3rem);
+            height: clamp(2.75rem, 4vw, 3rem);
+            border: 1px solid rgba(148, 163, 184, 0.42);
+            background: linear-gradient(135deg, var(--glass-white-10), rgba(255, 255, 255, 0.08));
+            color: var(--nav-accent);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            box-shadow: 0 12px 28px rgba(23, 60, 53, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+        }
+
+        .scroll-top-button:hover {
+            background: rgba(34, 128, 107, 0.1);
+            color: var(--nav-accent-soft);
+        }
+
+        .scroll-top-button:focus-visible {
+            outline: 3px solid rgba(34, 128, 107, 0.28);
+            outline-offset: 3px;
+        }
+
+        .dark .scroll-top-button {
+            border-color: rgba(148, 163, 184, 0.42);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.62), rgba(30, 41, 59, 0.42));
+            color: var(--nav-cream);
+            box-shadow: 0 12px 28px rgba(2, 6, 23, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .dark .scroll-top-button:hover {
+            background: rgba(52, 211, 153, 0.12);
+            color: var(--nav-cream);
+        }
+
+        @media (max-width: 640px) {
+            .scroll-top-button {
+                right: max(1rem, env(safe-area-inset-right));
+                bottom: max(1rem, env(safe-area-inset-bottom));
+            }
+        }
     </style>
 </head>
 
@@ -2535,7 +2603,7 @@
                         About
                         <span class="nav-link-indicator absolute left-0 -bottom-0.5 w-0 h-[1.5px]"></span>
                     </a>
-                    
+
                     <a href="#certifications" data-nav-link
                         class="nav-item group relative px-5 py-3 text-[1.02rem] font-bold rounded-full">
                         Certifications
@@ -2695,36 +2763,40 @@
 
                             <div class="hero-badge">
                                 <span class="hero-badge-dot"></span>
-                                Crafting Scalable Web Apps | MERN Stack Developer
+                                Crafting Scalable Web Apps | Full-Stack Developer
                             </div>
                             <div class="space-y-5">
                                 <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl leading-tight">
                                     Hi, I'm
                                     <span class="hero-title-name">Abhishek Yadav</span>
                                 </h1>
+
                                 <div class="hero-role-pill">
                                     <span class="typewriter"></span>
                                 </div>
+
                                 <p class="hero-summary max-w-2xl text-justify">
-                                    I build responsive, user-friendly web applications with the MERN stack, React,
-                                    Tailwind CSS, and Python Flask, focused on scalable backend systems and polished
-                                    digital experiences.
+                                    I'm a Full-Stack Developer passionate about building responsive,
+                                    scalable, and user-focused web applications using MERN, Next.js,
+                                    TypeScript, and Python Flask. I focus on clean interfaces, reliable
+                                    backend APIs, database integration, and production-ready solutions.
                                 </p>
                             </div>
 
                             <div class="hero-stats-grid max-w-3xl">
                                 <div class="hero-stat-card">
-                                    <span class="hero-stat-value">15+</span>
-                                    <span class="hero-stat-label">Real-world projects built and deployed</span>
+                                    <span class="hero-stat-value">2+</span>
+                                    <span class="hero-stat-label">Full-stack projects built and deployed</span>
                                 </div>
+
                                 <div class="hero-stat-card">
-                                    <span class="hero-stat-value">MERN + Flask</span>
-                                    <span class="hero-stat-label">Frontend, backend APIs, and scalable workflows</span>
+                                    <span class="hero-stat-value">Full-Stack</span>
+                                    <span class="hero-stat-label">• Frontend • Backend • Database</span>
                                 </div>
+
                                 <div class="hero-stat-card">
-                                    <span class="hero-stat-value">Fast UI</span>
-                                    <span class="hero-stat-label">Responsive interfaces with clean user
-                                        experience</span>
+                                    <span class="hero-stat-value">8.58</span>
+                                    <span class="hero-stat-label">B.Sc. Computer Science CGPA</span>
                                 </div>
                             </div>
 
@@ -2789,15 +2861,18 @@
                         <div class="space-y-6 lg:space-y-8" data-aos="fade-right" data-aos-delay="250">
                             <div class="space-y-4">
                                 <span class="about-eyebrow">About Me</span>
+
                                 <h2 class="about-title">
                                     Building modern products with
-                                    <span class="about-highlight">clean UI and reliable backend logic</span>
+                                    <span class="about-highlight">clean UI and powerful full-stack solutions</span>
                                 </h2>
+
                                 <p class="about-intro text-justify leading-relaxed max-w-3xl">
-                                    I'm Abhishek Yadav, an aspiring full stack developer passionate about creating
-                                    high-performance and user-centric web applications. I specialize in blending
-                                    modern frontend design with robust backend systems to deliver scalable,
-                                    reliable, and production-ready solutions.
+                                    I'm Abhishek Yadav, a Full-Stack Developer passionate about building
+                                    responsive, scalable, and user-focused web applications. I work across
+                                    the frontend, backend, and database layers using technologies like
+                                    React.js, Next.js, Node.js, Express.js, Python Flask, and MongoDB to
+                                    create reliable and production-ready solutions.
                                 </p>
                             </div>
 
@@ -2805,15 +2880,17 @@
                                 <article class="about-copy-card">
                                     <h3>What I work with</h3>
                                     <p class="text-justify leading-relaxed max-w-2xl">
-                                        React, Tailwind CSS, Node.js, REST APIs, and Python Flask are my core tools for
-                                        shipping responsive and maintainable applications.
+                                        I work with React.js, Next.js, Tailwind CSS, Node.js, Express.js, Python Flask,
+                                        MongoDB, REST APIs, and TypeScript to build responsive, scalable, and
+                                        maintainable full-stack applications.
                                     </p>
                                 </article>
                                 <article class="about-copy-card">
                                     <h3>How I build</h3>
                                     <p class="text-justify leading-relaxed max-w-2xl">
-                                        I focus on clarity, performance, and structure, turning ideas into interfaces
-                                        that feel polished on both desktop and mobile.
+                                        I focus on clean code, responsive design, performance, and scalability,
+                                        building full-stack applications with well-structured frontend interfaces,
+                                        reliable backend APIs, and efficient database integration.
                                     </p>
                                 </article>
                             </div>
@@ -2821,15 +2898,17 @@
                             <div class="about-signal-row">
                                 <span class="about-signal-chip">
                                     <i class="fas fa-check-circle"></i>
-                                    Scalable UI thinking
+                                    Responsive UI
                                 </span>
+
                                 <span class="about-signal-chip">
                                     <i class="fas fa-check-circle"></i>
-                                    Backend API experience
+                                    REST API Development
                                 </span>
+
                                 <span class="about-signal-chip">
                                     <i class="fas fa-check-circle"></i>
-                                    Real project execution
+                                    Full-Stack Projects
                                 </span>
                             </div>
 
@@ -2843,8 +2922,8 @@
                                     <span class="about-metric-label">Years of learning</span>
                                 </div>
                                 <div class="about-metric-card">
-                                    <span class="about-metric-value">MERN Stack</span>
-                                    <span class="about-metric-label">Frontend to backend delivery</span>
+                                    <span class="about-metric-value">Full-Stack</span>
+                                    <span class="about-metric-label">• Frontend • Backend • Databases</span>
                                 </div>
                             </div>
                         </div>
@@ -2857,8 +2936,9 @@
                                     <div class="about-image-overlay"></div>
                                     <div class="about-image-badge">
                                         <div>
-                                            <strong>MERN Stack Developer</strong>
-                                            <span>Design-minded frontend and dependable backend execution</span>
+                                            <strong>Full-Stack Developer</strong>
+                                            <span>Modern frontend, reliable backend APIs, and database
+                                                integration</span>
                                         </div>
                                         <span class="status-pill">Open to opportunities</span>
                                     </div>
@@ -2901,27 +2981,62 @@
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                                        <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Bachelor
-                                            of Science in Computer Science</h3>
-                                        <span class="text-sm text-primary-600 dark:text-primary-400 font-medium">2025 -
-                                            Present</span>
+                                        <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
+                                            B.sc Computer Science
+                                        </h3>
+                                        <span class="text-sm text-primary-600 dark:text-primary-400 font-medium">
+                                            2023 - 2026
+                                        </span>
                                     </div>
                                     <p class="text-primary-600 dark:text-primary-400 font-semibold mb-2">Mumbai
                                         University
                                     </p>
                                     <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">
-                                        Currently pursuing BSc CS with focus on software development,Web
-                                        development,Python, and modern web technologies.
+                                        BSc Computer Science graduate with a strong focus on software development,
+                                        web development, Python, and modern web technologies. Graduated in 2026
+                                        with a<strong class="font-bold text-primary-600 dark:text-primary-400"> CGPA of
+                                            8.58</strong>.
                                     </p>
                                     <div class="flex flex-wrap gap-2">
                                         <span
-                                            class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full">Data
-                                            Structures</span>
+                                            class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs rounded-full flex items-center gap-1">
+                                            <i class="fab fa-js"></i> JavaScript
+                                        </span>
+
                                         <span
-                                            class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">Python</span>
+                                            class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 text-xs rounded-full flex items-center gap-1">
+                                            <i class="fab fa-react"></i> React.js
+                                        </span>
+
                                         <span
-                                            class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs rounded-full">Web
-                                            Development</span>
+                                            class="px-3 py-1 bg-black/10 dark:bg-white/10 text-gray-800 dark:text-gray-200 text-xs rounded-full flex items-center gap-1">
+                                            <i class="fas fa-code"></i> Next.js
+                                        </span>
+
+                                        <span
+                                            class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full flex items-center gap-1">
+                                            <i class="fas fa-code"></i> TypeScript
+                                        </span>
+
+                                        <span
+                                            class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full flex items-center gap-1">
+                                            <i class="fab fa-node-js"></i> Node.js
+                                        </span>
+
+                                        <span
+                                            class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full flex items-center gap-1">
+                                            <i class="fas fa-database"></i> MongoDB
+                                        </span>
+
+                                        <span
+                                            class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full flex items-center gap-1">
+                                            <i class="fab fa-python"></i> Python
+                                        </span>
+
+                                        <span
+                                            class="px-3 py-1 bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-400 text-xs rounded-full flex items-center gap-1">
+                                            <i class="fas fa-server"></i> Flask
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -3399,12 +3514,15 @@
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12 lg:mb-16" data-aos="fade-up">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
-                        data-aos="fade-down" data-aos-delay="400">Technical
-                        Skills</h2>
+                        data-aos="fade-down" data-aos-delay="400">
+                        Technical Skills
+                    </h2>
+
                     <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mb-6"></div>
+
                     <p class="text-gray-600 dark:text-gray-400 max-w-4xl mx-auto text-sm sm:text-base leading-relaxed">
-                        I specialize in full-stack development using the MERN stack and Python (Flask & libraries),
-                        building scalable, responsive, and user-friendly web applications.
+                        Full-stack developer skilled in MERN, Next.js, TypeScript, and Python Flask,
+                        focused on building responsive and scalable web applications.
                     </p>
                 </div>
 
@@ -4224,8 +4342,10 @@
                                 PDF HUB
                             </h3>
                             <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
-                                An all-in-one PDF web app to edit, convert, compress, and secure documents
-                                with fast, free, and reliable tools.
+                                An all-in-one PDF web application offering 12+ tools to merge, split, compress, and
+                                convert PDF documents. Built with React.js, Vite, and Python Flask, it provides a fast
+                                and responsive user experience with secure file processing and document downloads.
+                                Deployed using Vercel and Render.
 
 
 
@@ -4449,6 +4569,62 @@
                             </div>
                             <div class="flex justify-between items-center">
                                 <a href="https://pulse-guard-frontend-git-main-abhisheks-projects-ffe0b0f6.vercel.app/"
+                                    target="_blank"
+                                    class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/abhishek-coder-01" target="_blank"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Project 15: PagePilot_AI (Next.js)  -->
+
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+                        data-aos="zoom-in-up">
+                        <div class="relative overflow-hidden">
+                            <img src="./image/Pagepilot_AI.png" alt="PagePilot_AI"
+                                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6 relative z-10">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                PagePilot AI (Next.js)
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base line-clamp-3">
+                                An AI-powered Chrome extension for understanding and interacting with webpages faster
+                                through AI summaries, Q&A, key takeaways, link and button discovery, form and code
+                                explanations, plus local tools for image downloads, element inspection, ad cleaning,
+                                domain blocking, and element blocking.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs rounded-full">React</span>
+
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">Node.js</span>
+
+
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-900/30 text-gray-600 dark:text-gray-400 text-xs rounded-full">Express.js</span>
+
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs rounded-full">Tailwind</span>
+
+                                <span
+                                    class="px-2 sm:px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs rounded-full">LocalStorage</span>
+
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <a href="https://chromewebstore.google.com/detail/pagepilot-ai/dadllnnpodcfiodbpkjfmkfdolkcplpd?authuser=0&hl=en-GB"
                                     target="_blank"
                                     class="text-primary-600 hover:text-primary-700 font-semibold flex items-center text-sm sm:text-base">
                                     <i class="fas fa-external-link-alt mr-2"></i>
@@ -4939,9 +5115,35 @@
                 </div>
             </div>
         </footer>
+
+        <section id="scrollTopSection" class="relative">
+
+            <!-- Scroll to top button -->
+            <button id="scrollTopBtn" aria-label="Scroll to top"
+                class="scroll-top-button hidden fixed rounded-full text-lg items-center justify-center transition-all duration-300 hover:-translate-y-1 z-50">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+
+        </section>
     </div>
 
+<script>
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
 
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.remove("hidden");
+      scrollTopBtn.classList.add("flex");
+    } else {
+      scrollTopBtn.classList.add("hidden");
+      scrollTopBtn.classList.remove("flex");
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>
