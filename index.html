@@ -5127,23 +5127,23 @@
         </section>
     </div>
 
-<script>
-  const scrollTopBtn = document.getElementById("scrollTopBtn");
+    <script>
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      scrollTopBtn.classList.remove("hidden");
-      scrollTopBtn.classList.add("flex");
-    } else {
-      scrollTopBtn.classList.add("hidden");
-      scrollTopBtn.classList.remove("flex");
-    }
-  });
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.remove("hidden");
+                scrollTopBtn.classList.add("flex");
+            } else {
+                scrollTopBtn.classList.add("hidden");
+                scrollTopBtn.classList.remove("flex");
+            }
+        });
 
-  scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-</script>
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>
