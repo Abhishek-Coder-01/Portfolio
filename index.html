@@ -2468,6 +2468,33 @@
                 bottom: max(1rem, env(safe-area-inset-bottom));
             }
         }
+
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #374151;
+            background: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: #9ca3af;
+            transform: translateY(-1px);
+        }
+
+        .dark .skill-tag {
+            border-color: #4b5563;
+            color: #d1d5db;
+        }
+
+        .dark .skill-tag:hover {
+            border-color: #6b7280;
+        }
     </style>
 </head>
 
@@ -3507,10 +3534,270 @@
             </div>
         </section>
 
+        <!-- Technical Skills Section -->
+        <section class="skill py-16 sm:py-20 lg:py-24" id="skills">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16" data-aos="fade-up">
+                    <span
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-300 text-sm font-semibold mb-5">
+                        <i class="fas fa-layer-group"></i>
+                        My toolkit
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">Technical
+                        Skills</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mb-6"></div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+                        A practical full-stack toolkit for turning ideas into fast, accessible, and scalable digital
+                        experiences.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+
+                    <!-- Frontend Development -->
+                    <div class="bg-white dark:bg-gray-800/80 rounded-3xl p-6 sm:p-8 border border-gray-100 dark:border-gray-700 shadow-lg hover:-translate-y-1 transition-all duration-300"
+                        data-aos="fade-up" data-aos-delay="100">
+
+                        <div class="flex items-start justify-between mb-7">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center">
+                                <i class="fas fa-palette text-white text-xl"></i>
+                            </div>
+
+                            <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">
+                                Build
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                            Frontend Development
+                        </h3>
+
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                            Polished interfaces with thoughtful interactions and responsive layouts.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3 & Sass</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">Bootstrap</span>
+                            <span class="skill-tag">Next.js</span>
+                        </div>
+                    </div>
 
 
-        <!-- Enhanced Skills Section -->
-        <section class="skill py-12 sm:py-16 lg:py-20" id="skills">
+                    <!-- Backend Development -->
+                    <div class="bg-white dark:bg-gray-800/80 rounded-3xl p-6 sm:p-8 border border-gray-100 dark:border-gray-700 shadow-lg hover:-translate-y-1 transition-all duration-300"
+                        data-aos="fade-up" data-aos-delay="200">
+
+                        <div class="flex items-start justify-between mb-7">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                                <i class="fas fa-server text-white text-xl"></i>
+                            </div>
+
+                            <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">
+                                Power
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                            Backend Development
+                        </h3>
+
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                            Reliable services, clean APIs, and data-driven features built to grow.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express.js</span>
+                            <span class="skill-tag">REST APIs</span>
+                        </div>
+                    </div>
+
+
+                    <!-- Database -->
+                    <div class="bg-white dark:bg-gray-800/80 rounded-3xl p-6 sm:p-8 border border-gray-100 dark:border-gray-700 shadow-lg hover:-translate-y-1 transition-all duration-300"
+                        data-aos="fade-up" data-aos-delay="300">
+
+                        <div class="flex items-start justify-between mb-7">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                                <i class="fas fa-database text-white text-xl"></i>
+                            </div>
+
+                            <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">
+                                Store
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                            Database & Data
+                        </h3>
+
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                            Structured and scalable data storage for modern web applications.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">MongoDB Atlas</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">SQLite</span>
+                            <span class="skill-tag">Mongoose</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Tools & Technologies -->
+                <div class="mb-12" data-aos="fade-up" data-aos-delay="300">
+                    <h3
+                        class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-8 flex items-center justify-center">
+                        <i class="fas fa-tools text-primary-600 mr-3"></i>
+                        Tools & Technologies
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+
+                        <!-- Git -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fab fa-git-alt text-orange-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Git</p>
+                        </div>
+
+                        <!-- GitHub -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fab fa-github text-gray-700 dark:text-gray-300 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">GitHub</p>
+                        </div>
+
+                        <!-- Bootstrap -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fab fa-bootstrap text-purple-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Bootstrap</p>
+                        </div>
+
+                        <!-- VS Code -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fas fa-code text-blue-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">VS Code</p>
+                        </div>
+
+                        <!-- Figma -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fab fa-figma text-purple-600 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Figma</p>
+                        </div>
+
+                        <!-- Terminal -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fas fa-terminal text-green-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Terminal</p>
+                        </div>
+
+                        <!-- Cursor -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fas fa-mouse-pointer text-blue-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Cursor</p>
+                        </div>
+
+                        <!-- Postman -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fas fa-paper-plane text-orange-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Postman</p>
+                        </div>
+
+                        <!-- Vercel -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fas fa-cloud text-gray-800 dark:text-white text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Vercel</p>
+                        </div>
+
+                        <!-- Render -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fas fa-server text-purple-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Render</p>
+                        </div>
+
+                        <!-- MongoDB Atlas -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fas fa-database text-green-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">MongoDB Atlas</p>
+                        </div>
+
+                        <!-- Chrome Extension -->
+                        <div
+                            class="skill-card bg-white dark:bg-gray-800 p-4 rounded-xl text-center hover:scale-105 transition-transform shadow-lg">
+                            <i class="fab fa-chrome text-yellow-500 text-2xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Chrome Extensions</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Skill Highlight Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="400">
+                    <div
+                        class="skill-card bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-2xl border border-blue-200 dark:border-blue-800">
+                        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-mobile-alt text-white text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Responsive Design</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                            Creating mobile-first, responsive websites that work seamlessly across all devices and
+                            screen sizes.
+                        </p>
+                    </div>
+
+                    <div
+                        class="skill-card bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-2xl border border-green-200 dark:border-green-800">
+                        <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-rocket text-white text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Performance Optimization</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                            Optimizing applications for speed, accessibility, and user experience with modern best
+                            practices.
+                        </p>
+                    </div>
+
+                    <div
+                        class="skill-card bg-gradient-to-br from-purple-50 to-violet-100 dark:from-purple-900/20 dark:to-violet-900/20 p-6 rounded-2xl border border-purple-200 dark:border-purple-800">
+                        <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-puzzle-piece text-white text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Problem Solving</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                            Strong analytical skills for debugging, troubleshooting, and implementing efficient
+                            solutions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legacy skills markup kept hidden for reference -->
+        <section class="hidden" aria-hidden="true" id="skills-legacy">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12 lg:mb-16" data-aos="fade-up">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
@@ -5103,7 +5390,7 @@
                 <!-- Bottom Section: Copyright -->
                 <div class="text-center space-y-2">
                     <p class="text-gray-600 dark:text-gray-300 text-sm font-medium" id="footerText">
-                        © 2025 <span class="text-[#1C5E66] dark:text-[#EFF1E4] font-semibold">Abhishek Yadav</span>. All
+                        © 2026 <span class="text-[#1C5E66] dark:text-[#EFF1E4] font-semibold">Abhishek Yadav</span>. All
                         rights reserved
                     </p>
                     <p class="text-gray-400 dark:text-gray-500 text-xs flex items-center justify-center gap-1"
